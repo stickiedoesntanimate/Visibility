@@ -1,9 +1,9 @@
 --Creates an atlas for cards to use
 SMODS.Atlas {
 	-- Key for code to find it with
-	key = "ModdedVanilla",
+	key = "TextureAtlas",
 	-- The name of the file, for the code to pull the atlas from
-	path = "ModdedVanilla.png",
+	path = "TextureAtlas.png",
 	-- Width of each sprite in 1x size
 	px = 71,
 	-- Height of each sprite in 1x size
@@ -27,8 +27,8 @@ SMODS.Joker {
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { mult = 0, mult_mod = 6 } },
 	rarity = 1,
-	atlas = 'ModdedVanilla',
-	pos = { x = 1, y = 0 },
+	atlas = 'TextureAtlas',
+	pos = { x = 0, y = 0 },
 	cost = 4,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult } }
@@ -91,8 +91,8 @@ SMODS.Joker {
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { odds = 8, eligable = {} } },
 	rarity = 3,
-	atlas = 'ModdedVanilla',
-	pos = { x = 2, y = 0 },
+	atlas = 'TextureAtlas',
+	pos = { x = 1, y = 0 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
 	    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
@@ -131,29 +131,127 @@ SMODS.Joker {
 			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
 			--"has a {C:green}#1# in #2#{} chance to create a",
 			--"{C:dark_edition}Negative{} copy of it",
-			"{X:mult,C:white} X#1# {} Mult",
-			"Gains {X:mult, C:white} X#2# {} Mult for",
-			"every {C:attention}6{} added to your deck",
+            "Played {C:attention}6{}s are {C:mult}destroyed{}",
+			"after scoring in exchange for a red seal on",
+			"a random card in hand",
 		}
 	},
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
-	config = { extra = { x_mult = 1, x_mult_mod = 0.3 } },
+	config = { extra = { } },
 	rarity = 3,
-	atlas = 'ModdedVanilla',
-	pos = { x = 3, y = 0 },
+	atlas = 'TextureAtlas',
+	pos = { x = 2, y = 0 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.x_mult, card.ability.extra.x_mult_mod } }
 	end,
 	calculate = function(self, card, context)
-	    if
-            context.using_consumeable
-            and context.consumeable.ability.set == "Planet"
-            and not context.consumeable.beginning_end
-        then
+	    if context.destroy_card and context.cardarea == G.play then
+	        for k, v in pairs(context.scoring_hand) do
+                if v:get_id() == 6 then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.2,
+                        func = function()
+                            if v.ability.name == 'Glass Card' then
+                                v:shatter()
+                            else
+                                v:start_dissolve(nil)
+                            end
+                            local changed_card = pseudorandom_element(G.hand.cards, pseudoseed('blood_pact'))
+                            changed_card:set_seal('Red', true)
+                            return true
+                        end
+                    }))
+                    return { message = 'Blood Pact!' }
+                end
+            end
+	    end
+        --[[{
+        	cardarea = G.play -- 'unscored', G.hand, (G.deck and G.discard optionally enabled)
+        	full_hand = G.play.cards,
+        	scoring_hand = scoring_hand,
+        	scoring_name = text,
+        	poker_hands = poker_hands,
+        	destroy_card = card,
+        	destroying_card = card -- only when calculating in G.play.
+        }]]
+	end,
+}
 
+-- Crystal Dice
+SMODS.Joker {
+	key = 'crystal_dice',
+	loc_txt = {
+		name = 'Crystal Dice',
+		text = {
+			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
+			--"has a {C:green}#1# in #2#{} chance to create a",
+			--"{C:dark_edition}Negative{} copy of it",
+            "All {C:green}odds{} are guaranteed",
+			"{s:2}BUT",
+			"{C:mult}self destruct {}after one round",
+			"{C:inactive,s:0.6}handle with care..."
+		}
+	},
+	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
+	config = { extra = { } },
+	rarity = 2,
+	atlas = 'TextureAtlas',
+	pos = { x = 3, y = 0 },
+	eternal_compat = false,
+	blueprint_compat = false,
+	cost = 12,
+	loc_vars = function(self, info_queue, card)
+        return { vars = { } }
+	end,
+	calculate = function(self, card, context)
+        if context.end_of_round and not context.repetition and context.game_over == false then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound('glass5')
+                    card.T.r = -0.2
+                    card:juice_up(0.3, 0.4)
+                    card.states.drag.is = true
+                    card.children.center.pinch.x = true
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.3,
+                        blockable = false,
+                        func = function()
+                            G.jokers:remove_card(card)
+                            card:remove()
+                            card = nil
+                            return true
+                        end
+                    }))
+                    return true
+                end
+            }))
+            return {
+                message = 'Shattered!'
+            }
         end
-	end
+	end,
+	add_to_deck = function(self, card, from_debuff)
+        for k, v in pairs(G.GAME.probabilities) do
+            G.GAME.probabilities[k] = v*4000
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        for k, v in pairs(G.GAME.probabilities) do
+            G.GAME.probabilities[k] = v/4000
+        end
+    end
+        --[[{
+        	cardarea = G.play -- 'unscored', G.hand, (G.deck and G.discard optionally enabled)
+        	full_hand = G.play.cards,
+        	scoring_hand = scoring_hand,
+        	scoring_name = text,
+        	poker_hands = poker_hands,
+        	destroy_card = card,
+        	destroying_card = card -- only when calculating in G.play.
+        }]]
 }
 
 -- Estrogen
@@ -165,15 +263,15 @@ SMODS.Joker {
 			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
 			--"has a {C:green}#1# in #2#{} chance to create a",
 			--"{C:dark_edition}Negative{} copy of it",
-			"{C:attention}Strength {} causes a rank-decrease",
+			"{C:attention}Strength {}causes a rank-decrease",
 			"instead of a rank-increase",
 		}
 	},
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { x_mult = 1, x_mult_mod = 0.3 } },
 	rarity = 3,
-	atlas = 'ModdedVanilla',
-	pos = { x = 3, y = 0 },
+	atlas = 'TextureAtlas',
+	pos = { x = 4, y = 4 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.x_mult, card.ability.extra.x_mult_mod } }

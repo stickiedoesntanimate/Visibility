@@ -1,12 +1,7 @@
---Creates an atlas for cards to use
 SMODS.Atlas {
-	-- Key for code to find it with
 	key = "TextureAtlas",
-	-- The name of the file, for the code to pull the atlas from
 	path = "TextureAtlas.png",
-	-- Width of each sprite in 1x size
 	px = 71,
-	-- Height of each sprite in 1x size
 	py = 95
 }
 
@@ -16,9 +11,6 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Hanged Joker',
 		text = {
-			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
-			--"has a {C:green}#1# in #2#{} chance to create a",
-			--"{C:dark_edition}Negative{} copy of it",
 			"{C:red}+#1#{} Mult for every",
 			"{C:attention}hanged man {}used this run",
 			"{C:inactive}(Currently: {C:mult}+#2# {C:inactive}Mult)"
@@ -52,26 +44,6 @@ SMODS.Joker {
                     message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
                 }
             end
-	    --[[if
-	        context.using_consumeable
-	        and context.consumeable.ability.set == "Planet"
-            and not context.consumeable.beginning_end
-            and context.consumeable.edition ~= "e_negative"
-	    then
-	        if pseudorandom('nasa_employee') < G.GAME.probabilities.normal / card.ability.extra.odds then
-	            G.E_MANAGER:add_event(Event({
-                    func = function()
-                        local cards = copy_card(context.consumeable)
-                        cards:set_edition('e_negative', true)
-                        cards:add_to_deck()
-                        G.consumeables:emplace(cards)
-                        return true
-                    end,
-                }))
-                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil,
-                				{ message = localize('k_duplicated_ex') })
-	        end
-	    end]]
 	end
 }
 
@@ -81,14 +53,10 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Monochromatic Joker',
 		text = {
-			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
-			--"has a {C:green}#1# in #2#{} chance to create a",
-			--"{C:dark_edition}Negative{} copy of it",
 			"{C:green}#1# in #2#{} chance to change a non-edition joker into a",
 			"{C:dark_edition}negative{} after defeating the {C:mult}Boss Blind{}",
 		}
 	},
-	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { odds = 8, eligable = {} } },
 	rarity = 3,
 	atlas = 'TextureAtlas',
@@ -128,9 +96,6 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Blood Pact',
 		text = {
-			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
-			--"has a {C:green}#1# in #2#{} chance to create a",
-			--"{C:dark_edition}Negative{} copy of it",
             "Played {C:attention}6{}s are {C:mult}destroyed{}",
 			"after scoring in exchange for a red seal on",
 			"a random card in hand",
@@ -167,15 +132,6 @@ SMODS.Joker {
                 end
             end
 	    end
-        --[[{
-        	cardarea = G.play -- 'unscored', G.hand, (G.deck and G.discard optionally enabled)
-        	full_hand = G.play.cards,
-        	scoring_hand = scoring_hand,
-        	scoring_name = text,
-        	poker_hands = poker_hands,
-        	destroy_card = card,
-        	destroying_card = card -- only when calculating in G.play.
-        }]]
 	end,
 }
 
@@ -185,16 +141,12 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Crystal Dice',
 		text = {
-			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
-			--"has a {C:green}#1# in #2#{} chance to create a",
-			--"{C:dark_edition}Negative{} copy of it",
             "All {C:green}odds{} are guaranteed",
 			"{s:2}BUT",
 			"{C:mult}self destruct {}after one round",
 			"{C:inactive,s:0.6}handle with care..."
 		}
 	},
-	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { } },
 	rarity = 2,
 	atlas = 'TextureAtlas',
@@ -243,15 +195,6 @@ SMODS.Joker {
             G.GAME.probabilities[k] = v/4000
         end
     end
-        --[[{
-        	cardarea = G.play -- 'unscored', G.hand, (G.deck and G.discard optionally enabled)
-        	full_hand = G.play.cards,
-        	scoring_hand = scoring_hand,
-        	scoring_name = text,
-        	poker_hands = poker_hands,
-        	destroy_card = card,
-        	destroying_card = card -- only when calculating in G.play.
-        }]]
 }
 
 -- Estrogen
@@ -260,41 +203,29 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Estrogen',
 		text = {
-			--"Using a non-{C:dark_edition}negative {C:planet}Planet{} card",
-			--"has a {C:green}#1# in #2#{} chance to create a",
-			--"{C:dark_edition}Negative{} copy of it",
-			"{C:attention}Strength {}causes a rank-decrease",
-			"instead of a rank-increase",
+			"Using {C:attention}strength {}forces selected cards",
+			"to be made queens",
 		}
 	},
-	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
-	config = { extra = { x_mult = 1, x_mult_mod = 0.3 } },
+	config = { extra = { } },
 	rarity = 3,
 	atlas = 'TextureAtlas',
-	pos = { x = 4, y = 4 },
+	pos = { x = 4, y = 0 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.x_mult, card.ability.extra.x_mult_mod } }
+        return { vars = {  } }
 	end,
 	calculate = function(self, card, context)
-	    if context.playing_card_added and not card.getting_sliced then
-            if not context.blueprint and context.cards and context.cards[1] then
-                print(table.concat(context, '\n'))
-                if context.cards[1]:get_id() == 6 then
-                    card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.x_mult_mod
-                    return {
-                        message = "Upgrade!",
-                    }
-                end
+        if context.using_consumeable and context.consumeable.ability.name == 'Strength' then
+            for k, v in pairs(G.hand.highlighted) do
+                G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
+                    local suit_prefix = string.sub(v.base.suit, 1, 1)
+                    v:set_base(G.P_CARDS[suit_prefix..'_Q'])
+                return true end }))
             end
+            return { message = 'Go Girls!' }
         end
-        if context.joker_main then
-            return {
-                xmult = card.ability.extra.x_mult,
-                --message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
-            }
-        end
-	end
+    end,
 }
 
 ----------------------------------------------

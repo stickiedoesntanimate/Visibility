@@ -2,6 +2,24 @@
 --- Created by gunnablescum.
 --- DateTime: 20.05.25 17:36
 ---
+SMODS.ObjectType({
+	key = "Food",
+	default = "j_reserved_parking",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+		-- insert base game food jokers
+		self:inject_card(G.P_CENTERS.j_gros_michel)
+		self:inject_card(G.P_CENTERS.j_ice_cream)
+		self:inject_card(G.P_CENTERS.j_cavendish)
+		self:inject_card(G.P_CENTERS.j_turtle_bean)
+		self:inject_card(G.P_CENTERS.j_diet_cola)
+		self:inject_card(G.P_CENTERS.j_popcorn)
+		self:inject_card(G.P_CENTERS.j_ramen)
+		self:inject_card(G.P_CENTERS.j_selzer)
+	end,
+})
+
 -- Hanged Joker
 SMODS.Joker {
 	key = 'hanged_joker',
@@ -44,6 +62,31 @@ SMODS.Joker {
 	end
 }
 
+SMODS.Joker {
+    key = "unemployed",
+    loc_txt = {
+        name = "Unemployed Joker",
+        text = {
+            "Gives 1 {C:attention}Perishable{} {C:dark_edition}negative{} food Jokers for 1 round",
+            }
+    },
+    config = { extra = {}},
+    rarity = 2,
+    atlas = "TextureAtlasJokers",
+    pos = { x = 4, y = 0},
+    cost = 6,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            local card = create_card("Food", G.jokers, nil, nil, nil, nil, nil)
+			card:add_to_deck()
+			card:set_edition('e_negative', false)
+			card.sell_cost = -1
+			 G.jokers:emplace(card)
+			card.ability.perishable = true
+			card.ability.perish_tally = 1
+		end
+	end
+}
 -- Monochromatic Joker
 SMODS.Joker {
 	key = 'monochromatic_joker',
@@ -55,7 +98,7 @@ SMODS.Joker {
 		}
 	},
 	config = { extra = { odds = 8, eligable = {} } },
-	rarity = 3,
+	rarity = 1,
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 1, y = 0 },
 	cost = 8,
@@ -100,7 +143,7 @@ SMODS.Joker {
 	},
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { } },
-	rarity = 3,
+	rarity = 1,
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 2, y = 0 },
 	cost = 8,
@@ -145,7 +188,7 @@ SMODS.Joker {
 		}
 	},
 	config = { extra = { } },
-	rarity = 2,
+	rarity = 1,
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 3, y = 0 },
 	eternal_compat = false,
@@ -205,7 +248,7 @@ SMODS.Joker {
 		}
 	},
 	config = { extra = { } },
-	rarity = 3,
+	rarity = 1,
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 4, y = 0 },
 	cost = 8,

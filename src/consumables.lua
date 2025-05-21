@@ -69,14 +69,7 @@ SMODS.Consumable {
             }))
         end
         delay(0.6)
-    end,
-    -- The config field already handles the functionality so it doesn't need to be implemented
-    -- The following is how the implementation would be
-    --[[
-    can_use = function(self, card)
-        return G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.max_highlighted
     end
-    --]]
 }
 
 -- The Mint

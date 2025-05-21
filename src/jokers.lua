@@ -20,6 +20,8 @@ SMODS.ObjectType({
 	end,
 })
 
+
+
 -- Hanged Joker
 SMODS.Joker {
 	key = 'hanged_joker',
@@ -63,12 +65,13 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-	key = "brick",
+	key = "brick_up",
 	loc_txt = {
 		name = "Brick up",
 		text = {
-			"Each played {C:attention}Stone Card",
-			"card gives {X:mult,C:white}X1.3{} Mult",
+			"Retriggers every",
+			"{C:attention}Stone Card{} and {C:attention}Brick Card",
+			"{C:attention}1{} additional time"
 
 		}
 	},
@@ -92,13 +95,43 @@ SMODS.Joker {
 	end,
 }
 
+SMODS.Joker{
+	key = "ghost_print",
+	loc_txt = {
+		name = "Ghost Print",
+		text = {
+			"{C:green}#1# in #2#{} chance to retrigger",
+			"every played card",
+		}
+	},
+	config = { extra = {repetitions = 1, odds = 4 }},
+	rarity = 1,
+	atlas = "TextureAtlasJokers",
+	pos = { x = 2, y = 1},
+	cost = 5,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+	end,
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play then
+			if pseudorandom('ghost_print') < G.GAME.probabilities.normal / card.ability.extra.odds then
+				return {
+					repetitions = card.ability.extra.repetitions
+				}
+			end
+		end
+	end,
+}
+
+
 SMODS.Joker {
 	key = "stoner",
 	loc_txt = {
 		name = "Stoner Joker",
 		text = {
-			"Each played {C:attention}Stone Card",
-			"card gives {X:mult,C:white}X1.3{} Mult",
+			"Each played",
+			"{C:attention}Stone Card{} and {C:attention}Brick Card",
+			"gives {X:mult,C:white}X1.3{} Mult",
 
 		}
 	},
@@ -122,9 +155,11 @@ SMODS.Joker {
     key = "unemployed",
     loc_txt = {
         name = "Unemployed Joker",
-        text = {
-            "Gives 1 {C:attention}Perishable{} {C:dark_edition}negative{} food Jokers for 1 round",
-            }
+		text = {
+			"Spawns a {C:attention}Perishable{} {C:dark_edition}negative{} food Joker",
+			"with {C:gold}$-1{} sell value that",
+			"debuffs after {C:attention}one{} round",
+		}
     },
     config = { extra = {}},
     rarity = 2,
@@ -133,7 +168,7 @@ SMODS.Joker {
     cost = 6,
     calculate = function(self, card, context)
         if context.setting_blind then
-            local card = create_card("Food", G.jokers, nil, nil, nil, nil, nil)
+            local card = create_card("Visibility", G.jokers, nil, nil, nil, nil, nil)
 			card:add_to_deck()
 			card:set_edition('e_negative', false)
 			card.sell_cost = -1
@@ -306,7 +341,7 @@ SMODS.Joker {
 	config = { extra = { } },
 	rarity = 1,
 	atlas = 'TextureAtlasJokers',
-	pos = { x = 4, y = 0 },
+	pos = { x = 3, y = 1 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
         return { vars = {  } }
@@ -381,3 +416,23 @@ SMODS.Joker {
         end
     end,
 }]]
+
+--[[SMODS.ObjectType({
+	key = "Visibility",
+	default = "j_reserved_parking",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+		-- insert base game food jokers
+		self:inject_card(G.P_CENTERS.m_mvan_hanged_joker)
+		self:inject_card(G.P_CENTERS.m_mvan_brick_up)
+		self:inject_card(G.P_CENTERS.m_mvan_ghost_print)
+		self:inject_card(G.P_CENTERS.m_mvan_stoner)
+		self:inject_card(G.P_CENTERS.m_mvan_unemployed)
+		self:inject_card(G.P_CENTERS.m_mvan_blood_pact)
+		self:inject_card(G.P_CENTERS.m_mvan_monochromatic_joker)
+		self:inject_card(G.P_CENTERS.m_mvan_crystal_dice)
+		self:inject_card(G.P_CENTERS.m_mvan_estrogen)
+	end,
+})
+--]]

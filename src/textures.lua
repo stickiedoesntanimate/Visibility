@@ -1,0 +1,44 @@
+---
+--- Created by gunnablescum.
+--- DateTime: 21.05.25 20:44
+---
+SMODS.Atlas {
+	key = "TextureAtlasJokers",
+	path = "TextureAtlasJokers.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas {
+	key = "TextureAtlasConsumables",
+	path = "TextureAtlasConsumables.png",
+	px = 71,
+	py = 95
+}
+SMODS.Atlas {
+	key = "TextureAtlasEnhancements",
+	path = "TextureAtlasEnhancements.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas {
+	key = "TextureAtlasVouchers",
+	path = "TextureAtlasVouchers.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas {
+	key = "TextureAtlasVouchers",
+	path = "TextureAtlasVouchers.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas {
+	key = "TextureAtlasDecks",
+	path = "TextureAtlasDecks.png",
+	px = 71,
+	py = 95
+}

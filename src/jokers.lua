@@ -2,25 +2,6 @@
 --- Created by gunnablescum.
 --- DateTime: 20.05.25 17:36
 ---
-SMODS.ObjectType({
-	key = "Food",
-	default = "j_reserved_parking",
-	cards = {},
-	inject = function(self)
-		SMODS.ObjectType.inject(self)
-		-- insert base game food jokers
-		self:inject_card(G.P_CENTERS.j_gros_michel)
-		self:inject_card(G.P_CENTERS.j_ice_cream)
-		self:inject_card(G.P_CENTERS.j_cavendish)
-		self:inject_card(G.P_CENTERS.j_turtle_bean)
-		self:inject_card(G.P_CENTERS.j_diet_cola)
-		self:inject_card(G.P_CENTERS.j_popcorn)
-		self:inject_card(G.P_CENTERS.j_ramen)
-		self:inject_card(G.P_CENTERS.j_selzer)
-	end,
-})
-
-
 
 -- Hanged Joker
 SMODS.Joker {
@@ -36,6 +17,7 @@ SMODS.Joker {
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { mult = 0, mult_mod = 6 } },
 	rarity = 1,
+	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 0, y = 0 },
 	cost = 4,
@@ -79,6 +61,7 @@ SMODS.Joker {
 	unlocked = false,
 	blueprint_compat = true,
 	rarity = 2,
+	pools = { ["Visibility"] = true },
 	cost = 6,
 	pos = { x = 1, y = 1 },
 	config = { extra = { repetitions = 1 } },
@@ -106,6 +89,7 @@ SMODS.Joker{
 	},
 	config = { extra = {repetitions = 1, odds = 4 }},
 	rarity = 1,
+	pools = { ["Visibility"] = true },
 	atlas = "TextureAtlasJokers",
 	pos = { x = 2, y = 1},
 	cost = 5,
@@ -137,6 +121,7 @@ SMODS.Joker {
 	},
 	config = { extra = { Xmult = 1.3} },
 	rarity = 2,
+	pools = { ["Visibility"] = true },
 	atlas = "TextureAtlasJokers",
 	pos = { x = 0, y = 1},
 	cost = 5,
@@ -168,13 +153,13 @@ SMODS.Joker {
     cost = 6,
     calculate = function(self, card, context)
         if context.setting_blind then
-            local card = create_card("Visibility", G.jokers, nil, nil, nil, nil, nil)
-			card:add_to_deck()
-			card:set_edition('e_negative', false)
-			card.sell_cost = -1
-			 G.jokers:emplace(card)
-			card.ability.perishable = true
-			card.ability.perish_tally = 1
+            local cards = create_card("Visibility", G.jokers, nil, nil, nil, nil, nil)
+			cards:add_to_deck()
+			cards:set_edition('e_negative', false)
+			cards.sell_cost = -1
+			G.jokers:emplace(cards)
+			cards.ability.perishable = true
+			cards.ability.perish_tally = 1
 		end
 	end
 }
@@ -190,6 +175,7 @@ SMODS.Joker {
 	},
 	config = { extra = { odds = 8, eligable = {} } },
 	rarity = 1,
+	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 1, y = 0 },
 	cost = 8,
@@ -235,6 +221,7 @@ SMODS.Joker {
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { } },
 	rarity = 1,
+	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 2, y = 0 },
 	cost = 8,
@@ -254,6 +241,7 @@ SMODS.Joker {
                             else
                                 v:start_dissolve(nil)
                             end
+                            v:remove_from_deck()
                             local changed_card = pseudorandom_element(G.hand.cards, pseudoseed('blood_pact'))
                             changed_card:set_seal('Red', true)
                             return true
@@ -280,6 +268,7 @@ SMODS.Joker {
 	},
 	config = { extra = { } },
 	rarity = 1,
+	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 3, y = 0 },
 	eternal_compat = false,
@@ -340,6 +329,7 @@ SMODS.Joker {
 	},
 	config = { extra = { } },
 	rarity = 1,
+	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 3, y = 1 },
 	cost = 8,
@@ -359,8 +349,6 @@ SMODS.Joker {
     end,
 }
 
--- Lean (Broken)
---[[
 SMODS.Joker {
 	key = 'lean',
 	loc_txt = {
@@ -372,6 +360,7 @@ SMODS.Joker {
 	},
 	config = { extra = { } },
 	rarity = 3,
+	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 4, y = 0 },
 	cost = 8,
@@ -380,7 +369,6 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
         if context.after and context.scoring_name == "Three of a Kind" then
-            print("We have permission to nuke the hand, sir.")
             local destroyed_cards = {}
             for i = 1, #G.hand.cards do
                 if G.hand.cards[i] then
@@ -415,24 +403,4 @@ SMODS.Joker {
             end
         end
     end,
-}]]
-
---[[SMODS.ObjectType({
-	key = "Visibility",
-	default = "j_reserved_parking",
-	cards = {},
-	inject = function(self)
-		SMODS.ObjectType.inject(self)
-		-- insert base game food jokers
-		self:inject_card(G.P_CENTERS.m_mvan_hanged_joker)
-		self:inject_card(G.P_CENTERS.m_mvan_brick_up)
-		self:inject_card(G.P_CENTERS.m_mvan_ghost_print)
-		self:inject_card(G.P_CENTERS.m_mvan_stoner)
-		self:inject_card(G.P_CENTERS.m_mvan_unemployed)
-		self:inject_card(G.P_CENTERS.m_mvan_blood_pact)
-		self:inject_card(G.P_CENTERS.m_mvan_monochromatic_joker)
-		self:inject_card(G.P_CENTERS.m_mvan_crystal_dice)
-		self:inject_card(G.P_CENTERS.m_mvan_estrogen)
-	end,
-})
---]]
+}

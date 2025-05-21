@@ -1,28 +1,23 @@
-
-
 SMODS.Back {
     key = "poptart",
     atlas = "TextureAtlasDecks",
     loc_txt = {
         name = "Poptart Deck",
         text = {
-            "{C:blue}+#1#{} hand",
-            "every round",
+            "{C:attention}Visibility{} Jokers are",
+            "{X:blue}X#1#{} more likely to appear",
+            "in the shop"
         }
     },
     pos = { x = 0, y = 0 },
-    config = { extra = { hands = 1 } },
+    config = { extra = { likeliness = 3 } },
     unlocked = true,
     loc_vars = function(self, info_queue, back)
-        return { vars = { self.config.extra.hands } }
+        return { vars = { self.config.extra.likeliness } }
     end,
     apply = function(self, back)
-        G.GAME.starting_params.hands = G.GAME.starting_params.hands + self.config.extra.hands
-    end,
-    locked_loc_vars = function(self, info_queue, back)
-        return { vars = { 20 } }
-    end,
-    check_for_unlock = function(self, args)
-        return args.type == 'discover_amount' and args.amount >= 20
+        G.GAME.visibility_rate = self.config.extra.likeliness * G.GAME.visibility_rate
+        print("New Rate: ")
+        print(G.GAME.visibility_rate)
     end
 }

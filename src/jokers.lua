@@ -63,6 +63,62 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+	key = "brick",
+	loc_txt = {
+		name = "Brick up",
+		text = {
+			"Each played {C:attention}Stone Card",
+			"card gives {X:mult,C:white}X1.3{} Mult",
+
+		}
+	},
+	atlas = "TextureAtlasJokers",
+	unlocked = false,
+	blueprint_compat = true,
+	rarity = 2,
+	cost = 6,
+	pos = { x = 1, y = 1 },
+	config = { extra = { repetitions = 1 } },
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play and
+				SMODS.has_enhancement(context.other_card, 'm_stone') then
+			return {
+				repetitions = card.ability.extra.repetitions
+			}
+		end
+	end,
+	locked_loc_vars = function(self, info_queue, card)
+		return { vars = { 300, G.PROFILES[G.SETTINGS.profile].career_stats.c_face_cards_played } }
+	end,
+}
+
+SMODS.Joker {
+	key = "stoner",
+	loc_txt = {
+		name = "Stoner Joker",
+		text = {
+			"Each played {C:attention}Stone Card",
+			"card gives {X:mult,C:white}X1.3{} Mult",
+
+		}
+	},
+	config = { extra = { Xmult = 1.3} },
+	rarity = 2,
+	atlas = "TextureAtlasJokers",
+	pos = { x = 0, y = 1},
+	cost = 5,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and
+			SMODS.has_enhancement(context.other_card, 'm_stone') then
+			return {
+				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
+				Xmult_mod = card.ability.extra.Xmult
+			}
+		end
+	end
+}
+
+SMODS.Joker {
     key = "unemployed",
     loc_txt = {
         name = "Unemployed Joker",

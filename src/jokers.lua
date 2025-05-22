@@ -127,7 +127,7 @@ SMODS.Joker {
 	cost = 5,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and
-			SMODS.has_enhancement(context.other_card, 'm_stone') then
+			SMODS.has_enhancement(context.other_card, 'm_stone', context.other_card, 'm_brick' ) then
 			return {
 				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
 				Xmult_mod = card.ability.extra.Xmult

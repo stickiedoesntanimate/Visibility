@@ -3,7 +3,7 @@
     "name": "Visibility",
     "author": ["GunnableScum", "InvisibleSides", "Monachrome"],
     "description": "Adds jokers.",
-    "prefix": "mvan",
+    "prefix": "vis",
     "main_file": "Visibility.lua",
     "badge_colour": "c7638f",
     "dependencies": [

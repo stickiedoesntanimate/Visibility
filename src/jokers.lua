@@ -337,7 +337,7 @@ SMODS.Joker {
         return { vars = {  } }
 	end,
 	calculate = function(self, card, context)
-        if context.using_consumeable and (context.consumeable.ability.name == 'Strength' or context.consumeable.ability.name == 'c_mvan_weakness') then
+        if context.using_consumeable and (context.consumeable.ability.name == 'Strength' or context.consumeable.ability.name == 'c_vis_weakness') then
             for k, v in pairs(G.hand.highlighted) do
                 G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                     local suit_prefix = string.sub(v.base.suit, 1, 1)

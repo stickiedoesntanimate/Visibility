@@ -1,4 +1,4 @@
-SMODS.Shader{key = "shiny", path = "shiny.fs"}
+--[[SMODS.Shader{key = "shiny", path = "shiny.fs"}
 
 SMODS.Edition {
     key = "shiny",

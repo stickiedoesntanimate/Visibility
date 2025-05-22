@@ -349,6 +349,79 @@ SMODS.Joker {
     end,
 }
 
+--[[SMODS.Joker {
+	key = "fridge",
+	loc_txt = {
+		name = "Fridge",
+		text = {
+			"Gains {C:chips}+#2#{} Chips",
+			"if played hand",
+			"contains a {C:attention}Full House{} and",
+			"contains every suit",
+			"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+		}
+	},
+	atlas = 'TextureAtlasJokers',
+	pos = { x = 4, y = 1 },
+	config = { extra = { chips = 0, chip_mod = 25 } },
+	rarity = 2,
+	cost = 5,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
+	end,
+	calculate = function(self, card, context)
+		if context.before and context.main_eval and not context.blueprint and next(context.poker_hands['Full House']) then
+			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+		if context.joker_main then
+			local suits = {
+				['Hearts'] = 0,
+				['Diamonds'] = 0,
+				['Spades'] = 0,
+				['Clubs'] = 0
+			}
+			for i = 1, #context.scoring_hand do
+				if not SMODS.has_any_suit(context.scoring_hand[i]) then
+					if context.scoring_hand[i]:is_suit('Hearts', true) and suits["Hearts"] == 0 then
+						suits["Hearts"] = suits["Hearts"] + 1
+					elseif context.scoring_hand[i]:is_suit('Diamonds', true) and suits["Diamonds"] == 0 then
+						suits["Diamonds"] = suits["Diamonds"] + 1
+					elseif context.scoring_hand[i]:is_suit('Spades', true) and suits["Spades"] == 0 then
+						suits["Spades"] = suits["Spades"] + 1
+					elseif context.scoring_hand[i]:is_suit('Clubs', true) and suits["Clubs"] == 0 then
+						suits["Clubs"] = suits["Clubs"] + 1
+					end
+				end
+			end
+			for i = 1, #context.scoring_hand do
+				if SMODS.has_any_suit(context.scoring_hand[i]) then
+					if context.scoring_hand[i]:is_suit('Hearts') and suits["Hearts"] == 0 then
+						suits["Hearts"] = suits["Hearts"] + 1
+					elseif context.scoring_hand[i]:is_suit('Diamonds') and suits["Diamonds"] == 0 then
+						suits["Diamonds"] = suits["Diamonds"] + 1
+					elseif context.scoring_hand[i]:is_suit('Spades') and suits["Spades"] == 0 then
+						suits["Spades"] = suits["Spades"] + 1
+					elseif context.scoring_hand[i]:is_suit('Clubs') and suits["Clubs"] == 0 then
+						suits["Clubs"] = suits["Clubs"] + 1
+					end
+				end
+			end
+			if suits["Hearts"] > 1 and
+					suits["Diamonds"] > 1 and
+					suits["Spades"] > 1 and
+					suits["Clubs"] > 1 then
+				return {
+					message = localize('k_upgrade_ex'),
+					colour = G.C.CHIPS,
+					chips = card.ability.extra.chips
+				}
+			end
+				return {
+					chips = card.ability.extra.chips
+				}
+			end
+		end
+	end,}
+--]]
 SMODS.Joker {
 	key = 'lean',
 	loc_txt = {

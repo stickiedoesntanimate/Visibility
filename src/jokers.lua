@@ -362,7 +362,7 @@ SMODS.Joker {
 	rarity = 3,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
-	pos = { x = 4, y = 0 },
+	pos = { x = 5, y = 1 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
         return { vars = {  } }

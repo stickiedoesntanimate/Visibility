@@ -41,10 +41,12 @@ SMODS.Joker {
     			}
     		end
     		if context.joker_main then
-                return {
-                    mult_mod = card.ability.extra.mult,
-                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
-                }
+				if card.ability.extra.mult > 0 then
+					return {
+						mult_mod = card.ability.extra.mult,
+						message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
+					}
+				end
             end
 	end
 }
@@ -284,7 +286,7 @@ SMODS.Joker {
             "All {C:green}odds{} are guaranteed",
 			"{s:2}BUT",
 			"{C:mult}self destruct {}after one round",
-			"{C:inactive,s:0.6}handle with care..."
+			"{C:inactive,s:0.7}handle with care... it will not appear again."
 		}
 	},
 	config = { extra = { } },
@@ -295,6 +297,7 @@ SMODS.Joker {
 	discovered = true,
 	unlocked = true,
 	eternal_compat = false,
+	no_pool_flag = "crystal_shortage",
 	blueprint_compat = false,
 	cost = 12,
 	loc_vars = function(self, info_queue, card)
@@ -332,6 +335,7 @@ SMODS.Joker {
         for k, v in pairs(G.GAME.probabilities) do
             G.GAME.probabilities[k] = v*4000
         end
+		G.GAME.pool_flags.crystal_shortage = true
     end,
     remove_from_deck = function(self, card, from_debuff)
         for k, v in pairs(G.GAME.probabilities) do
@@ -375,80 +379,6 @@ SMODS.Joker {
         end
     end,
 }
-
---[[SMODS.Joker {
-	key = "fridge",
-	loc_txt = {
-		name = "Fridge",
-		text = {
-			"Gains {C:chips}+#2#{} Chips",
-			"if played hand",
-			"contains a {C:attention}Full House{} and",
-			"contains every suit",
-			"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
-		}
-	},
-	atlas = 'TextureAtlasJokers',
-	pos = { x = 4, y = 1 },
-	config = { extra = { chips = 0, chip_mod = 25 } },
-	rarity = 2,
-	cost = 5,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
-	end,
-	calculate = function(self, card, context)
-		if context.before and context.main_eval and not context.blueprint and next(context.poker_hands['Full House']) then
-			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-		if context.joker_main then
-			local suits = {
-				['Hearts'] = 0,
-				['Diamonds'] = 0,
-				['Spades'] = 0,
-				['Clubs'] = 0
-			}
-			for i = 1, #context.scoring_hand do
-				if not SMODS.has_any_suit(context.scoring_hand[i]) then
-					if context.scoring_hand[i]:is_suit('Hearts', true) and suits["Hearts"] == 0 then
-						suits["Hearts"] = suits["Hearts"] + 1
-					elseif context.scoring_hand[i]:is_suit('Diamonds', true) and suits["Diamonds"] == 0 then
-						suits["Diamonds"] = suits["Diamonds"] + 1
-					elseif context.scoring_hand[i]:is_suit('Spades', true) and suits["Spades"] == 0 then
-						suits["Spades"] = suits["Spades"] + 1
-					elseif context.scoring_hand[i]:is_suit('Clubs', true) and suits["Clubs"] == 0 then
-						suits["Clubs"] = suits["Clubs"] + 1
-					end
-				end
-			end
-			for i = 1, #context.scoring_hand do
-				if SMODS.has_any_suit(context.scoring_hand[i]) then
-					if context.scoring_hand[i]:is_suit('Hearts') and suits["Hearts"] == 0 then
-						suits["Hearts"] = suits["Hearts"] + 1
-					elseif context.scoring_hand[i]:is_suit('Diamonds') and suits["Diamonds"] == 0 then
-						suits["Diamonds"] = suits["Diamonds"] + 1
-					elseif context.scoring_hand[i]:is_suit('Spades') and suits["Spades"] == 0 then
-						suits["Spades"] = suits["Spades"] + 1
-					elseif context.scoring_hand[i]:is_suit('Clubs') and suits["Clubs"] == 0 then
-						suits["Clubs"] = suits["Clubs"] + 1
-					end
-				end
-			end
-			if suits["Hearts"] > 1 and
-					suits["Diamonds"] > 1 and
-					suits["Spades"] > 1 and
-					suits["Clubs"] > 1 then
-				return {
-					message = localize('k_upgrade_ex'),
-					colour = G.C.CHIPS,
-					chips = card.ability.extra.chips
-				}
-			end
-				return {
-					chips = card.ability.extra.chips
-				}
-			end
-		end
-	end,}
---]]
 
 -- Lean
 SMODS.Joker {
@@ -528,6 +458,14 @@ SMODS.Joker {
 			end
 		end
     end,
+	in_pool = function(self, card)
+		for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_stone') then
+                return true
+            end
+        end
+        return false
+	end,
 }
 
 -- God Complex
@@ -550,7 +488,7 @@ SMODS.Joker {
 	rarity = 3,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
-	pos = { x = 4, y = 4 }, -- TODO: Texture
+	pos = { x = 1, y = 2 },
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.money, card.ability.extra.deduction } }
@@ -579,4 +517,84 @@ SMODS.Joker {
 	remove_from_deck = function (self, card, from_debuff)
 		G.hand:change_size(card.ability.extra.deducted)
 	end
+}
+
+-- Fridge
+SMODS.Joker {
+	key = 'fridge',
+	loc_txt = {
+		name = 'Fridge',
+		text = {
+			"Gains {C:chips}+#1#{} Chips",
+			"if played hand",
+			"contains a {C:attention}Full House{} and",
+			"contains every suit",
+			"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+		}
+	},
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = true,
+	eternal_compat = true,
+	config = { extra = { chips = 0, chip_mod = 25 } },
+	rarity = 2,
+	pools = { ["Visibility"] = true },
+	atlas = 'TextureAtlasJokers',
+	pos = { x = 2, y = 2 }, -- TODO: Texture
+	cost = 10,
+	loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chip_mod, card.ability.extra.chips } }
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			-- Add chips if chips > 0
+			if card.ability.extra.chips > 0 then
+				return {
+					chips = card.ability.extra.chips
+				}
+			end
+		end
+
+		if context.before and not context.blueprint then
+			-- Check for a Full House
+			if not context.poker_hands['Full House'] then
+				return
+			end
+			local suits = {
+				['Hearts'] = 0,
+				['Diamonds'] = 0,
+				['Spades'] = 0,
+				['Clubs'] = 0
+			}
+			for i = 1, #context.scoring_hand do
+				if context.scoring_hand[i].ability.name ~= 'Wild Card' then
+					if context.scoring_hand[i]:is_suit('Hearts', true) and suits["Hearts"] == 0 then suits["Hearts"] = suits["Hearts"] + 1
+					elseif context.scoring_hand[i]:is_suit('Diamonds', true) and suits["Diamonds"] == 0  then suits["Diamonds"] = suits["Diamonds"] + 1
+					elseif context.scoring_hand[i]:is_suit('Spades', true) and suits["Spades"] == 0  then suits["Spades"] = suits["Spades"] + 1
+					elseif context.scoring_hand[i]:is_suit('Clubs', true) and suits["Clubs"] == 0  then suits["Clubs"] = suits["Clubs"] + 1 end
+				end
+			end
+			for i = 1, #context.scoring_hand do
+				if context.scoring_hand[i].ability.name == 'Wild Card' then
+					if context.scoring_hand[i]:is_suit('Hearts') and suits["Hearts"] == 0 then suits["Hearts"] = suits["Hearts"] + 1
+					elseif context.scoring_hand[i]:is_suit('Diamonds') and suits["Diamonds"] == 0  then suits["Diamonds"] = suits["Diamonds"] + 1
+					elseif context.scoring_hand[i]:is_suit('Spades') and suits["Spades"] == 0  then suits["Spades"] = suits["Spades"] + 1
+					elseif context.scoring_hand[i]:is_suit('Clubs') and suits["Clubs"] == 0  then suits["Clubs"] = suits["Clubs"] + 1 end
+				end
+			end
+			if suits["Hearts"] > 0 and
+			suits["Diamonds"] > 0 and
+			suits["Spades"] > 0 and
+			suits["Clubs"] > 0 then
+				-- Full House with all suits
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+				return {
+					message = localize('k_upgrade_ex'),
+					colour = G.C.CHIPS
+				}
+			else
+				print("Not all suits found.")
+			end
+		end
+    end,
 }

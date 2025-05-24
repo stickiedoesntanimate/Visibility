@@ -5,16 +5,15 @@ SMODS.Voucher {
         name = "Warhead",
         text = {
             "{C:attention}-#1#{} Ante,",
-            "{C:attention}-#1#{} hand size",
+            "{C:attention}-#2#{} hand size",
             "each round",
         }
     },
     pos = { x = 0, y = 0 },
     config = { extra = { deduction = 1, size = 1 } },
     unlocked = true,
-    atlas = "TextureAtlasVouchers",
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.deduction } }
+        return { vars = { card.ability.extra.deduction, card.ability.extra.size } }
     end,
     locked_loc_vars = function(self, info_queue, card)
         return { vars = { 12 } }
@@ -37,7 +36,7 @@ SMODS.Voucher {
         name = "Fallout",
         text = {
             "{C:attention}-#1#{} Ante,",
-            "{C:attention}-#1#{} consumable size",
+            "{C:attention}-#2#{} consumable size",
             "each round",
         }
     },
@@ -46,7 +45,7 @@ SMODS.Voucher {
     unlocked = true,
     atlas = "TextureAtlasVouchers",
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.deduction } }
+        return { vars = { card.ability.extra.deduction, card.ability.extra.slots } }
     end,
     locked_loc_vars = function(self, info_queue, card)
         return { vars = { 12 } }

@@ -126,8 +126,7 @@ SMODS.Joker {
 	pos = { x = 0, y = 1},
 	cost = 5,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play and
-			SMODS.has_enhancement(context.other_card, 'm_stone', context.other_card, 'm_brick' ) then
+		if context.individual and context.cardarea == G.play and (SMODS.has_enhancement(context.other_card, 'm_stone')) or SMODS.has_enhancement(context.other_card, 'm_brick') then
 			return {
 				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
 				Xmult_mod = card.ability.extra.Xmult
@@ -220,7 +219,7 @@ SMODS.Joker {
 	},
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { } },
-	rarity = 1,
+	rarity = 2,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 2, y = 0 },

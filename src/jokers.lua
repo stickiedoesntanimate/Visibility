@@ -16,6 +16,9 @@ SMODS.Joker {
 	},
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { mult = 0, mult_mod = 6 } },
+	blueprint_compat = true,
+	discovered = true,
+	unlocked = true,
 	rarity = 1,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
@@ -46,6 +49,7 @@ SMODS.Joker {
 	end
 }
 
+-- Brick Up
 SMODS.Joker {
 	key = "brick_up",
 	loc_txt = {
@@ -58,7 +62,8 @@ SMODS.Joker {
 		}
 	},
 	atlas = "TextureAtlasJokers",
-	unlocked = false,
+	discovered = true,
+	unlocked = true,
 	blueprint_compat = true,
 	rarity = 2,
 	pools = { ["Visibility"] = true },
@@ -66,19 +71,16 @@ SMODS.Joker {
 	pos = { x = 1, y = 1 },
 	config = { extra = { repetitions = 1 } },
 	calculate = function(self, card, context)
-		if context.repetition and context.cardarea == G.play and
-				SMODS.has_enhancement(context.other_card, 'm_stone') then
+		if context.repetition and context.cardarea == G.play and (SMODS.has_enhancement(context.other_card, 'm_stone') or SMODS.has_enhancement(context.other_card, 'm_vis_brick')) then
 			return {
 				repetitions = card.ability.extra.repetitions
 			}
 		end
 	end,
-	locked_loc_vars = function(self, info_queue, card)
-		return { vars = { 300, G.PROFILES[G.SETTINGS.profile].career_stats.c_face_cards_played } }
-	end,
 }
 
-SMODS.Joker{
+-- Ghost Print
+SMODS.Joker {
 	key = "ghost_print",
 	loc_txt = {
 		name = "Ghost Print",
@@ -89,6 +91,10 @@ SMODS.Joker{
 	},
 	config = { extra = {repetitions = 1, odds = 4 }},
 	rarity = 1,
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = true,
+	eternal_compat = true,
 	pools = { ["Visibility"] = true },
 	atlas = "TextureAtlasJokers",
 	pos = { x = 2, y = 1},
@@ -107,7 +113,7 @@ SMODS.Joker{
 	end,
 }
 
-
+-- Stoner Joker
 SMODS.Joker {
 	key = "stoner",
 	loc_txt = {
@@ -119,14 +125,18 @@ SMODS.Joker {
 
 		}
 	},
-	config = { extra = { Xmult = 1.3} },
+	config = { extra = { Xmult = 1.3 } },
 	rarity = 2,
+	discovered = true,
+	unlocked = true,
+	eternal_compat = true,
+	blueprint_compat = true,
 	pools = { ["Visibility"] = true },
 	atlas = "TextureAtlasJokers",
 	pos = { x = 0, y = 1},
 	cost = 5,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play and (SMODS.has_enhancement(context.other_card, 'm_stone')) or SMODS.has_enhancement(context.other_card, 'm_brick') then
+		if context.individual and context.cardarea == G.play and (SMODS.has_enhancement(context.other_card, 'm_stone')) or SMODS.has_enhancement(context.other_card, 'm_vis_brick') then
 			return {
 				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
 				Xmult_mod = card.ability.extra.Xmult
@@ -135,6 +145,7 @@ SMODS.Joker {
 	end
 }
 
+-- Unemployed Joker
 SMODS.Joker {
     key = "unemployed",
     loc_txt = {
@@ -145,6 +156,11 @@ SMODS.Joker {
 			"debuffs after {C:attention}one{} round",
 		}
     },
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = true,
+	eternal_compat = true,
+	pools = { ["Visibility"] = true },
     config = { extra = {}},
     rarity = 2,
     atlas = "TextureAtlasJokers",
@@ -152,7 +168,7 @@ SMODS.Joker {
     cost = 6,
     calculate = function(self, card, context)
         if context.setting_blind then
-            local cards = create_card("Visibility", G.jokers, nil, nil, nil, nil, nil)
+            local cards = create_card("Food", G.jokers, nil, nil, nil, nil, nil)
 			cards:add_to_deck()
 			cards:set_edition('e_negative', false)
 			cards.sell_cost = -1
@@ -172,8 +188,12 @@ SMODS.Joker {
 			"{C:dark_edition}negative{} after defeating the {C:mult}Boss Blind{}",
 		}
 	},
-	config = { extra = { odds = 8, eligable = {} } },
+	config = { extra = { odds = 8 } },
 	rarity = 1,
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = true,
+	eternal_compat = true,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 1, y = 0 },
@@ -184,20 +204,18 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 	    if context.end_of_round and G.GAME.blind.boss and context.game_over == false then
-	        if #card.ability.extra.eligable == 0 then
-	            for k, v in pairs(G.jokers.cards) do
-                    if v.ability.set == 'Joker' and (not v.edition) then
-                        table.insert(card.ability.extra.eligable, v)
-                    end
+			local eligable_editionless_jokers = {}
+			for k, v in pairs(G.jokers.cards) do
+                if v.ability.set == 'Joker' and (not v.edition) then
+                    table.insert(eligable_editionless_jokers, v)
                 end
-	        end
-	        if #card.ability.extra.eligable == 0 then
+            end
+	        if #eligable_editionless_jokers == 0 then
 	            return { message = 'Nope!' }
 	        end
 	        if pseudorandom('monochromatic_joker') < G.GAME.probabilities.normal / card.ability.extra.odds then
-	            local joker = pseudorandom_element(card.ability.extra.eligable, pseudoseed('monochromatic_joker'))
+	            local joker = pseudorandom_element(eligable_editionless_jokers, pseudoseed('monochromatic_joker'))
 	            joker:set_edition('e_negative', true)
-	            card.ability.extra.eligable = {}
 	            return { message = 'Subtraction!' }
 	        else
 	            return { message = 'Nope!' }
@@ -220,6 +238,10 @@ SMODS.Joker {
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { } },
 	rarity = 2,
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = false,
+	eternal_compat = true,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 2, y = 0 },
@@ -270,6 +292,8 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 3, y = 0 },
+	discovered = true,
+	unlocked = true,
 	eternal_compat = false,
 	blueprint_compat = false,
 	cost = 12,
@@ -327,6 +351,10 @@ SMODS.Joker {
 		}
 	},
 	config = { extra = { } },
+	blueprint_compat = false,
+	eternal_compat = true,
+	unlocked = true,
+	discovered = true,
 	rarity = 1,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
@@ -421,58 +449,81 @@ SMODS.Joker {
 		end
 	end,}
 --]]
+-- Lean
 SMODS.Joker {
 	key = 'lean',
 	loc_txt = {
 		name = 'Lean',
 		text = {
 			"Playing a {C:attention}three of a kind{} discards",
-			"your entire hand",
+			"{C:attention}all{} cards from hand",
 		}
 	},
 	config = { extra = { } },
-	rarity = 3,
+	rarity = 2,
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = false,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 4, y = 1 },
 	cost = 8,
+	calculate = function(self, card, context)
+		if context.before and context.scoring_name == "Three of a Kind" then
+			G.E_MANAGER:add_event(Event({ trigger = "after", delay = 0.5, func = function()
+				local any_selected = nil
+				for i = 1, #G.hand.cards do
+					local selected_card = G.hand.cards[i]
+					if selected_card then 
+						G.hand.highlighted[#G.hand.highlighted+1] = selected_card
+            			selected_card:highlight(true)
+						any_selected = true
+						play_sound('card1', 1)
+					end
+				end
+				if any_selected then G.FUNCS.discard_cards_from_highlighted(nil, true) end
+			return true end })) 
+		end
+    end,
+}
+
+-- Cave Man
+SMODS.Joker {
+	key = 'caveman',
+	loc_txt = {
+		name = 'Cave Man',
+		text = {
+			"Playing a {C:attention}Stone Card{} has a",
+			"{C:green}#1# in #2#{} chance to create",
+			"a {C:purple}Tarot Card",
+			"{C:inactive}(must have room)"
+		}
+	},
+	unlocked = true,
+	blueprint_compat = true,
+	eternal_compat = true,
+	config = { extra = { odds = 8 } },
+	rarity = 1,
+	pools = { ["Visibility"] = true },
+	atlas = 'TextureAtlasJokers',
+	pos = { x = 0, y = 2 },
+	cost = 8,
 	loc_vars = function(self, info_queue, card)
-        return { vars = {  } }
+        return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
 	end,
 	calculate = function(self, card, context)
-        if context.after and context.scoring_name == "Three of a Kind" then
-            local destroyed_cards = {}
-            for i = 1, #G.hand.cards do
-                if G.hand.cards[i] then
-                    local v = G.hand.cards[i]
-                    print("Handling:")
-                    print(v)
-                    G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                        play_sound('card1', 1)
-                        v:calculate_seal({discard = true})
-                        local removed = false
-                        for j = 1, #G.jokers.cards do
-                            local eval = nil
-                            eval = G.jokers.cards[j]:calculate_joker({discard = true, other_card =  v, full_hand = G.hand.highlighted})
-                            if eval then
-                                if eval.remove then removed = true end
-                                card_eval_status_text(G.jokers.cards[j], 'jokers', nil, 1, nil, eval)
-                            end
-                        end
-                        if removed then
-                            destroyed_cards[#destroyed_cards + 1] = v
-                            if v.ability.name == 'Glass Card' then
-                                v:shatter()
-                            else
-                                v:start_dissolve()
-                            end
-                        else
-                            v.ability.discarded = true
-                            draw_card(G.hand, G.discard, i*100/#G.hand.cards, 'down', false, v)
-                        end
-                    return true end }))
-                end
-            end
-        end
+		if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_stone') then
+			if #G.consumeables.cards >= G.consumeables.config.card_limit then
+				return
+			end
+			if pseudorandom('caveman') < G.GAME.probabilities.normal / card.ability.extra.odds then
+				local tarot_card = create_card('Tarot', G.consumeables)
+				tarot_card:add_to_deck()
+				G.consumeables:emplace(tarot_card)
+				return { message = 'Ooga Booga.'}
+			else
+				return { message = 'Rock.' }
+			end
+		end
     end,
 }

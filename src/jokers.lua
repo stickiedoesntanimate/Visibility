@@ -180,6 +180,51 @@ SMODS.Joker {
 		end
 	end
 }
+
+SMODS.Joker {
+	key = "job",
+	loc_txt = {
+		name = "Job Application",
+		text = {
+			"{C:green}#1# in #2#{} chance to create a Judgement",
+			"when a Full House is played",
+			"{C:green}#1# in #3#{} chance to create a Wraith",
+			"when a Flush House is played"
+		}
+	},
+	config = { extra = { judgement_odds = 4, wraith_odds = 8} },
+	rarity = 2,
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = true,
+	eternal_compat = true,
+	pools = { ["Visibility"] = true },
+	atlas = 'TextureAtlasJokers',
+	pos = { x = 4, y = 2 },
+	cost = 4,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.judgement_odds, card.ability.extra.wraith_odds } }
+	end,
+	calculate = function(self, card, context)
+		if context.before and context.main_eval and not context.blueprint and (context.scoring_name == 'Full House') then
+			if pseudorandom('job') < G.GAME.probabilities.normal / card.ability.extra.judgement_odds then
+				local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_judgement', nil)
+				n_card:add_to_deck()
+				G.consumeables:emplace(n_card)
+				G.GAME.consumeable_buffer = 0
+			end
+		end
+		if context.before and context.main_eval and not context.blueprint and (context.scoring_name == 'Flush House') then
+			if pseudorandom('job') < G.GAME.probabilities.normal / card.ability.extra.wraith_odds then
+				local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_wraith', nil)
+				n_card:add_to_deck()
+				G.consumeables:emplace(n_card)
+				G.GAME.consumeable_buffer = 0
+			end
+		end
+	end,
+}
 -- Monochromatic Joker
 SMODS.Joker {
 	key = 'monochromatic_joker',
@@ -429,12 +474,13 @@ SMODS.Joker {
 	},
 	rarity = 3,
 	atlas = 'TextureAtlasJokers',
-	pos = { x = 0, y = 2 },
+	pos = { x = 3, y = 2 },
 	cost = 3,
 	discovered = true,
 	unlocked = true,
 	blueprint_compat = true,
 	eternal_compat = true,
+	pools = { ["Visibility"] = true },
 	loc_vars = function(self, info_queue, back)
 		return { vars = { localize { type = 'name_text', key = 'tag_double', set = 'Tag' } } }
 	end,

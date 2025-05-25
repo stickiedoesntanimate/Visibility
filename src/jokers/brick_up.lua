@@ -1,0 +1,29 @@
+-- Brick Up
+SMODS.Joker {
+	key = "brick_up",
+	loc_txt = {
+		name = "Brick up",
+		text = {
+			"Retriggers every",
+			"{C:attention}Stone Card{} and {C:attention}Brick Card",
+			"{C:attention}1{} additional time"
+
+		}
+	},
+	atlas = "TextureAtlasJokers",
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = true,
+	rarity = 2,
+	pools = { ["Visibility"] = true },
+	cost = 6,
+	pos = { x = 1, y = 1 },
+	config = { extra = { repetitions = 1 } },
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play and (SMODS.has_enhancement(context.other_card, 'm_stone') or SMODS.has_enhancement(context.other_card, 'm_vis_brick')) then
+			return {
+				repetitions = card.ability.extra.repetitions
+			}
+		end
+	end,
+}

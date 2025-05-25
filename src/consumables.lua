@@ -242,7 +242,7 @@ SMODS.Consumable {
     loc_txt = {
         name = 'Hamsa',
         text = {
-            "Summon a {C:attention}Legendary{} joker",
+            "Summon a {C:legendary,E:1}Legendary{} Joker",
             "{s:2}BUT",
             "{C:blue}-1{} hand"
         }

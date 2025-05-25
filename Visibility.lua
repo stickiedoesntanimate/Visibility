@@ -1,4 +1,5 @@
 local joker_list = {
+    "atom",
     "blood_pact",
     "brick_up",
     "cave_man",

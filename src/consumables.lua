@@ -7,6 +7,7 @@ SMODS.Consumable {
     key = 'slate',
     set = 'Tarot',
     atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
     loc_txt = {
         name = "Slate",
         text = {
@@ -92,6 +93,7 @@ SMODS.Consumable {
     set = 'Tarot',
     pos = { x = 0, y = 0 },
     config = { max_highlighted = 2 },
+    pools = { ["c_Visibility"] = true },
     atlas = "TextureAtlasConsumables",
     loc_txt = {
         name = 'Weakness',
@@ -161,6 +163,7 @@ SMODS.Consumable {
     set = 'Tarot',
     pos = { x = 1, y = 0 },
     atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
     loc_txt = {
         name = 'The Mint',
         text = {
@@ -239,6 +242,7 @@ SMODS.Consumable {
     set = 'Spectral',
     pos = { x = 0, y = 2 },
     atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
     loc_txt = {
         name = 'Hamsa',
         text = {

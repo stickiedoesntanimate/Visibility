@@ -29,3 +29,12 @@ SMODS.ObjectType({
 		SMODS.ObjectType.inject(self)
 	end,
 })
+
+SMODS.ObjectType({
+	key = "c_Visibility",
+	default = "j_reserved_parking",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})

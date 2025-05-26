@@ -23,6 +23,7 @@ assert(SMODS.load_file('src/enhancements.lua'))()
 assert(SMODS.load_file('src/vouchers.lua'))()
 assert(SMODS.load_file('src/backs.lua'))()
 assert(SMODS.load_file('src/hooks.lua'))()
+assert(SMODS.load_file('src/seals.lua'))()
 
 for _, joker in ipairs(joker_list) do
     local joker_path = 'src/jokers/' .. joker .. '.lua'

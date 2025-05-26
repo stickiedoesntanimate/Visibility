@@ -6,30 +6,38 @@
 
 -- Not finished. used to make Brick/Stone House
 
---[[SMODS.PokerHand {
-    key = 'Royal Flush',
-    chips = 110,
-    mult = 9,
-    l_chips = 40,
-    l_mult = 4,
+SMODS.PokerHand {
+    key = 'industrialization',
+    visisble = false,
+    chips = 5,
+    mult = 25,
+    l_chips = 5,
+    l_mult = 10,
     example = {
-        { 'S_A',    true },
-        { 'S_K',    true },
-        { 'S_Q',    true },
-        { 'S_J',    true },
-        { 'S_T',    true },
+		{ "S_A", true, enhancement = "m_vis_brick" },
+		{ "S_A", true, enhancement = "m_vis_brick" },
+		{ "S_A", true, enhancement = "m_vis_brick" },
+		{ "S_A", true, enhancement = "m_vis_brick" },
+		{ "S_A", true, enhancement = "m_vis_brick" },
     },
     loc_txt = {
         ['en-us'] = {
-            name = 'Royal Flush',
+            name = 'Industrialization',
             description = {
-                '5 cards in a row (consecutive ranks) with',
-                'all cards sharing the same suit',
-                'made of only Aces, tens, and face cards'
+                'Five Brick Cards',
             }
         }
     },
-    evaluate = function(parts, hand)
+    evaluate = function (parts, hand)
+        local _brick = {}
+        for _, card in ipairs(hand) do
+            if SMODS.has_enhancement(card, 'm_vis_brick') then
+                _brick[#_brick+1] = card
+            end
+        end
+        if #_brick >= 5 then return { _brick } end
+    end
+    --[[evaluate = function(parts, hand)
         if next(parts._flush) and next(parts._straight) then
             local _strush = SMODS.merge_lists(parts._flush, parts._straight)
             local royal = true
@@ -39,10 +47,10 @@
             end
             if royal then return {_strush} end
         end
-    end,
+    end,]]
 }
 
-SMODS.Atlas { key = 'vulcan', path = 'vulcan.png', px = 71, py = 95 }
+--[[SMODS.Atlas { key = 'vulcan', path = 'vulcan.png', px = 71, py = 95 }
 
 SMODS.Consumable {
     set = 'Planet',
@@ -66,4 +74,4 @@ SMODS.Consumable {
             name = 'Vulcan'
         }
     }
-}
+}]]

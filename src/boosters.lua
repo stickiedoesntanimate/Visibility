@@ -68,9 +68,9 @@ SMODS.Booster{
 
 SMODS.Booster{
     key = 'c_black_market',
-    atlas = 'TextureAtlasJokers',
+    atlas = 'TextureAtlasConsumables',
     group_key = "k_visib/ility_booster_group",
-    pos = { x = 1, y = 1 },
+    pos = { x = 1, y = 3 },
     discovered = true,
     loc_txt= {
         name = 'Black Market Pack',
@@ -80,7 +80,7 @@ SMODS.Booster{
 
     draw_hand = false,
     config = {
-        extra = 3,
+        extra = 5,
         choose = 1,
     },
 
@@ -88,13 +88,13 @@ SMODS.Booster{
         return { vars = { card.ability.choose, card.ability.extra } }
     end,
     weight = 0.66,
-    cost = 10,
+    cost = 12,
     kind = "VisibilityPack",
 
     create_card = function(self, card, i)
         ease_background_colour(HEX("ffac00"))
         return SMODS.create_card({
-            set = "c_Visibility",
+            set = "Visibility",
             area = G.pack_cards,
             skip_materialize = true,
             soulable = true,

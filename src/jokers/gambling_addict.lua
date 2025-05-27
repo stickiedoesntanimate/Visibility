@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "gambling_addict",
     loc_txt = {
-        name = "Gambing Addict",
+        name = "Gambling Addict",
         text = {
             "{C:green}#1# in #2#{} chance for",
             "{X:mult,C:white}X#3#{} {C:mult}Mult",
@@ -11,7 +11,7 @@ SMODS.Joker {
             "lose {C:gold}$#6#{} for every hand played"
         }
     },
-    config = { extra = { odds = 6, x_mult = 2, x_chips = 2, cost = 2, gain = 6 }},
+    config = { extra = { odds = 4, x_mult = 2, x_chips = 2, cost = 2, gain = 6 }},
     rarity = 2,
     unlocked = true,
     discovered = true,

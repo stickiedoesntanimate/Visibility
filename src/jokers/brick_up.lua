@@ -1,15 +1,6 @@
 -- Brick Up
 SMODS.Joker {
 	key = "brick_up",
-	loc_txt = {
-		name = "Brick up",
-		text = {
-			"Retriggers every",
-			"{C:attention}Stone Card{} and {C:attention}Brick Card",
-			"{C:attention}1{} additional time"
-
-		}
-	},
 	atlas = "TextureAtlasJokers",
 	discovered = true,
 	unlocked = true,

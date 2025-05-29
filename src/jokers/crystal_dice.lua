@@ -1,15 +1,6 @@
 -- Crystal Dice
 SMODS.Joker {
 	key = 'crystal_dice',
-	loc_txt = {
-		name = 'Crystal Dice',
-		text = {
-            "All {C:green}odds{} are guaranteed",
-			"{s:2}BUT",
-			"{C:mult}self destruct {}after one round",
-			"{C:inactive,s:0.7}handle with care... it will not appear again."
-		}
-	},
 	config = { extra = { } },
 	rarity = 1,
 	pools = { ["Visibility"] = true },

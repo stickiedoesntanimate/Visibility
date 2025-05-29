@@ -1,15 +1,6 @@
 -- God Complex
 SMODS.Joker {
 	key = 'god_complex',
-	loc_txt = {
-		name = 'God Complex',
-		text = {
-			"At the end of round, gain {C:gold}+$#1#{}",
-			"for all {C:blue}hands{} remaining",
-			"{s:2}BUT",
-			"{C:attention}-#2# Hand Size{} every time a {C:mult}discard{} is used"
-		}
-	},
 	discovered = true,
 	unlocked = true,
 	blueprint_compat = true,

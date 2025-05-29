@@ -1,14 +1,6 @@
 -- Blood Pact
 SMODS.Joker {
 	key = 'blood_pact',
-	loc_txt = {
-		name = 'Blood Pact',
-		text = {
-            "Played {C:attention}6{}s are {C:mult}destroyed{}",
-			"after scoring in exchange for a red seal on",
-			"a random card in hand",
-		}
-	},
 	config = { extra = { } },
 	rarity = 2,
 	discovered = true,
@@ -45,8 +37,8 @@ SMODS.Joker {
                             return true
                         end
                     }))
+					return { remove = true, message = 'It\'s a deal.' }
 				end
-				return { remove = true, message = 'It\'s a deal.' }
             end
 	    end
 	end,

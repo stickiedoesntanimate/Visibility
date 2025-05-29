@@ -1,11 +1,5 @@
 SMODS.Joker {
     key = "atom",
-    loc_txt = {
-        name = "Atom",
-        text = {
-            "{C:chips}+20{} Chips"
-        }
-    },
     config = { extra = { chips = 20 }},
     rarity = 1,
     unlocked = true,

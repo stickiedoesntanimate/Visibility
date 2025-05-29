@@ -1,13 +1,6 @@
 -- Lean
 SMODS.Joker {
 	key = 'lean',
-	loc_txt = {
-		name = 'Lean',
-		text = {
-			"Playing a {C:attention}three of a kind{} discards",
-			"{C:attention}all{} cards from hand",
-		}
-	},
 	config = { extra = { } },
 	rarity = 2,
 	discovered = true,

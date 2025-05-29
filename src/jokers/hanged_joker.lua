@@ -1,14 +1,6 @@
 -- Hanged Joker
 SMODS.Joker {
 	key = 'hanged_joker',
-	loc_txt = {
-		name = 'Hanged Joker',
-		text = {
-			"{C:red}+#1#{} Mult for every",
-			"{C:attention}hanged man {}used this run",
-			"{C:inactive}(Currently: {C:mult}+#2# {C:inactive}Mult)"
-		}
-	},
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
 	config = { extra = { mult = 0, mult_mod = 6 } },
 	blueprint_compat = true,

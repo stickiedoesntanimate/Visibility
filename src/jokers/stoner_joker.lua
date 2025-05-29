@@ -1,15 +1,6 @@
 -- Stoner Joker
 SMODS.Joker {
 	key = "stoner",
-	loc_txt = {
-		name = "Stoner Joker",
-		text = {
-			"Each played",
-			"{C:attention}Stone Card{} and {C:attention}Brick Card",
-			"gives {X:mult,C:white}X1.3{} Mult",
-
-		}
-	},
 	config = { extra = { Xmult = 1.3 } },
 	rarity = 2,
 	discovered = true,

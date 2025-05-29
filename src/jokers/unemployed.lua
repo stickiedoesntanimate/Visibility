@@ -1,14 +1,6 @@
 -- Unemployed Joker
 SMODS.Joker {
     key = "unemployed",
-    loc_txt = {
-        name = "Unemployed Joker",
-		text = {
-			"Spawns a {C:dark_edition}negative{} food Joker",
-			"with {C:gold}$-1{} sell value that",
-			"is {C:mult}destroyed{} at the end of the round",
-		}
-    },
 	discovered = true,
 	unlocked = true,
 	blueprint_compat = true,

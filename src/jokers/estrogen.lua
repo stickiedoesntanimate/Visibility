@@ -1,13 +1,6 @@
 -- Estrogen
 SMODS.Joker {
 	key = 'estrogen',
-	loc_txt = {
-		name = 'Estrogen',
-		text = {
-			"Using {C:attention}strength {}or {C:attention}weakness {}",
-			"forces selected cards to be made queens",
-		}
-	},
 	config = { extra = { } },
 	blueprint_compat = false,
 	eternal_compat = true,

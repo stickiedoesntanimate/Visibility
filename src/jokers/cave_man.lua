@@ -1,15 +1,6 @@
 -- Cave Man
 SMODS.Joker {
-	key = 'caveman',
-	loc_txt = {
-		name = 'Cave Man',
-		text = {
-			"Playing a {C:attention}Stone Card{} has a",
-			"{C:green}#1# in #2#{} chance to create",
-			"a {C:purple}Tarot Card",
-			"{C:inactive}(must have room)"
-		}
-	},
+	key = 'cave_man',
 	discovered = true,
 	unlocked = true,
 	blueprint_compat = true,

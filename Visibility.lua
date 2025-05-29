@@ -21,7 +21,8 @@ local joker_list = {
     "poker_face",
     "garrab",
     "sd_card",
-    "crystal_geode"
+    "crystal_geode",
+    "atomic_bomb"
 }
 
 assert(SMODS.load_file('src/textures.lua'))()

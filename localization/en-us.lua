@@ -106,6 +106,12 @@ return {
                     "{C:attention}+#1#{} consumable slots",
                 }
             },
+            j_vis_atomic_bomb = {
+                name = "Atomic Bomb",
+                text = {
+                    "Deisables the current boss blind when sold"
+                }
+            },
             j_vis_poker_face = {
                 name = "Poker Face",
                 text = {

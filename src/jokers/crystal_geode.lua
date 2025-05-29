@@ -1,6 +1,6 @@
 SMODS.Joker {
 	key = 'crystal_geode',
-	config = { extra = { balance_percentage = 8 } },
+	config = { extra = { balance_percentage = 8, hand_balance = 0 } },
 	rarity = 2,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
@@ -14,9 +14,16 @@ SMODS.Joker {
         return { vars = { card.ability.extra.balance_percentage } }
 	end,
 	calculate = function(self, card, context)
-        if context.final_scoring_step then
-            local percentage_mult = mult * (card.ability.extra.balance_percentage / 100)
-            local percentage_chips = hand_chips * (card.ability.extra.balance_percentage / 100)
+        if context.individual and context.cardarea == G.play then
+            if SMODS.has_no_suit(context.other_card) and SMODS.has_no_rank(context.other_card) then
+                card.ability.extra.hand_balance = card.ability.extra.hand_balance + card.ability.extra.balance_percentage
+            end
+        end
+        if context.final_scoring_step and card.ability.extra.hand_balance > 0 then
+            local percentage_mult = mult * (card.ability.extra.hand_balance / 100)
+            local percentage_chips = hand_chips * (card.ability.extra.hand_balance / 100)
+            local saved = card.ability.extra.hand_balance
+            card.ability.extra.hand_balance = 0
             mult = mult - math.floor(percentage_mult)
             hand_chips = hand_chips - math.floor(percentage_chips)
             local balance = math.floor((percentage_mult + percentage_chips) / 2)
@@ -24,6 +31,8 @@ SMODS.Joker {
             hand_chips = hand_chips + balance
             update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
             G.E_MANAGER:add_event(Event({
+                delay = 0.6,
+                trigger = 'after',
                 func = (function()
                     -- scored_card:juice_up()
                     play_sound('gong', 0.94, 0.3)
@@ -57,8 +66,10 @@ SMODS.Joker {
                     return true
                 end)
             }))
-            card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('k_pbalanced'), colour =  {0.8, 0.45, 0.85, 1} })
-            delay(0.6)
+            return { 
+                message = localize { type = 'variable', key = 'k_pbalanced', vars = { saved } },
+                loc_vars = { saved }, colour =  {0.8, 0.45, 0.85, 1} 
+            }
         end
 	end,
 }

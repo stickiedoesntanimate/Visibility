@@ -80,7 +80,8 @@ return {
             j_vis_crystal_geode = {
                 name = "Crystal Geode",
                 text = {
-                    "Balances {C:mult}Mult{} and {C:chips}Chips{} by {C:attention}#1#{}%",
+                    "All {C:attention}scored{} Rankless and Suitless cards",
+                    "Balance {C:mult}Mult{} and {C:chips}Chips{} by {C:attention}#1#%{}",
                 }
             },
             j_vis_gambling_addict = {
@@ -111,6 +112,13 @@ return {
                 text = {
                     "Disables the current boss blind when sold and",
                     "{C:red}destroys{} {C:attention}all{} random cards in hand"
+                }
+            },
+            j_vis_alternate = {
+                name = "Alternate",
+                text = {
+                    "{C:attention}Copies{} the previous Joker, but it is",
+                    "{C:mult}debuffed{} until you change the Joker it's copying",
                 }
             },
             j_vis_poker_face = {
@@ -218,9 +226,7 @@ return {
         blind_states={},
         challenge_names={},
         collabs={},
-        dictionary={
-            k_pbalanced = "Partially Balanced",
-        },
+        dictionary={},
         high_scores={},
         labels={},
         poker_hand_descriptions={},
@@ -230,7 +236,9 @@ return {
         suits_plural={},
         suits_singular={},
         tutorial={},
-        v_dictionary={},
+        v_dictionary={
+            k_pbalanced = "Balanced by #1#%"
+        },
         v_text={},
     },
 }

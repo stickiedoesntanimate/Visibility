@@ -1,0 +1,28 @@
+SMODS.Joker {
+    key = "3d_glasses",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = "TextureAtlasJokers",
+    pos = { x = 4, y = 4 },
+    config = { extra = { xchips = 3 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xchips, localize('Diamonds', 'suits_plural'), localize('Hearts', 'suits_plural') } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local all_red_suits = true
+            for _, playing_card in ipairs(G.hand.cards) do
+                if not playing_card:is_suit('Diamonds', nil, true) and not playing_card:is_suit('Hearts', nil, true) then
+                    all_red_suits = false
+                    break
+                end
+            end
+            if all_red_suits then
+                return {
+                    xchips = card.ability.extra.xchips
+                }
+            end
+        end
+    end
+}

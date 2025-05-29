@@ -18,12 +18,10 @@ local joker_list = {
     "gambling_addict",
     "3d_glasses",
     "biker",
-<<<<<<< Updated upstream
     "poker_face",
     "garrab",
-=======
-    "poker_face"
->>>>>>> Stashed changes
+    "sd_card",
+    "crystal_geode"
 }
 
 assert(SMODS.load_file('src/textures.lua'))()

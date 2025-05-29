@@ -77,6 +77,12 @@ return {
                     "{C:attention}-#2# Hand Size{} every time a {C:mult}discard{} is used"
                 }
             },
+            j_vis_crystal_geode = {
+                name = "Crystal Geode",
+                text = {
+                    "Balances {C:mult}Mult{} and {C:chips}Chips{} by {C:attention}#1#{}%",
+                }
+            },
             j_vis_gambling_addict = {
                 name = "Gambling Addict",
                 text = {
@@ -86,6 +92,18 @@ return {
                     "and gaining {C:gold}$#5#",
                     "{s:2}BUT",
                     "lose {C:gold}$#6#{} for every hand played"
+                }
+            },
+            j_vis_sd_card = {
+                name = "Standard SD Card",
+                text = {
+                    "{C:attention}+#1#{} consumable slots",
+                }
+            },
+            j_vis_the_cooler_sd_card = {
+                name = "The Cooler SD Card",
+                text = {
+                    "{C:attention}+#1#{} consumable slots",
                 }
             },
             j_vis_poker_face = {
@@ -193,7 +211,9 @@ return {
         blind_states={},
         challenge_names={},
         collabs={},
-        dictionary={},
+        dictionary={
+            k_pbalanced = "Partially Balanced",
+        },
         high_scores={},
         labels={},
         poker_hand_descriptions={},

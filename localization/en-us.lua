@@ -13,6 +13,14 @@ return {
                     "is {C:mult}destroyed{} at the end of the round",
                 }
             },
+            j_vis_garrab = {
+                name = "Garrab",
+                text = {
+                    "Gains {X:mult,C:white}X#1#{} Mult for every {C:blue}hand",
+                    "remaining at the end of the round",
+                    "{C:inactive}(Currently: {X:mult,C:white}X#2#{} {C:inactive}Mult)",
+                }
+            },
             j_vis_stoner = {
                 name = "Stoner Joker",
                 text = {

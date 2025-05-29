@@ -109,7 +109,8 @@ return {
             j_vis_atomic_bomb = {
                 name = "Atomic Bomb",
                 text = {
-                    "Deisables the current boss blind when sold"
+                    "Disables the current boss blind when sold and",
+                    "{C:red}destroys{} {C:attention}all{} random cards in hand"
                 }
             },
             j_vis_poker_face = {

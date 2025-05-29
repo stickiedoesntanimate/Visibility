@@ -1,35 +1,32 @@
 SMODS.Joker {
     key = "atomic_bomb",
-    unlocked = false,
+    unlocked = true,
+    discovered = true,
     blueprint_compat = false,
-    rarity = 4,
-    cost = 20,
-    config = { extra = { destroy = 5 }},
+    rarity = 2,
+    cost = 5,
+    config = { extra = { }},
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
-    pos = { x = 0, y = 3 },
+    pos = { x = 5, y = 0 },
     calculate = function(self, card, context)
+        if #G.hand.cards == 0 then
+            card:set_eternal(true)
+        else
+            card:set_eternal(false)
+        end
         if context.selling_self then
-            return {
-                func = function()
-                    -- This is for retrigger purposes, Jokers need to return something to retrigger
-                    -- You can also do this outside the return and `return nil, true` instead
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            G.E_MANAGER:add_event(Event({
-                                func = function()
-                                    G.GAME.blind:disable()
-                                    delay(0.4)
-                                    return true
-                                end
-                            }))
-                            SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
-                            return true
-                        end
-                    }))
-                end
-            }
+            for k, v in pairs(G.hand.cards) do
+                v:start_dissolve(nil)
+                v:remove_from_deck()
+            end
         end
     end,
+    in_pool = function (self, args)
+        return false
+    end,
+    add_to_deck = function (self, card, from_debuff)
+        card:set_eternal(true)
+    end
 
 }

@@ -16,7 +16,8 @@ local joker_list = {
     "stoner_joker",
     "unemployed",
     "gambling_addict",
-    "3d_glasses"
+    "3d_glasses",
+    "biker"
 }
 
 assert(SMODS.load_file('src/textures.lua'))()
@@ -29,7 +30,6 @@ assert(SMODS.load_file('src/seals.lua'))()
 assert(SMODS.load_file('src/boosters.lua'))()
 assert(SMODS.load_file('src/objecttypes.lua'))()
 assert(SMODS.load_file('src/hands.lua'))()
-
 
 for _, joker in ipairs(joker_list) do
     local joker_path = 'src/jokers/' .. joker .. '.lua'

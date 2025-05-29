@@ -88,6 +88,14 @@ return {
                     "lose {C:gold}$#6#{} for every hand played"
                 }
             },
+            j_vis_biker = {
+                name = "Biker",
+                text = {
+                    "{C:mult}+#1#{} Mult,",
+                    "{C:attention}#2#{} discards",
+
+                }
+            },
             j_vis_fridge = {
                 name = 'Fridge',
                 text = {

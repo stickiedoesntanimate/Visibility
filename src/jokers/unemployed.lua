@@ -4,9 +4,9 @@ SMODS.Joker {
     loc_txt = {
         name = "Unemployed Joker",
 		text = {
-			"Spawns a {C:attention}Perishable{} {C:dark_edition}negative{} food Joker",
+			"Spawns a {C:dark_edition}negative{} food Joker",
 			"with {C:gold}$-1{} sell value that",
-			"debuffs after {C:attention}one{} round",
+			"is {C:mult}destroyed{} at the end of the round",
 		}
     },
 	discovered = true,
@@ -14,7 +14,7 @@ SMODS.Joker {
 	blueprint_compat = true,
 	eternal_compat = true,
 	pools = { ["Visibility"] = true },
-    config = { extra = {}},
+    config = { extra = { generated_card = nil }},
     rarity = 2,
     atlas = "TextureAtlasJokers",
     pos = { x = 4, y = 0},
@@ -26,8 +26,12 @@ SMODS.Joker {
 			cards:set_edition('e_negative', false)
 			cards.sell_cost = -1
 			G.jokers:emplace(cards)
-			cards.ability.perishable = true
-			cards.ability.perish_tally = 1
+			card.ability.extra.generated_card = cards
 		end
-	end
+		if context.end_of_round and not context.game_over and card.ability.extra.generated_card then
+			local cards = card.ability.extra.generated_card
+			cards:remove_from_deck()
+			cards:start_dissolve(nil)
+		end
+	end,
 }

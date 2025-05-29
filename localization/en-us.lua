@@ -88,11 +88,20 @@ return {
                     "lose {C:gold}$#6#{} for every hand played"
                 }
             },
+            j_vis_poker_face = {
+                name = "Poker Face",
+                text = {
+                    "This Joker gains {X:chips,C:white} X#1# {} Mult",
+                    "every time a {C:attention}Lucky{} card",
+                    "{C:green}successfully{} triggers",
+                    "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)",
+                },
+            },
             j_vis_biker = {
                 name = "Biker",
                 text = {
                     "{C:mult}+#1#{} Mult,",
-                    "{C:attention}-#2#{} discards",
+                    "{C:red}-#2#{} discards",
 
                 }
             },

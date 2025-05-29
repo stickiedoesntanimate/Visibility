@@ -6,7 +6,7 @@ SMODS.Joker {
     discovered = true,
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
-    pos = { x = 4, y = 4 },
+    pos = { x = 4, y = 3 },
     cost = 1,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.d_size } }

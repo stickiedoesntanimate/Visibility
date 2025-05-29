@@ -6,7 +6,7 @@ SMODS.Joker {
     unlocked = true,
 	discovered = true,
     atlas = "TextureAtlasJokers",
-    pos = { x = 4, y = 4 },
+    pos = { x = 0, y = 4 },
     config = { extra = { xchips = 3 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xchips, localize('Diamonds', 'suits_plural'), localize('Hearts', 'suits_plural') } }

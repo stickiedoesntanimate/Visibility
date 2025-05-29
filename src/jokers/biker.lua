@@ -1,23 +1,23 @@
 SMODS.Joker {
     key = "biker",
-    config = { extra = { mult = 50, d_size = -3 }},
+    config = { extra = { mult = 50, d_size = 3 }},
     rarity = 3,
     unlocked = true,
     discovered = true,
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
-    pos = { x = 0, y = 3 },
+    pos = { x = 4, y = 4 },
     cost = 1,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.d_size } }
     end,
     add_to_deck = function(self, card, from_debuff)
-        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
-        ease_discard(card.ability.extra.d_size)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
         G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
         ease_discard(-card.ability.extra.d_size)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
+        ease_discard(card.ability.extra.d_size)
     end,
     calculate = function(self, card, context)
         if context.joker_main then

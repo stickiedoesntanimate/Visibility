@@ -92,7 +92,7 @@ return {
                 name = "Biker",
                 text = {
                     "{C:mult}+#1#{} Mult,",
-                    "{C:attention}#2#{} discards",
+                    "{C:attention}-#2#{} discards",
 
                 }
             },

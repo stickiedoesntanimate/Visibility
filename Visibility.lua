@@ -18,7 +18,7 @@ local joker_list = {
     "gambling_addict",
     "3d_glasses",
     "biker",
-    "garrab"
+    "garrab",
 }
 
 assert(SMODS.load_file('src/textures.lua'))()

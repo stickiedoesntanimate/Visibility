@@ -1,13 +1,6 @@
 -- Echo Chamber
 SMODS.Joker {
 	key = "echo_chamber",
-	loc_txt = {
-		name = "Echo Chamber",
-		text = {
-			"When a {C:mult}Boss Blind{} is defeated",
-			"create a {C:attention,T:tag_double}#1#"
-		}
-	},
 	rarity = 3,
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 3, y = 2 },

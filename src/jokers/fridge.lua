@@ -1,16 +1,6 @@
 -- Fridge
 SMODS.Joker {
 	key = 'fridge',
-	loc_txt = {
-		name = 'Fridge',
-		text = {
-			"Gains {C:chips}+#1#{} Chips",
-			"if played hand",
-			"contains a {C:attention}Full House{} and",
-			"contains every suit",
-			"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
-		}
-	},
 	discovered = true,
 	unlocked = true,
 	blueprint_compat = true,

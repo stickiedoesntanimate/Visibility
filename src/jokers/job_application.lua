@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "job",
-	loc_txt = {
-		name = "Job Application",
-		text = {
-			"{C:green}#1# in #2#{} chance to create a {C:tarot}Judgement{}",
-			"when a {C:attention}Full House{} is played",
-			"{C:green}#1# in #3#{} chance to create a {C:spectral}Wraith{}",
-			"when a {C:attention}Flush House{} is played"
-		}
-	},
 	config = { extra = { judgement_odds = 4, wraith_odds = 8} },
 	rarity = 2,
 	discovered = true,

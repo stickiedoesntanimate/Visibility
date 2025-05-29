@@ -1,13 +1,6 @@
 -- Ghost Print
 SMODS.Joker {
 	key = "ghost_print",
-	loc_txt = {
-		name = "Ghost Print",
-		text = {
-			"{C:green}#1# in #2#{} chance to retrigger",
-			"every played card",
-		}
-	},
 	config = { extra = {repetitions = 1, odds = 4 }},
 	rarity = 1,
 	discovered = true,

@@ -1,13 +1,6 @@
 -- Monochromatic Joker
 SMODS.Joker {
 	key = 'monochromatic_joker',
-	loc_txt = {
-		name = 'Monochromatic Joker',
-		text = {
-			"{C:green}#1# in #2#{} chance to change a non-edition joker into a",
-			"{C:dark_edition}negative{} after defeating the {C:mult}Boss Blind{}",
-		}
-	},
 	config = { extra = { odds = 8 } },
 	rarity = 1,
 	discovered = true,

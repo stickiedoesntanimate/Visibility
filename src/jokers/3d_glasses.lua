@@ -1,8 +1,10 @@
 SMODS.Joker {
     key = "3d_glasses",
-    blueprint_compat = true,
     rarity = 2,
     cost = 6,
+    blueprint_compat = true,
+    unlocked = true,
+	discovered = true,
     atlas = "TextureAtlasJokers",
     pos = { x = 4, y = 4 },
     config = { extra = { xchips = 3 } },

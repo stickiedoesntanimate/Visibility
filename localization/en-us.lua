@@ -223,6 +223,13 @@ return {
                     "{C:inactive,s:0.7}\"You will be made useful!\""
                 },
             },
+            j_vis_wholesale_card = {
+                name = "Wholesale Card",
+                text = {
+                    "Everything is {C:attention}25%{} cheaper",
+                    "{C:inactive,s:0.7}(stacks with vouchers)",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -254,6 +261,14 @@ return {
                     "Summon a {C:attention}random{} {C:dark_edition}negative{}",
                     "{C:common}Common{} Joker"
                 }
+            },
+            c_vis_spire = {
+                name="Spire",
+                text={
+                    "Add a {H:623938}Bronze Seal{}", -- TODO: Find out custom colors
+                    "to {C:attention}1{} selected",
+                    "card in your hand",
+                },
             },
         },
         Stake={},

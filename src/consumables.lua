@@ -211,17 +211,9 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'hamsa',
     set = 'Spectral',
-    pos = { x = 0, y = 2 },
+    pos = { x = 2, y = 2 },
     atlas = "TextureAtlasConsumables",
     pools = { ["c_Visibility"] = true },
-    loc_txt = {
-        name = 'Hamsa',
-        text = {
-            "Summon a {C:legendary,E:1}Legendary{} Joker",
-            "{s:2}BUT",
-            "{C:blue}-1{} hand"
-        }
-    },
     config = {  },
     can_use = function(self, card)
         return (G.jokers and #G.jokers.cards < G.jokers.config.card_limit) and (G.GAME.round_resets.hands > 1 and  G.GAME.current_round.hands_left > 1)
@@ -273,21 +265,39 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-    key = "collecter",
+    key = "vault",
     set = "Spectral",
     atlas = "TextureAtlasConsumables",
     pools = { ["c_Visibility"] = true },
-    loc_txt = {
-        name = "The Collecter",
-        text = {
-            "Gives random tag if good you",
-        }
-    },
-    pos = { x = 2, y = 0 },
+    pos = { x = 0, y = 2 },
+    use = function(self)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = (function()
+                G.jokers.highlighted[1]:set_eternal(true)
+                G.jokers.highlighted[1]:juice_up(0.3, 0.5)
+                play_sound('tarot2')
+                return true
+            end),
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return #G.jokers.highlighted == 1
+    end
+}
+
+SMODS.Consumable {
+    key = "chaos",
+    set = "Spectral",
+    atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
+    pos = { x = 3, y = 2 },
     use = function(self)
         G.E_MANAGER:add_event(Event({
             func = (function()
-                add_tag(get_next_tag_key)
+                add_tag(Tag(get_next_tag_key()))
                 return true
             end),
         }))

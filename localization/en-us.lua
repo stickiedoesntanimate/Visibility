@@ -226,7 +226,36 @@ return {
         },
         Other={},
         Planet={},
-        Spectral={},
+        Spectral={
+            c_vis_chaos = {
+                name = "Chaos",
+                text = {
+                    "Gain a {C:attention}random{} tag",
+                    "{C:inactive,s:0.1}fuck you invisible"
+                }
+            },
+            c_vis_vault = {
+                name = "Vault",
+                text = {
+                    "Mark {C:attention}1{} selected Joker as {C:attention}Eternal",
+                }
+            },
+            c_vis_hamsa = {
+                name = 'Hamsa',
+                text = {
+                    "Summon a {C:legendary,E:1}Legendary{} Joker",
+                    "{s:2}BUT",
+                    "{C:blue}-1{} hand"
+                }
+            },
+            c_vis_mortal = {
+                name = 'Mortal',
+                text = {
+                    "Summon a {C:attention}random{} {C:dark_edition}negative{}",
+                    "{C:common}Common{} Joker"
+                }
+            },
+        },
         Stake={},
         Tag={},
         Tarot={

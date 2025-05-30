@@ -3,6 +3,7 @@
 --- DateTime: 20.05.25 17:02
 ---
 
+
 SMODS.Consumable {
     key = 'slate',
     set = 'Tarot',
@@ -270,5 +271,35 @@ SMODS.Consumable {
             end
         }))
         delay(0.6)
+    end
+}
+
+SMODS.Consumable {
+    key = "hello",
+    set = "Spectral",
+    atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
+    loc_txt = {
+        name = "Hello",
+        text = {
+            "Enhances {C:attention}#1#{} selected",
+        }
+    },
+    pos = { x = 2, y = 0 },
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                SMODS.add_card({ set = 'Joker', rarity = 'Common', edition = "e_negative"})
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return true
     end
 }

@@ -13,6 +13,7 @@ SMODS.Joker {
         return { vars = {  } }
     end,
     update = function (self, card, dt)
+        if not G.jokers or not G.jokers.cards then return end
         for i, v in ipairs(G.jokers.cards) do
             if v == card then
                 if i <= 1 then

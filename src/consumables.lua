@@ -244,18 +244,13 @@ SMODS.Consumable {
     end
 }
 
+-- Mortal
 SMODS.Consumable {
-    key = "hello",
+    key = "mortal",
     set = "Spectral",
     atlas = "TextureAtlasConsumables",
     pools = { ["c_Visibility"] = true },
-    loc_txt = {
-        name = "Hello",
-        text = {
-            "Enhances {C:attention}#1#{} selected",
-        }
-    },
-    pos = { x = 2, y = 0 },
+    pos = { x = 4, y = 4 },
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
             trigger = 'after',

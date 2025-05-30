@@ -211,6 +211,18 @@ return {
                     "are {C:diamonds}#2#{} or {C:hearts}#3#{}",
                 },
             },
+            j_vis_pama = {
+                name = "P.A.M.A.",
+                text = {
+                    "During scoring,",
+                    "{C:blue}Blue Seals{} are treated as {C:red}Red Seals{} and",
+                    "{C:purple}Purple Seals{} are treated as {C:gold}Gold Seals",
+                    "and in hand,",
+                    "{C:red}Red Seals{} are treated as {C:blue}Blue Seals{} and",
+                    "{C:gold}Gold Seals{} are treated as {C:purple}Purple Seals",
+                    "{C:inactive,s:0.7}\"You will be made useful!\""
+                },
+            },
         },
         Other={},
         Planet={},
@@ -223,6 +235,12 @@ return {
                 text = {
                     "Create a {C:attention}copy{} of a random",
                     "Joker that is {C:attention}debuffed{} at the end of the round",
+                }
+            },
+            c_vis_mortal = {
+                name = "Mortal",
+                text = {
+                    "Summon a random {C:dark_edition}negative{} {C:common}Common{} Joker",
                 }
             },
         },

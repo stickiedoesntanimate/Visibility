@@ -252,7 +252,9 @@ SMODS.Consumable {
     loc_txt = {
         name = "Hello",
         text = {
-            "Enhances {C:attention}#1#{} selected",
+            "Creates a random",
+            "{C:dark_edition}negative{} {C:blue}common{C:attention} Joker{},",
+            "sets money to {C:money}$0",
         }
     },
     pos = { x = 2, y = 0 },
@@ -264,6 +266,9 @@ SMODS.Consumable {
                 play_sound('timpani')
                 SMODS.add_card({ set = 'Joker', rarity = 'Common', edition = "e_negative"})
                 card:juice_up(0.3, 0.5)
+                if G.GAME.dollars ~= 0 then
+                    ease_dollars(-G.GAME.dollars, true)
+                end
                 return true
             end
         }))
@@ -273,3 +278,29 @@ SMODS.Consumable {
         return true
     end
 }
+
+SMODS.Consumable {
+    key = "collecter",
+    set = "Spectral",
+    atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
+    loc_txt = {
+        name = "The Collecter",
+        text = {
+            "Gives random tag if good you",
+        }
+    },
+    pos = { x = 2, y = 0 },
+    use = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = (function()
+                add_tag(get_next_tag_key)
+                return true
+            end),
+        }))
+    end,
+    can_use = function(self, card)
+        return true
+    end
+}
+

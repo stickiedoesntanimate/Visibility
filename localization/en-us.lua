@@ -217,7 +217,15 @@ return {
         Spectral={},
         Stake={},
         Tag={},
-        Tarot={},
+        Tarot={
+            c_vis_print_shop = {
+                name = "Print Shop",
+                text = {
+                    "Create a {C:attention}copy{} of a random",
+                    "Joker that is {C:attention}debuffed{} at the end of the round",
+                }
+            },
+        },
         Voucher={},
     },
     misc = {

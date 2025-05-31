@@ -11,18 +11,19 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
     end,
-    calculate = function(self, card, context) -- TODO: Make the packs in the shop save and actually be buyable
+    calculate = function(self, card, context)
         if context.reroll_shop then
             --if pseudorandom(pseudoseed('d20')) < (G.GAME.probabilities.normal / card.ability.extra.odds) then
                 for k, v in pairs(G.shop_booster.cards) do
-                    v:start_dissolve(nil)
-                    G.shop_booster.remove_card(v)
+                    v:remove()
                 end
-                -- Generate x more booster packs where x is the amount of booster pack slots
                 local booster_slots = G.shop_booster.config.card_limit
                 for i = 1, booster_slots do
-                    local booster = create_card("Booster", G.shop_booster)
-                    G.shop_booster:emplace(booster)
+                    local _pool, _pool_key = get_current_pool("Booster")
+                    local key = pseudorandom_element(_pool, pseudoseed(_pool_key))
+                    local card = Card(G.shop_booster.T.x + G.shop_booster.T.w/2, G.shop_booster.T.y, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+                    create_shop_card_ui(card, "Booster", G.shop_booster)
+                    G.shop_booster:emplace(card)
                 end
                 return {
                     message = "Pizza's here"

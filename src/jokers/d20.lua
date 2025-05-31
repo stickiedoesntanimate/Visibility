@@ -6,7 +6,7 @@ SMODS.Joker {
     unlocked = true,
 	discovered = true,
     atlas = "TextureAtlasJokers",
-    pos = { x = 0, y = 4 },
+    pos = { x = 7, y = 1 },
     config = { extra = { odds = 8 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }

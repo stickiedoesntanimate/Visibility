@@ -89,7 +89,7 @@ SMODS.Joker {
     blueprint_compat = false,
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
-    pos = { x = 9, y = 9 },
+    pos = { x = 7, y = 0 },
     rarity = 2,
     cost = 5,
 }

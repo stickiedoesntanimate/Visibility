@@ -15,7 +15,7 @@ SMODS.Joker {
     pos = { x = 1, y = 0 },
     rarity = 2,
     cost = 5,
-    pos = { x = 6, y = 3 },
+    pos = { x = 7, y = 0 },
 }
 
 local card_is_face_ref = Card.is_face

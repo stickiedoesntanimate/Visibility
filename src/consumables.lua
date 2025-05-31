@@ -96,7 +96,7 @@ SMODS.Consumable {
 
 -- Printshop (TODO: Better name)
 SMODS.Consumable {
-    key = 'print_shop',
+    key = 'echo',
     set = 'Tarot',
     atlas = "TextureAtlasConsumables",
     pools = { ["c_Visibility"] = true },
@@ -106,7 +106,7 @@ SMODS.Consumable {
         return G.jokers and ((#G.jokers.cards < G.jokers.config.card_limit) and (#G.jokers.cards > 0))
     end,
     use = function (self, card, area, copier)
-        local random_joker = pseudorandom_element(G.jokers.cards, pseudoseed('print_shop'))
+        local random_joker = pseudorandom_element(G.jokers.cards, pseudoseed('echo'))
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.15,

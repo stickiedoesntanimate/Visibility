@@ -71,7 +71,6 @@ function Card:calculate_seal(context)
         end
     end
     if context.discard and context.other_card == self then
-        -- TODO: Gold Seals will give 2 tarot cards (for some reason) so... fix it.
         if (self.seal == 'Gold' and G.GAME.pama_owned) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({

@@ -16,10 +16,14 @@ SMODS.Joker {
             card.ability.extra.repetitions_done = 0
             print("Resetting...")
         end
-        if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) then
-            print(inspect(context.card_effects[1]))
+        if context.repetition and context.cardarea == G.hand then
+            local key, value = next(context.card_effects[1])
+            if not value or value == {} then
+                print("No effect, stopping.")
+                return
+            end
             if card.ability.extra.repetitions_done >= 2 then
-                print("Done more than 2 repetitions, stopping.")
+                print("Done more than 2 repetitions or no effect, stopping.")
                 return
             end
             print("Repetition: "..tostring(card.ability.extra.repetitions_done).." on "..context.other_card.label)

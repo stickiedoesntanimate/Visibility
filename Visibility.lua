@@ -28,6 +28,8 @@ local joker_list = {
     "pama",
     "wholesale_card",
     "rv_lab",
+    "monolith",
+    "d20",
 }
 
 assert(SMODS.load_file('src/textures.lua'))()

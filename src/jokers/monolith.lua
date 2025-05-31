@@ -1,0 +1,61 @@
+SMODS.Joker {
+	key = 'monolith',
+	discovered = true,
+	unlocked = true,
+	blueprint_compat = true,
+	eternal_compat = true,
+	config = { extra = { xmult = 1, xmult_mod = 0.5, poker_hands = {'High Card', 'High Card'} } },
+	rarity = 3,
+	pools = { ["Visibility"] = true },
+	atlas = 'TextureAtlasJokers',
+	pos = { x = 6, y = 4 },
+	cost = 8,
+	loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult_mod, card.ability.extra.poker_hands[1], card.ability.extra.poker_hands[2], card.ability.extra.xmult } }
+	end,
+	calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            if not (context.scoring_name == card.ability.extra.poker_hands[1] or context.scoring_name == card.ability.extra.poker_hands[2]) then
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+                return {
+                    message = localize('k_upgrade_ex', { vars = { card.ability.extra.xmult } })
+                }
+            else
+                -- Reset mult
+                card.ability.extra.xmult = 1
+                local _poker_hands = {}
+                for k, v in pairs(G.GAME.hands) do
+                    if v.visible and (k ~= card.ability.extra.poker_hands[1] and k ~= card.ability.extra.poker_hands[2]) then
+                        _poker_hands[#_poker_hands + 1] = k
+                    end
+                end
+                local poker_hand, poker_hand_key = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
+                table.remove(_poker_hands, poker_hand_key)
+                card.ability.extra.poker_hands[1] = poker_hand
+                card.ability.extra.poker_hands[2] = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
+                return {
+                    message = localize('k_reset')
+                }
+            end
+        end
+        if context.joker_main then
+            if card.ability.extra.xmult > 1 then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        local _poker_hands = {}
+        for k, v in pairs(G.GAME.hands) do
+            if v.visible and (k ~= card.ability.extra.poker_hands[1] and k ~= card.ability.extra.poker_hands[2]) then
+                _poker_hands[#_poker_hands + 1] = k
+            end
+        end
+        local poker_hand, poker_hand_key = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
+        table.remove(_poker_hands, poker_hand_key)
+        card.ability.extra.poker_hands[1] = poker_hand
+        card.ability.extra.poker_hands[2] = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
+    end
+}

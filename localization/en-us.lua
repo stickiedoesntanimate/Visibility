@@ -13,6 +13,15 @@ return {
                     "is {C:mult}destroyed{} at the end of the round",
                 }
             },
+            j_vis_monolith = {
+                name = "Monolith",
+                text = {
+                    "Gains {X:mult,C:white}X#1#{} Mult for every played hand",
+                    "that is not {C:attention}#2#{} or {C:attention}#3#{}",
+                    "resets when either is played",
+                    "{C:inactive}(Currently: {X:mult,C:white}X#4#{} {C:inactive}Mult)",
+                }
+            },
             j_vis_garrab = {
                 name = "Garrab",
                 text = {
@@ -282,8 +291,8 @@ return {
         Stake={},
         Tag={},
         Tarot={
-            c_vis_print_shop = {
-                name = "Print Shop",
+            c_vis_echo = {
+                name = "Echo",
                 text = {
                     "Create a {C:attention}copy{} of a random",
                     "Joker that is {C:attention}debuffed{} at the end of the round",

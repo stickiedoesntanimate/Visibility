@@ -259,7 +259,7 @@ return {
                 name = 'Mortal',
                 text = {
                     "Summon a {C:attention}random{} {C:dark_edition}negative{}",
-                    "{C:common}Common{} Joker"
+                    "{C:common}Common{} Joker, and sets money to {C:gold}$0{}",
                 }
             },
             c_vis_spire = {

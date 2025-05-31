@@ -39,9 +39,12 @@ SMODS.Seal {
     atlas = "TextureAtlasSeals",
     pos = { x = 1, y = 0 },
     config = { retriggers = 2, extra = { odds = 4 } },
+    loc_vars = function (self, info_queue, card)
+        return { vars = { "I don't fucking know", "Yeet", "what is even this why did you not finish this code invisible like why the hell would you do this to me" } }
+    end,
     badge_colour = HEX('623938'),
     calculate = function(self, card, context)
-        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and pseudorandom('wooden') < G.GAME.probabilities.normal / card.ability.extra.odds then
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and pseudorandom('wooden') < G.GAME.probabilities.normal / card.ability.seal.extra.odds then
             return { remove = true }
         end
         if context.repetition then

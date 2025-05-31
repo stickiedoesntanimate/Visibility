@@ -89,7 +89,8 @@ return {
             j_vis_living_card = {
                 name = "Living Card",
                 text = {
-                    "Ace's are considered as Kings, Queens and Jacks"
+                    "{C:attention}Aces{} are also considered {C:attention}Kings",
+                    "{C:attention}Queens{} and {C:attention}Jacks{}"
                 }
             },
             j_vis_crystal_geode = {

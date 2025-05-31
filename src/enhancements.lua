@@ -30,9 +30,8 @@ SMODS.Enhancement {
             "{X:chips,C:white}X1.25{} Chips"
         }
     },
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     config = { x_chips = 1.25 },
-    replace_base_card = true,
     always_scores = true,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.xchips} }

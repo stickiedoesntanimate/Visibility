@@ -86,6 +86,12 @@ return {
                     "{C:attention}-#2# Hand Size{} every time a {C:mult}discard{} is used"
                 }
             },
+            j_vis_living_card = {
+                name = "Living Card",
+                text = {
+                    "Ace's are considered as Kings, Queens and Jacks"
+                }
+            },
             j_vis_crystal_geode = {
                 name = "Crystal Geode",
                 text = {

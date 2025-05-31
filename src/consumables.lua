@@ -1,8 +1,3 @@
----
---- Created by gunnablescum.
---- DateTime: 20.05.25 17:02
----
-
 SMODS.Consumable {
     key = 'slate',
     set = 'Tarot',

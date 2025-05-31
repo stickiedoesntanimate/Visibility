@@ -18,7 +18,8 @@ return {
                 text = {
                     "Gains {X:mult,C:white}X#1#{} Mult for every played hand",
                     "that is not {C:attention}#2#{} or {C:attention}#3#{}",
-                    "resets when either is played",
+                    "Hands {C:attention}change{} every played hand,",
+                    "{C:red}resets{} when either is played",
                     "{C:inactive}(Currently: {X:mult,C:white}X#4#{} {C:inactive}Mult)",
                 }
             },
@@ -320,11 +321,17 @@ return {
         blind_states={},
         challenge_names={},
         collabs={},
-        dictionary={},
+        dictionary={
+            k_shuffle = "Shuffled!"
+        },
         high_scores={},
         labels={},
-        poker_hand_descriptions={},
-        poker_hands={},
+        poker_hand_descriptions={
+            ["vis_industrialization"] = {'Five Brick Cards'}
+        },
+        poker_hands={
+            ["vis_industrialization"] = "Industrialization"
+        },
         quips={},
         ranks={},
         suits_plural={},

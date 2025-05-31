@@ -11,7 +11,7 @@ SMODS.Joker {
 	pos = { x = 6, y = 4 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult_mod, card.ability.extra.poker_hands[1], card.ability.extra.poker_hands[2], card.ability.extra.xmult } }
+        return { vars = { card.ability.extra.xmult_mod, localize(card.ability.extra.poker_hands[1], 'poker_hands'), localize(card.ability.extra.poker_hands[2], 'poker_hands'), card.ability.extra.xmult } }
 	end,
 	calculate = function(self, card, context)
         if context.before and not context.blueprint then
@@ -23,20 +23,25 @@ SMODS.Joker {
             else
                 -- Reset mult
                 card.ability.extra.xmult = 1
-                local _poker_hands = {}
-                for k, v in pairs(G.GAME.hands) do
-                    if v.visible and (k ~= card.ability.extra.poker_hands[1] and k ~= card.ability.extra.poker_hands[2]) then
-                        _poker_hands[#_poker_hands + 1] = k
-                    end
-                end
-                local poker_hand, poker_hand_key = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
-                table.remove(_poker_hands, poker_hand_key)
-                card.ability.extra.poker_hands[1] = poker_hand
-                card.ability.extra.poker_hands[2] = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
                 return {
                     message = localize('k_reset')
                 }
             end
+        end
+        if context.after then
+            local _poker_hands = {}
+            for k, v in pairs(G.GAME.hands) do
+                if v.visible and (k ~= card.ability.extra.poker_hands[1] and k ~= card.ability.extra.poker_hands[2]) then
+                    _poker_hands[#_poker_hands + 1] = k
+                end
+            end
+            local poker_hand, poker_hand_key = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
+            table.remove(_poker_hands, poker_hand_key)
+            card.ability.extra.poker_hands[1] = poker_hand
+            card.ability.extra.poker_hands[2] = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
+            return {
+                message = localize('k_shuffle')
+            }
         end
         if context.joker_main then
             if card.ability.extra.xmult > 1 then

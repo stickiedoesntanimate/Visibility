@@ -9,7 +9,7 @@ SMODS.Joker {
 	rarity = 2,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
-	pos = { x = 2, y = 2 }, -- TODO: Texture
+	pos = { x = 2, y = 2 },
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chip_mod, card.ability.extra.chips } }

@@ -88,8 +88,8 @@ return {
                 name = "Gambling Addict",
                 text = {
                     "{C:green}#1# in #2#{} chance for",
-                    "{X:mult,C:white}X#3#{} {C:mult}Mult",
-                    "{X:chips,C:white}X#4#{} {C:chips}Chips",
+                    "{X:mult,C:white}X#3#{} Mult",
+                    "{X:chips,C:white}X#4#{} Chips",
                     "and gaining {C:gold}$#5#",
                     "{s:2}BUT",
                     "lose {C:gold}$#6#{} for every hand played"
@@ -230,6 +230,14 @@ return {
                     "{C:inactive,s:0.7}(stacks with vouchers)",
                 },
             },
+            j_vis_rv_lab = {
+                name = "RV Lab",
+                text = {
+                    "Each {C:attention}Jack{}",
+                    "held in hand",
+                    "gives {X:chips,C:white} X#1# {} Chips",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -265,7 +273,7 @@ return {
             c_vis_spire = {
                 name="Spire",
                 text={
-                    "Add a {H:623938}Bronze Seal{}", -- TODO: Find out custom colors
+                    "Add a {V:1}Bronze Seal{}",
                     "to {C:attention}1{} selected",
                     "card in your hand",
                 },

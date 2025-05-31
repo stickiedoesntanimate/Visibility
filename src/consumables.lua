@@ -297,7 +297,13 @@ SMODS.Consumable {
     config = { extra = { seal = 'vis_bronze' }, max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
-        return { vars = { card.ability.max_highlighted } }
+        return { 
+            vars = { card.ability.max_highlighted,
+            colours = {
+                HEX('623938')
+            }
+         },
+        }
     end,
     use = function(self, card, area, copier)
         local conv_card = G.hand.highlighted[1]

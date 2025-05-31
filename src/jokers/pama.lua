@@ -8,7 +8,7 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	cost = 8,
 	pos = { x = 6, y = 3 },
-	config = { extra = { repetitions = 1 } },
+	config = { extra = { } },
 	add_to_deck = function (self, card, from_debuff)
         G.GAME.pama_owned = true
     end,
@@ -70,7 +70,7 @@ function Card:calculate_seal(context)
             }
         end
     end
-    if context.discard then
+    if context.discard and context.other_card == self then
         -- TODO: Gold Seals will give 2 tarot cards (for some reason) so... fix it.
         if (self.seal == 'Gold' and G.GAME.pama_owned) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1

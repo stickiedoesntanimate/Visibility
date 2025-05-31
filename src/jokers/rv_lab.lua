@@ -13,7 +13,7 @@ SMODS.Joker {
 		return { vars = { card.ability.extra.xchips } }
 	end,
 	calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == 11 then
+        if context.individual and context.cardarea == G.hand and not context.end_of_round and (context.other_card:get_id() == 11 or (context.other_card:get_id() == 14 and next(SMODS.find_card("j_vis_living_card")))) then
             if context.other_card.debuff then
                 return {
                     message = localize('k_debuffed'),

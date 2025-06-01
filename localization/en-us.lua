@@ -90,7 +90,7 @@ return {
             j_vis_living_card = {
                 name = "Living Card",
                 text = {
-                    "{C:attention}Aces{} are also considered {C:attention}Kings",
+                    "{C:attention}Aces{} are also considered as {C:attention}Kings",
                     "{C:attention}Queens{} and {C:attention}Jacks{}"
                 }
             },
@@ -146,6 +146,14 @@ return {
                     "{C:green}successfully{} triggers",
                     "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)",
                 },
+            },
+            j_vis_building_bricks = {
+              name = "Building Bricks Joker",
+              text = {
+                  "Adds one {C:attention}Plastic{} card",
+                  "to deck when",
+                  "{C:attention}Blind{} is selected",
+              }
             },
             j_vis_biker = {
                 name = "Biker",

@@ -3,7 +3,17 @@ return {
         Back={},
         Blind={},
         Edition={},
-        Enhanced={},
+        Enhanced={
+            m_vis_plastic = {
+                name = "Plastic Card",
+                text = {
+                    "{C:green}#1# in #3#{} chance",
+                    "for {C:chips}+#2#{} Chips",
+                    "{C:green}#1# in #5#{} chance",
+                    "to win {C:money}$#4#",
+                }
+            },
+        },
         Joker={
             j_vis_unemployed = {
                 name = "Unemployed Joker",
@@ -354,6 +364,7 @@ return {
         dictionary={
             k_shuffle = "Shuffled!",
             k_restock = "Restocked!",
+            k_plus_plastic = "+1 Plastic"
         },
         high_scores={},
         labels={},

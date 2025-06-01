@@ -41,15 +41,6 @@ SMODS.Enhancement {
 SMODS.Enhancement {
     key = 'plastic',
     atlas = "TextureAtlasEnhancements",
-    loc_txt = {
-        name = "Table Cloth",
-        text = {
-            "{C:green}#1# in #3#{} chance",
-            "for {C:chips}+#2#{} Chips",
-            "{C:green}#1# in #5#{} chance",
-            "to win {C:money}$#4#",
-        }
-    },
     pos = { x = 2, y = 0 },
     config = { extra = { chips = 80, dollars = 6, chips_odds = 4, dollars_odds = 6 } },
     loc_vars = function(self, info_queue, card)

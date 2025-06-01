@@ -8,7 +8,7 @@ SMODS.Joker {
 	rarity = 2,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
-	pos = { x = 9, y = 9 },
+	pos = { x = 7, y = 2 },
 	cost = 4,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.retriggers, card.ability.extra.cond_discards } }

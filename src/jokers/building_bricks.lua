@@ -1,5 +1,7 @@
 SMODS.Joker {
     key = "building_bricks",
+    discovered = true,
+    unlocked = true,
     blueprint_compat = true,
     rarity = 2,
     cost = 6,
@@ -7,11 +9,11 @@ SMODS.Joker {
     atlas = 'TextureAtlasJokers',
     pos = { x = 6, y = 2 },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.v_vis_plastic
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_vis_plastic
     end,
     calculate = function(self, card, context)
         if context.setting_blind then
-            local plastic_card = create_playing_card({ center = G.P_CENTERS.v_vis_plastic }, G.discard, false, false,
+            local plastic_card = create_playing_card({ center = G.P_CENTERS.m_vis_plastic }, G.discard, false, false,
                     nil, true)
             G.E_MANAGER:add_event(Event({
                 func = function()

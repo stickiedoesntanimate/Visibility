@@ -9,19 +9,13 @@ SMODS.Joker {
 	cost = 8,
 	pos = { x = 6, y = 3 },
 	config = { extra = { } },
-	add_to_deck = function (self, card, from_debuff)
-        G.GAME.pama_owned = true
-    end,
-    remove_from_deck = function (self, card, from_debuff)
-        G.GAME.pama_owned = false
-    end
 }
 
 -- Hook(s) for Red/Purple seal
 local pdl = Card.get_p_dollars
 function Card:get_p_dollars()
     local ret = pdl(self)
-    if self.seal == 'Purple' and G.GAME.pama_owned then
+    if self.seal == 'Purple' and next(SMODS.find_card("j_vis_pama")) then
         ret = ret + 3
     end
     return ret
@@ -30,7 +24,7 @@ end
 local geore = Card.get_end_of_round_effect
 function Card:get_end_of_round_effect(context)
     local ret = geore(self, context)
-    if (self.seal == 'Red' and G.GAME.pama_owned) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+    if (self.seal == 'Red' and next(SMODS.find_card("j_vis_pama"))) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
         local card_type = 'Planet'
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
         G.E_MANAGER:add_event(Event({
@@ -62,7 +56,7 @@ local cs = Card.calculate_seal
 function Card:calculate_seal(context)
     local ret = cs(self, context)
     if context.repetition then
-        if self.seal == 'Blue' and G.GAME.pama_owned then
+        if self.seal == 'Blue' and next(SMODS.find_card("j_vis_pama")) then
             ret = {
                 message = localize('k_again_ex'),
                 repetitions = 1,
@@ -71,7 +65,7 @@ function Card:calculate_seal(context)
         end
     end
     if context.discard and context.other_card == self then
-        if (self.seal == 'Gold' and G.GAME.pama_owned) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        if (self.seal == 'Gold' and next(SMODS.find_card("j_vis_pama"))) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',

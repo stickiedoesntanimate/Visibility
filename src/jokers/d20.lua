@@ -13,8 +13,12 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.reroll_shop then
-            --if pseudorandom(pseudoseed('d20')) < (G.GAME.probabilities.normal / card.ability.extra.odds) then
+            if pseudorandom(pseudoseed('d20')) < (G.GAME.probabilities.normal / card.ability.extra.odds) then
+                local _to_remove = {}
                 for k, v in pairs(G.shop_booster.cards) do
+                    _to_remove[k] = v
+                end
+                for _, v in pairs(_to_remove) do
                     v:remove()
                 end
                 local booster_slots = G.shop_booster.config.card_limit
@@ -26,9 +30,9 @@ SMODS.Joker {
                     G.shop_booster:emplace(card)
                 end
                 return {
-                    message = "Pizza's here"
+                    message = localize("k_restock")
                 }
-            --end
+            end
         end
     end
 }

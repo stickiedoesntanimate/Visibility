@@ -263,6 +263,13 @@ return {
                     "gives {X:chips,C:white} X#1# {} Chips",
                 },
             },
+            j_vis_d20 = {
+                name = "D20",
+                text = {
+                    "{C:green}#1# in #2#{} chance to also restock",
+                    "{C:attention}booster packs{} in the shop when {C:green}rerolling{}",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -330,7 +337,8 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
-            k_shuffle = "Shuffled!"
+            k_shuffle = "Shuffled!",
+            k_restock = "Restocked!",
         },
         high_scores={},
         labels={},

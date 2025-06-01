@@ -4,7 +4,7 @@ SMODS.Joker {
 	unlocked = true,
 	blueprint_compat = true,
 	eternal_compat = true,
-	config = { extra = { xmult = 1, xmult_mod = 0.5, poker_hands = {'High Card', 'High Card'} } },
+	config = { extra = { xmult = 1, xmult_mod = 0.25, poker_hands = {'High Card', 'High Card'} } },
 	rarity = 3,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',

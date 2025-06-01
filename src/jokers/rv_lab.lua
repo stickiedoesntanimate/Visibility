@@ -8,7 +8,7 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	cost = 10,
 	pos = { x = 6, y = 0 },
-	config = { extra = { xchips = 1.25 } },
+	config = { extra = { xchips = 1.5 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.xchips } }
 	end,

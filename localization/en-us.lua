@@ -277,6 +277,14 @@ return {
                     "if {C:attention}#2# {C:red}discards{} were used",
                 },
             },
+            j_vis_all_eyes_on_you = {
+                name = "All eyes on you",
+                text = {
+                    "Destroyed {C:attention}7{}s, {C:attention}8{}s and {C:attention}9{}s",
+                    "spawn a {C:tarot}Death{}",
+                    "{C:inactive}(must have room)",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -361,6 +369,7 @@ return {
         suits_singular={},
         tutorial={},
         v_dictionary={
+            k_plus_x_tarot="+#1# Tarot",
             k_pbalanced = "Balanced by #1#%"
         },
         v_text={},

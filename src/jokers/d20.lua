@@ -24,7 +24,10 @@ SMODS.Joker {
                 local booster_slots = G.shop_booster.config.card_limit
                 for i = 1, booster_slots do
                     local _pool, _pool_key = get_current_pool("Booster")
-                    local key = pseudorandom_element(_pool, pseudoseed(_pool_key))
+                    local key
+                    while G.P_CENTERS[key] == nil do -- I don't know why this happens, but it does.
+                        key = pseudorandom_element(_pool, pseudoseed(_pool_key))
+                    end
                     local card = Card(G.shop_booster.T.x + G.shop_booster.T.w/2, G.shop_booster.T.y, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
                     create_shop_card_ui(card, "Booster", G.shop_booster)
                     G.shop_booster:emplace(card)

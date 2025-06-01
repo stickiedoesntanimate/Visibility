@@ -5,7 +5,7 @@ SMODS.Joker {
 	unlocked = true,
 	blueprint_compat = true,
 	eternal_compat = true,
-	config = { extra = { money = 7, deduction = 1 } },
+	config = { extra = { money = 5, deduction = 1 } },
 	rarity = 3,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',

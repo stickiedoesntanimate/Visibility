@@ -270,6 +270,13 @@ return {
                     "{C:attention}booster packs{} in the shop when {C:green}rerolling{}",
                 },
             },
+            j_vis_middle_of_nowhere = {
+                name = "Middle of Nowhere",
+                text = {
+                    "All {C:attention}scored{} cards are retriggered {C:attention}#1#{} times",
+                    "if {C:attention}#2# {C:red}discards{} were used",
+                },
+            },
         },
         Other={},
         Planet={},

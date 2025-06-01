@@ -31,7 +31,8 @@ local joker_list = {
     "monolith",
     "d20",
     "living_card",
-    "building_bricks"
+    "building_bricks",
+    "middle_of_nowhere",
 }
 
 assert(SMODS.load_file('src/textures.lua'))()

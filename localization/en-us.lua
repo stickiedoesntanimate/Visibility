@@ -304,6 +304,15 @@ return {
                     "{C:inactive}(must have room)",
                 },
             },
+            j_vis_teto = {
+                name = "Teto",
+                text = {
+                    "Discarding a {C:attention}Two Pair{} creates an",
+                    "{C:green}Uncommon Tag{}, works once per round",
+                    "{C:inactive}(must have room, #1#)",
+                    "{C:inactive,s:0.5}Pick me!"
+                },
+            },
         },
         Other={},
         Planet={},

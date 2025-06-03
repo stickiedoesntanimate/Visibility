@@ -350,3 +350,34 @@ SMODS.Consumable {
     end
 }
 
+SMODS.Consumable {
+    key = "crystal_ball",
+    set = "Tarot",
+    loc_txt = {
+        name = "Crystal Ball",
+        text = {
+            "{C:green}#1# in #2#{} chance to create",
+            "a {C:spectral}Spectral{} card"
+        },
+    },
+    atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
+    pos = { x = 3, y = 0 },
+    config = { extra = { odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { G.GAME.probabilities.normal, card.ability.extra.odds } }
+    end,
+    use = function(self, card, area, copier)
+        if pseudorandom('vis_crystal_ball') < G.GAME.probabilities.normal / card.ability.extra.odds then
+            SMODS.add_card {
+                set = 'Spectral',
+                key_append = 'vis_crystal_ball' -- Optional, useful for checking the source of the creation in `in_pool`.
+            }
+            G.GAME.consumeable_buffer = 0
+            return true
+    end
+end,
+    can_use = function(self, card)
+        return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit
+    end
+}

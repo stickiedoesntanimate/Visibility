@@ -95,7 +95,7 @@ SMODS.Consumable {
     set = 'Tarot',
     atlas = "TextureAtlasConsumables",
     pools = { ["c_Visibility"] = true },
-    pos = { x = 4, y = 4 }, -- Texture TBD
+    pos = { x = 4, y = 0 }, -- Texture TBD
     config = { },
     can_use = function (self, card)
         return G.jokers and ((#G.jokers.cards < G.jokers.config.card_limit) and (#G.jokers.cards > 0))

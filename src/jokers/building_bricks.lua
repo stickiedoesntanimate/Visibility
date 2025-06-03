@@ -8,12 +8,9 @@ SMODS.Joker {
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
     pos = { x = 6, y = 2 },
-    loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.m_vis_plastic
-    end,
     calculate = function(self, card, context)
         if context.setting_blind then
-            local plastic_card = create_playing_card({ center = G.P_CENTERS.m_vis_plastic }, G.discard, false, false,
+            local plastic_card = create_playing_card({ center = G.P_CENTERS.vis_plastic }, G.discard, false, false,
                     nil, true)
             G.E_MANAGER:add_event(Event({
                 func = function()

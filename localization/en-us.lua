@@ -273,6 +273,15 @@ return {
                     "gives {X:chips,C:white} X#1# {} Chips",
                 },
             },
+            j_creamer = {
+                name = "Creamer",
+                text = {
+                    "At the end of the round",
+                    "create a {C:attention}random{} tag",
+                    "gets destroyed after 3 rounds",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#3# rounds)",
+                }
+            },
             j_vis_d20 = {
                 name = "D20",
                 text = {

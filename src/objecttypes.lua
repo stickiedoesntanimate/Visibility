@@ -21,6 +21,7 @@ SMODS.ObjectType({
 	end,
 })
 
+
 SMODS.ObjectType({
 	key = "Visibility",
 	default = "j_reserved_parking",

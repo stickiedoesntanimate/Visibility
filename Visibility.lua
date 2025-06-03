@@ -34,6 +34,7 @@ local joker_list = {
     "building_bricks",
     "middle_of_nowhere",
     "all_eyes_on_you",
+    "creamer",
 }
 
 assert(SMODS.load_file('src/textures.lua'))()
@@ -51,6 +52,7 @@ for _, joker in ipairs(joker_list) do
     local joker_path = 'src/jokers/' .. joker .. '.lua'
     assert(SMODS.load_file(joker_path))()
 end
+
 
 ----------------------------------------------
 ------------MOD CODE END----------------------

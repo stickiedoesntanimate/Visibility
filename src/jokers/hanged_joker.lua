@@ -2,7 +2,7 @@
 SMODS.Joker {
 	key = 'hanged_joker',
 	-- Extra is empty, because it only happens once. If you wanted to copy multiple cards, you'd need to restructure the code and add a for loop or something.
-	config = { extra = { mult = 0, mult_mod = 6 } },
+	config = { extra = { mult = 0, mult_mod = 8 } },
 	blueprint_compat = true,
 	discovered = true,
 	unlocked = true,

@@ -16,7 +16,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = false,
     config = { extra = { cream_rounds = 0, total_rounds = 3 } },
-    rarity = 1,
+    rarity = 2,
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
     pos = { x = 7, y = 4 },

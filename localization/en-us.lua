@@ -144,7 +144,8 @@ return {
             j_vis_alternate = {
                 name = "Alternate",
                 text = {
-                    "{C:attention}Copies{} the previous Joker, but it is",
+                    "{C:attention}Copies{} the abillity of",
+                    "the joker to the right, but it is",
                     "{C:mult}debuffed{} until you change the Joker it's copying",
                 }
             },
@@ -283,7 +284,7 @@ return {
                 }
             },
             j_vis_d20 = {
-                name = "D20",
+                name = "Oops all.. hold on-",
                 text = {
                     "{C:green}#1# in #2#{} chance to also restock",
                     "{C:attention}booster packs{} in the shop when {C:green}rerolling{}",
@@ -304,13 +305,19 @@ return {
                     "{C:inactive}(must have room)",
                 },
             },
+            j_vis_caution_sign = {
+                name = "Caution Sign",
+                text = {
+                    "Retriggers the first",
+                    "{C:attention}card held in hand {C:attention}#1#{} additional times",
+                }
+            },
             j_vis_teto = {
                 name = "Teto",
                 text = {
                     "Discarding a {C:attention}Two Pair{} creates an",
                     "{C:green}Uncommon Tag{}, works once per round",
-                    "{C:inactive}(must have room, #1#)",
-                    "{C:inactive,s:0.5}Pick me!"
+                    "{C:inactive}#3#",
                 },
             },
         },
@@ -320,7 +327,7 @@ return {
             c_vis_chaos = {
                 name = "Chaos",
                 text = {
-                    "Gain a {C:attention}random{} tag",
+                    "Gain two {C:attention}random{} tags",
                     "{C:inactive,s:0.1}fuck you invisible"
                 }
             },

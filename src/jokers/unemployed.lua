@@ -3,7 +3,8 @@ SMODS.Joker {
     key = "unemployed",
 	discovered = true,
 	unlocked = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
+	brainstorm_compat = false,
 	eternal_compat = true,
 	pools = { ["Visibility"] = true },
     config = { extra = { generated_card = nil }},
@@ -23,7 +24,7 @@ SMODS.Joker {
 		if context.end_of_round and not context.game_over and card.ability.extra.generated_card then
 			local cards = card.ability.extra.generated_card
 			cards:remove_from_deck()
-			cards:start_dissolve(nil)
+			cards:start_dissolve()
 		end
 	end,
 }

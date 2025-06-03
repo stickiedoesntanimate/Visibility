@@ -1,6 +1,6 @@
 SMODS.Joker {
     key = "biker",
-    config = { extra = { mult = 50, d_size = 3 }},
+    config = { extra = { mult = 50, d_size = 2 }},
     rarity = 3,
     unlocked = true,
     discovered = true,

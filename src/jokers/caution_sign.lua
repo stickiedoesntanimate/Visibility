@@ -5,33 +5,25 @@ SMODS.Joker {
 	blueprint_compat = true,
 	eternal_compat = true,
 	pools = { ["Visibility"] = true },
-    config = { extra = { repetition = 1, repetitions_done = 0 }},
     rarity = 1,
     atlas = "TextureAtlasJokers",
     pos = { x = 5, y = 3 },
     cost = 5,
-    -- TODO: Fix this joker
+    config = { extra = { repetitions = 2 } }, -- trigger the same card twice
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.repetitions } }
+    end,
     calculate = function(self, card, context)
-        if context.before or context.after then
-            card.ability.extra.repetitions_done = 0
-            print("Resetting...")
-        end
+        -- Check we're in repetition context and card is in hand
         if context.repetition and context.cardarea == G.hand then
-            local key, value = next(context.card_effects[1])
-            if not value or value == {} then
-                print("No effect, stopping.")
-                return
+            local first_card = G.hand.cards[1]
+            -- Only apply if the card being evaluated is exactly the first in hand
+            if context.other_card == first_card then
+                return {
+                    repetitions = card.ability.extra.repetitions
+                }
             end
-            if card.ability.extra.repetitions_done >= 2 then
-                print("Done more than 2 repetitions or no effect, stopping.")
-                return
-            end
-            print("Repetition: "..tostring(card.ability.extra.repetitions_done).." on "..context.other_card.label)
-            card.ability.extra.repetitions_done = card.ability.extra.repetitions_done + 1
-            return {
-                repetitions = card.ability.extra.repetition,
-                card = context.other_card
-            }
         end
-	end,
+    end
 }
+

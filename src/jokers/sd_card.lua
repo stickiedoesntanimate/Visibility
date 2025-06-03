@@ -9,6 +9,7 @@ SMODS.Joker {
     eternal_compat = true,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
+	display_size = { w = 71 * 0.5, h = 95 * 0.5 },
 	pos = { x = 2, y = 4 },
 	cost = 4,
     loc_vars = function(self, info_queue, card)
@@ -34,6 +35,7 @@ SMODS.Joker {
     eternal_compat = true,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
+	display_size = { w = 71 * 0.5, h = 95 * 0.5 },
 	pos = { x = 3, y = 4 },
 	cost = 8,
     loc_vars = function(self, info_queue, card)

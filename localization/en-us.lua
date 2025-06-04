@@ -317,7 +317,8 @@ return {
                 text = {
                     "Discarding a {C:attention}Two Pair{} creates an",
                     "{C:green}Uncommon Tag{}, works once per round",
-                    "{C:inactive}#3#",
+                    -- Invisible I swear to god stop breaking the localization
+                    "{C:inactive}(#1#)",
                 },
             },
         },
@@ -327,8 +328,7 @@ return {
             c_vis_chaos = {
                 name = "Chaos",
                 text = {
-                    "Gain two {C:attention}random{} tags",
-                    "{C:inactive,s:0.1}fuck you invisible"
+                    "Gain two {C:attention}random{} tags"
                 }
             },
             c_vis_vault = {

@@ -4,8 +4,8 @@ return {
         Blind={},
         Edition={},
         Enhanced={
-            m_vis_plastic = {
-                name = "Plastic Card",
+            m_vis_notebook = {
+                name = "Notebook Page",
                 text = {
                     "{C:green}#1# in #3#{} chance",
                     "for {C:chips}+#2#{} Chips",

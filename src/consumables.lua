@@ -414,3 +414,45 @@ SMODS.Consumable {
         return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit
     end
 }
+
+SMODS.Consumable {
+    key = 'hi',
+    set = 'Tarot',
+    atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
+    loc_txt = {
+        name = "hi",
+        text = {
+            "Enhances {C:attention}#1#{} selected",
+            "card into a",
+            "{C:attention}Plastic Card",
+        }
+    },
+    pos = { x = 0, y = 1 },
+    config = { max_highlighted = 1, mod_conv = 'm_vis_plastic' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+}
+
+SMODS.Consumable {
+    key = 'constant',
+    set = 'Tarot',
+    atlas = "TextureAtlasConsumables",
+    pools = { ["c_Visibility"] = true },
+    loc_txt = {
+        name = "Constant",
+        text = {
+            "Enhances {C:attention}#1#{} selected",
+            "card into a",
+            "{C:attention}Notebook Page",
+        }
+    },
+    pos = { x = 1, y = 1 },
+    config = { max_highlighted = 2, mod_conv = 'm_vis_notebook' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+}

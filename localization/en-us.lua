@@ -321,6 +321,13 @@ return {
                     "{C:inactive}#1#",
                 },
             },
+            j_vis_yo_gurt = {
+                name = "Offbrand Yogurt",
+                text = {
+                    "{C:chips}+#1#{} Chips for every {C:blue}hand{} played",
+                    "this round, consumed after {C:attention}#2#{} hands",
+                },
+            },
         },
         Other={},
         Planet={},

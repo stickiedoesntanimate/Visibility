@@ -38,6 +38,7 @@ local joker_list = {
     "teto",
     "yo_gurt", -- Gurt: Yo
     "cosplayer",
+    "conquian"
     -- "totem", THERE IS SOMETHING WRONG WITH THIS JOKER. End credits
 }
 

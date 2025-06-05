@@ -336,6 +336,14 @@ return {
                     "{C:inactive,s:0.7}his ass is NOT perkeo"
                 },
             },
+            j_vis_conquian = {
+                name = "Conquian",
+                text = {
+                    "If played hand contains exactly {C:attention}2{}",
+                    "cards, convert the {C:attention}left{} card",
+                    "into the {C:attention}right{} card",
+                },
+            },
         },
         Other={},
         Planet={},

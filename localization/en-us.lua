@@ -318,7 +318,7 @@ return {
                     "Discarding a {C:attention}Two Pair{} creates an",
                     "{C:green}Uncommon Tag{}, works once per round",
                     -- Invisible I swear to god stop breaking the localization
-                    "{C:inactive}(#1#)",
+                    "{C:inactive}#1#",
                 },
             },
         },

@@ -5,7 +5,7 @@ SMODS.Joker {
 	blueprint_compat = true,
 	eternal_compat = true,
 	config = { extra = { hands_left = 5, chips = 50 } },
-	rarity = 2,
+	rarity = 1,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 9, y = 9 },

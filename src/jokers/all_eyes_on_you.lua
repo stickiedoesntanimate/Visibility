@@ -8,7 +8,7 @@ SMODS.Joker {
 	rarity = 2,
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
-	pos = { x = 9, y = 9 },
+	pos = { x = 7, y = 3 },
 	cost = 4,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.retriggers, card.ability.extra.cond_discards } }
@@ -21,7 +21,9 @@ SMODS.Joker {
                     spawn_tarot = spawn_tarot + 1
                 end
             end
-            spawn_tarot = math.min(G.consumeables.config.card_limit - #G.consumeables.cards, #G.consumeables.cards + spawn_tarot)
+            if spawn_tarot > G.consumeables.config.card_limit - #G.consumeables.cards then
+                spawn_tarot = G.consumeables.config.card_limit - #G.consumeables.cards
+            end
             if spawn_tarot <= 0 then
                 return
             end

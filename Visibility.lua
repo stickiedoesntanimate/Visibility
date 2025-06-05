@@ -36,7 +36,7 @@ local joker_list = {
     "all_eyes_on_you",
     "creamer",
     "teto",
-    "yo_gurt",
+    "yo_gurt", -- Gurt: Yo
     "cosplayer",
     -- "totem", THERE IS SOMETHING WRONG WITH THIS JOKER. End credits
 }

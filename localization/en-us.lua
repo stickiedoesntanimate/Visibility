@@ -328,6 +328,14 @@ return {
                     "this round, consumed after {C:attention}#2#{} hands",
                 },
             },
+            j_vis_cosplayer = {
+                name = "Cosplayer",
+                text = {
+                    "Makes a random consumable {C:dark_edition}negative{}",
+                    "after selecting a {C:blind}Blind{}",
+                    "{C:inactive,s:0.7}his ass is NOT perkeo"
+                },
+            },
         },
         Other={},
         Planet={},
@@ -396,7 +404,8 @@ return {
         dictionary={
             k_shuffle = "Shuffled!",
             k_restock = "Restocked!",
-            k_plus_plastic = "+1 Plastic"
+            k_plus_plastic = "+1 Plastic",
+            k_edition_negative = "Subtraction!",
         },
         high_scores={},
         labels={},

@@ -29,7 +29,7 @@ SMODS.Joker {
 	        if pseudorandom('monochromatic_joker') < G.GAME.probabilities.normal / card.ability.extra.odds then
 	            local joker = pseudorandom_element(eligable_editionless_jokers, pseudoseed('monochromatic_joker'))
 	            joker:set_edition('e_negative', true)
-	            return { message = 'Subtraction!' }
+	            return { message = localize('k_edition_negative') }
 	        else
 	            return { message = 'Nope!' }
 	        end

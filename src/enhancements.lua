@@ -39,9 +39,9 @@ SMODS.Enhancement {
 }
 
 SMODS.Enhancement {
-    key = 'plastic',
+    key = 'notebook',
     atlas = "TextureAtlasEnhancements",
-    pos = { x = 2, y = 0 },
+    pos = { x = 3, y = 0 },
     config = { extra = { chips = 80, dollars = 6, chips_odds = 4, dollars_odds = 6 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { G.GAME.probabilities.normal, card.ability.extra.chips, card.ability.extra.chips_odds, card.ability.extra.dollars, card.ability.extra.dollars_odds } }
@@ -68,5 +68,23 @@ SMODS.Enhancement {
             --]]
             return ret
         end
+    end,
+}
+
+SMODS.Enhancement {
+    key = 'plastic',
+    loc_txt = {
+        name = "Plastic Card",
+        text = {
+            "{X:chips,C:white} X#1# {} Chips",
+            "while this card",
+            "stays in hand",
+        },
+    },
+    atlas = "TextureAtlasEnhancements",
+    pos = { x = 2, y = 0 },
+    config = { h_x_chips = 1.5 },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.h_x_chips } }
     end,
 }

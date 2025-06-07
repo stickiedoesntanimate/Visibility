@@ -40,6 +40,7 @@ local joker_list = {
     "cosplayer",
     "conquian",
     "forged",
+    "carnation",
     -- "totem", THERE IS SOMETHING WRONG WITH THIS JOKER. End credits
 }
 

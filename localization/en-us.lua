@@ -52,6 +52,13 @@ return {
                     "each give {C:chips}+50{} Chips",
                 },
             },
+            j_vis_carnation = {
+                name = "Carnation",
+                text = {
+                    "Sell this card to {C:attention}replace{} a random owned Joker",
+                    "by a random Joker of the {C:attention}same{} rarity",
+                },
+            },
             j_vis_unemployed = {
                 name = "Unemployed Joker",
                 text = {

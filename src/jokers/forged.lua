@@ -1,5 +1,6 @@
 SMODS.Joker {
     key = "forged",
+    atlas = "TextureAtlasJokers",
     unlocked = true,
     discovered = true,
     blueprint_compat = true,

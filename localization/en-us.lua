@@ -15,6 +15,13 @@ return {
             },
         },
         Joker={
+            j_vis_forged = {
+                name = "Forged Joker",
+                text = {
+                    "{C:blue}Common{} Jokers",
+                    "each give {C:chips}+50{} Chips",
+                },
+            },
             j_vis_unemployed = {
                 name = "Unemployed Joker",
                 text = {
@@ -367,6 +374,13 @@ return {
             },
         },
         Spectral={
+            c_vis_denial = {
+                name = "The Denial",
+                text = {
+                    "Gives {C:dark_edition}negative{}",
+                    "to {C:attention}1{} random card in hand"
+                }
+            },
             c_vis_chaos = {
                 name = "Chaos",
                 text = {

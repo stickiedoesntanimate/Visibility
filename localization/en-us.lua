@@ -59,6 +59,16 @@ return {
                     "by a random Joker of the {C:attention}same{} rarity",
                 },
             },
+            j_vis_totem = {
+                name = "The Totem",
+                text = {
+                    "Each played {C:attention}#2#{} of {V:1}#3#",
+                    "is {C:attention}retriggered #1#{} times",
+                    "when scored",
+                    "{s:0.8}Card changes every round",
+                    "{s:0.8}synergizes with {C:attention,s:0.8}The Idol{}",
+                },
+            },
             j_vis_unemployed = {
                 name = "Unemployed Joker",
                 text = {

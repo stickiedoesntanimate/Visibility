@@ -41,7 +41,7 @@ local joker_list = {
     "conquian",
     "forged",
     "carnation",
-    -- "totem", THERE IS SOMETHING WRONG WITH THIS JOKER. End credits
+    "totem", 
 }
 
 assert(SMODS.load_file('src/textures.lua'))()

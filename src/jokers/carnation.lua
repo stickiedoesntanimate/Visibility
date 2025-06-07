@@ -16,16 +16,11 @@ SMODS.Joker {
                     _viable_jokers[#_viable_jokers+1] = v
                 end
             end
-            print("Viable Jokers for replacement: "..#_viable_jokers)
-            for k, v in pairs(_viable_jokers) do
-                print(" - "..v.label.." (rarity: "..v.config.center.rarity..")")
-            end
             if #_viable_jokers == 0 then
                 return -- Welp, no jokers to replace
             end
             local joker_to_replace = pseudorandom_element(_viable_jokers, pseudoseed("carnation"))
             local joker_to_replace_rarity = joker_to_replace.config.center.rarity
-            print("Picked "..joker_to_replace.label.." to replace by Carnation with rarity "..joker_to_replace.config.center.rarity)
             local stringified_rarity = "Common"
             if joker_to_replace_rarity == 2 then stringified_rarity = "Uncommon"
             elseif joker_to_replace_rarity == 3 then stringified_rarity = "Rare"

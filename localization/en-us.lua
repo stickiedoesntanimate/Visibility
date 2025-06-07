@@ -467,6 +467,17 @@ return {
                     "{C:attention}#2#",
                 }
             },
+            c_vis_shore = {
+                name = "Shore",
+                text = {
+                    "Remove all {C:attention}additions{} from all cards",
+                    "in your {C:attention}hand{} and gain",
+                    "{C:gold}$#1#{} per removed {C:dark_edition}edition{},",
+                    "{C:gold}$#2#{} per removed {C:blue}Seal{} and",
+                    "{C:gold}$#3#{} per removed {C:red}Enhancement{}",
+                    "{s:0.7,C:inactive}(Currently {s:0.7,C:gold}$#4#{s:0.7,C:inactive})"
+                }
+            },
             c_vis_weakness = {
                 name = 'Weakness',
                 text = {

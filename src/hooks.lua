@@ -15,7 +15,6 @@ local scu = set_consumeable_usage
 function set_consumeable_usage(card)
     scu(card)
     if not (card.config.center_key and card.ability.consumeable) then return end
-    print(card.config.center.set)
     if card.config.center.set == 'Spectral' then 
         G.E_MANAGER:add_event(Event({
             trigger = 'immediate',

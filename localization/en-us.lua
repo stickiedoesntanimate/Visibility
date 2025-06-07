@@ -373,6 +373,15 @@ return {
                     "Gain two {C:attention}random{} tags"
                 }
             },
+            c_vis_pact={
+                name="Pact",
+                text={
+                    "Creates the last",
+                    "{C:spectral}Spectral{} card",
+                    "used during this run",
+                    "{s:0.8,C:spectral}The Soul{s:0.8} and {s:0.8,C:spectral}Pact{s:0.8} excluded",
+                },
+            },
             c_vis_vault = {
                 name = "Vault",
                 text = {

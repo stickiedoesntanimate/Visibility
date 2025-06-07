@@ -490,3 +490,45 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
 }
+
+SMODS.Consumable {
+    key = 'shore',
+    set = 'Tarot',
+    atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
+    pools = { ["c_Visibility"] = true },
+    pos = { x = 1, y = 1 },
+    config = { },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+    use = function (self, card, area, copier)
+        -- Remove all Enhancements, Seals and Editions from all cards in your hand, gain 2$ for every removed Enhancement and 4$ for every removed Seal, 8$ for every removed Edition
+        local total_dollars = 0
+        for k, v in pairs(G.hand.cards) do
+            local card_enhancement = v.config.center.key
+            local card_seal = v.seal
+            local card_edition = v.edition
+            if card_edition then
+                print(card_edition.key..":E removed")
+                total_dollars = total_dollars + 8
+                v:set_edition(nil, true)
+            end
+            if card_seal then
+                print(card_seal..":S removed")
+                total_dollars = total_dollars + 4
+                v.seal = nil
+            end
+            if card_enhancement ~= "c_base" then
+                print(card_enhancement..":En removed")
+                total_dollars = total_dollars + 2
+                v:set_ability("c_base", nil, true)
+            end
+        end
+        ease_dollars(total_dollars)
+    end,
+    can_use = function (self, card)
+        return G.hand and #G.hand.cards > 0
+    end
+}

@@ -1,6 +1,6 @@
 SMODS.PokerHand {
     key = 'industrialization',
-    visisble = false,
+    visible = false,
     chips = 5,
     mult = 25,
     l_chips = 5,
@@ -21,41 +21,116 @@ SMODS.PokerHand {
         end
         if #_brick >= 5 then return { _brick } end
     end
-    --[[evaluate = function(parts, hand)
-        if next(parts._flush) and next(parts._straight) then
-            local _strush = SMODS.merge_lists(parts._flush, parts._straight)
-            local royal = true
-            for j = 1, #_strush do
-                local rank = SMODS.Ranks[_strush[j].base.value]
-                royal = royal and (rank.key == 'Ace' or rank.key == '10' or rank.face)
-            end
-            if royal then return {_strush} end
-        end
-    end,]]
 }
 
---[[SMODS.Atlas { key = 'vulcan', path = 'vulcan.png', px = 71, py = 95 }
+SMODS.PokerHand {
+    key = 'heavyweight',
+    visible = true,
+    chips = 80,
+    mult = 6,
+    l_chips = 10,
+    l_mult = 4,
+    example = {
+		{ "S_A", true, enhancement = "m_vis_brick" },
+		{ "S_A", true, enhancement = "m_vis_brick" },
+		{ "S_A", true, enhancement = "m_stone" },
+		{ "S_A", true, enhancement = "m_stone" },
+		{ "S_A", true, enhancement = "m_stone" },
+    },
+    evaluate = function (parts, hand)
+        -- Full House of Enhancements featuring at least 2 suitless cards
+        local _3 = get_X_same_enhanced(3, hand)
+        local _2 = get_X_same_enhanced(2, hand)
+
+        -- Check if both exist
+        if next(_3) and next(_2) then
+
+            local hw_hand = {}
+            local hw_3 = _3[1]
+            local hw_2 = _2[1]
+            if not (SMODS.has_no_suit(hw_3[1]) or SMODS.has_no_suit(hw_2[1])) then
+                return
+            end
+            for i=1, #hw_3 do
+                hw_hand[#hw_hand+1] = hw_3[i]
+            end
+            for i=1, #hw_2 do
+                hw_hand[#hw_hand+1] = hw_2[i]
+            end
+            return { hw_hand }
+        end
+    end
+}
+
+-- For Heavyweight
+function get_X_same_enhanced(num, hand)
+    local vals = { }
+    for i=#hand, 1, -1 do
+        local curr = {}
+        table.insert(curr, hand[i])
+        for j=1, #hand do
+            local i_enh = hand[i].config.center.key
+            local j_enh = hand[j].config.center.key
+            if i_enh == j_enh and i ~= j and i_enh ~= "c_base" then
+                table.insert(curr, hand[j])
+            end
+        end
+        if #curr == num then
+            vals[curr[1].config.center.key] = curr
+        end
+    end
+    local ret = {}
+    for k, v in pairs(vals) do
+        table.insert(ret, vals[k])
+    end
+    return ret
+end
+
+--[[ REFERENCE:
+function get_X_same(num, hand)
+  local vals = {{},{},{},{},{},{},{},{},{},{},{},{},{},{}}
+  for i=#hand, 1, -1 do
+    local curr = {}
+    table.insert(curr, hand[i])
+    for j=1, #hand do
+      if hand[i]:get_id() == hand[j]:get_id() and i ~= j then
+        table.insert(curr, hand[j])
+      end
+    end
+    if #curr == num then
+      vals[curr[1]:get_id()] = curr
+    end
+  end
+  local ret = {}
+  for i=#vals, 1, -1 do
+    if next(vals[i]) then table.insert(ret, vals[i]) end
+  end
+  return ret
+end
+]]
 
 SMODS.Consumable {
     set = 'Planet',
-    key = 'vulcan',
+    key = 'impactor',
     --! `h_` prefix was removed
-    config = { hand_type = 'ex_royal_flush_Royal Flush' },
-    pos = {x = 0, y = 0 },
-    atlas = 'vulcan',
+    config = { hand_type = 'vis_industrialization' },
+    pos = { x = 0, y = 4 },
+    atlas = 'TextureAtlasConsumables',
     set_card_type_badge = function(self, card, badges)
-        badges[1] = create_badge(localize('k_planet_q'), get_type_colour(self or card.config, card), nil, 1.2)
-    end,
-    process_loc_text = function(self)
-        --use another planet's loc txt instead
-        local target_text = G.localization.descriptions[self.set]['c_mercury'].text
-        SMODS.Consumable.process_loc_text(self)
-        G.localization.descriptions[self.set][self.key].text = target_text
+        badges[1] = create_badge(localize('k_meteor'), get_type_colour(self or card.config, card), nil, 1.2)
     end,
     generate_ui = 0,
-    loc_txt = {
-        ['en-us'] = {
-            name = 'Vulcan'
-        }
-    }
-}]]
+}
+
+SMODS.Consumable {
+    set = 'Planet',
+    key = 'arrokoth',
+    --! `h_` prefix was removed
+    config = { hand_type = 'vis_heavyweight' },
+    pos = { x = 1, y = 4 },
+    atlas = 'TextureAtlasConsumables',
+    set_card_type_badge = function(self, card, badges)
+        badges[1] = create_badge(localize('k_space_rock'), get_type_colour(self or card.config, card), nil, 1.2)
+    end,
+    generate_ui = 0,
+}

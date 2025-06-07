@@ -346,7 +346,26 @@ return {
             },
         },
         Other={},
-        Planet={},
+        Planet={
+            c_vis_impactor={
+                name="Impactor",
+                text={
+                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{} Mult and",
+                    "{C:chips}+#4#{} chips",
+                },
+            },
+            c_vis_arrokoth={
+                name="Arrokoth",
+                text={
+                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{} Mult and",
+                    "{C:chips}+#4#{} chips",
+                },
+            },
+        },
         Spectral={
             c_vis_chaos = {
                 name = "Chaos",
@@ -414,14 +433,18 @@ return {
             k_restock = "Restocked!",
             k_plus_plastic = "+1 Plastic",
             k_edition_negative = "Subtraction!",
+            k_meteor="Meteorite",
+            k_space_rock="Space Rock",
         },
         high_scores={},
         labels={},
         poker_hand_descriptions={
-            ["vis_industrialization"] = {'Five Brick Cards'}
+            ["vis_industrialization"] = {'Five Brick Cards'},
+            ["vis_heavyweight"] = {'A Full House of Enhancements featuring at least 2 suitless cards'},
         },
         poker_hands={
-            ["vis_industrialization"] = "Industrialization"
+            ["vis_industrialization"] = "Industrialization",
+            ["vis_heavyweight"] = "Heavyweight",
         },
         quips={},
         ranks={},

@@ -86,29 +86,6 @@ function get_X_same_enhanced(num, hand)
     return ret
 end
 
---[[ REFERENCE:
-function get_X_same(num, hand)
-  local vals = {{},{},{},{},{},{},{},{},{},{},{},{},{},{}}
-  for i=#hand, 1, -1 do
-    local curr = {}
-    table.insert(curr, hand[i])
-    for j=1, #hand do
-      if hand[i]:get_id() == hand[j]:get_id() and i ~= j then
-        table.insert(curr, hand[j])
-      end
-    end
-    if #curr == num then
-      vals[curr[1]:get_id()] = curr
-    end
-  end
-  local ret = {}
-  for i=#vals, 1, -1 do
-    if next(vals[i]) then table.insert(ret, vals[i]) end
-  end
-  return ret
-end
-]]
-
 SMODS.Consumable {
     set = 'Planet',
     key = 'impactor',
@@ -116,6 +93,8 @@ SMODS.Consumable {
     config = { hand_type = 'vis_industrialization' },
     pos = { x = 0, y = 4 },
     atlas = 'TextureAtlasConsumables',
+    discovered = true,
+    unlocked = true,
     set_card_type_badge = function(self, card, badges)
         badges[1] = create_badge(localize('k_meteor'), get_type_colour(self or card.config, card), nil, 1.2)
     end,
@@ -129,6 +108,8 @@ SMODS.Consumable {
     config = { hand_type = 'vis_heavyweight' },
     pos = { x = 1, y = 4 },
     atlas = 'TextureAtlasConsumables',
+    discovered = true,
+    unlocked = true,
     set_card_type_badge = function(self, card, badges)
         badges[1] = create_badge(localize('k_space_rock'), get_type_colour(self or card.config, card), nil, 1.2)
     end,

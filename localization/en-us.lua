@@ -4,6 +4,13 @@ return {
         Blind={},
         Edition={},
         Enhanced={
+            m_vis_brick = {
+                name = "Brick Card",
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                    "no rank or suit",
+                }
+            },
             m_vis_notebook = {
                 name = "Notebook Page",
                 text = {
@@ -13,8 +20,31 @@ return {
                     "to win {C:money}$#4#",
                 }
             },
+            m_vis_plastic = {
+                name = "Plastic Card",
+                text = {
+                    "{X:chips,C:white} X#1# {} Chips",
+                    "while this card",
+                    "stays in hand",
+                }
+            },
+            m_vis_table_cloth = {
+                name = "Table Cloth",
+                text = {
+                    "{X:chips,C:white}X1.25{} Chips"
+                }
+            },
         },
         Joker={
+            j_vis_creamer = {
+                name = "Creamer",
+                text = {
+                    "At the end of the round",
+                    "create a {C:attention}random{} tag",
+                    "gets destroyed after 3 rounds",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
+                }
+            },
             j_vis_forged = {
                 name = "Forged Joker",
                 text = {
@@ -429,12 +459,59 @@ return {
         Stake={},
         Tag={},
         Tarot={
+            c_vis_slate = {
+                name = "Slate",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                }
+            },
+            c_vis_weakness = {
+                name = 'Weakness',
+                text = {
+                    "Decreases rank of",
+                    "up to {C:attention}#1#{} selected",
+                    "cards by {C:attention}1",
+                }
+            },
+            c_vis_mint = {
+                name = 'The Mint',
+                text = {
+                    "Gives you a {C:attention}quarter{} of all",
+                    "{C:chips}+Chips{} cards in your hand as {C:gold}money{}",
+                    "{C:inactive}(Currently: {C:gold}$#1#{C:inactive}, Max: {C:gold}$#2#{C:inactive})"
+                }
+            },
             c_vis_echo = {
                 name = "Echo",
                 text = {
                     "Create a {C:attention}copy{} of a random",
                     "Joker that is {C:attention}debuffed{} at the end of the round",
                 }
+            },
+            c_vis_future = {
+                name = "Future",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                }
+            },
+            c_vis_constant = {
+                name = "Constant",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                }
+            },
+            c_vis_crystal_ball = {
+                name = "Crystal Ball",
+                text = {
+                    "{C:green}#1# in #2#{} chance to create",
+                    "a {C:spectral}Spectral{} card"
+                },
             },
             c_vis_mortal = {
                 name = "Mortal",
@@ -443,7 +520,24 @@ return {
                 }
             },
         },
-        Voucher={},
+        Voucher={
+            v_vis_warhead = {
+                name = "Warhead",
+                text = {
+                    "{C:attention}-#1#{} Ante,",
+                    "{C:attention}-#2#{} hand size",
+                    "each round",
+                }
+            },
+            v_vis_fallout = {
+                name = "Fallout",
+                text = {
+                    "{C:attention}-#1#{} Ante,",
+                    "{C:attention}-#2#{} consumable size",
+                    "each round",
+                }
+            },
+        },
     },
     misc = {
         achievement_descriptions={},

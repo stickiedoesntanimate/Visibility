@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = "forged",
+    unlocked = true,
+    discovered = true,
     blueprint_compat = true,
+    eternal_compat = true,
     rarity = 2,
     cost = 5,
     pos = { x = 6, y = 14 },

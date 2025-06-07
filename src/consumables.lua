@@ -2,15 +2,9 @@ SMODS.Consumable {
     key = 'slate',
     set = 'Tarot',
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
-    loc_txt = {
-        name = "Slate",
-        text = {
-            "Enhances {C:attention}#1#{} selected",
-            "card into a",
-            "{C:attention}Brick",
-        }
-    },
     pos = { x = 2, y = 0 },
     config = { max_highlighted = 1, mod_conv = 'm_vis_brick' },
     loc_vars = function(self, info_queue, card)
@@ -27,14 +21,8 @@ SMODS.Consumable {
     config = { max_highlighted = 2 },
     pools = { ["c_Visibility"] = true },
     atlas = "TextureAtlasConsumables",
-    loc_txt = {
-        name = 'Weakness',
-        text = {
-            "Decreases rank of",
-            "up to {C:attention}#1#{} selected",
-            "cards by {C:attention}1",
-        }
-    },
+    discovered = true,
+    unlocked = true,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
     end,
@@ -94,6 +82,8 @@ SMODS.Consumable {
     key = 'echo',
     set = 'Tarot',
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 4, y = 0 }, -- Texture TBD
     config = { },
@@ -124,15 +114,9 @@ SMODS.Consumable {
     set = 'Tarot',
     pos = { x = 1, y = 0 },
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
-    loc_txt = {
-        name = 'The Mint',
-        text = {
-            "Gives you a {C:attention}quarter{} of all",
-            "{C:chips}+Chips{} cards in your hand as {C:gold}money{}",
-            "{C:inactive}(Currently: {C:gold}$#1#{C:inactive}, Max: {C:gold}$#2#{C:inactive})"
-        }
-    },
     config = { extra = { current = 0, max = 35 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.current, card.ability.extra.max } }
@@ -208,6 +192,8 @@ SMODS.Consumable {
     set = 'Spectral',
     pos = { x = 2, y = 2 },
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
     config = {  },
     can_use = function(self, card)
@@ -236,6 +222,8 @@ SMODS.Consumable {
     key = "mortal",
     set = "Spectral",
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 4, y = 2 },
     use = function(self, card, area, copier)
@@ -263,6 +251,8 @@ SMODS.Consumable {
     key = "vault",
     set = "Spectral",
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 0, y = 2 },
     use = function(self)
@@ -289,6 +279,8 @@ SMODS.Consumable {
     set = 'Spectral',
     pos = { x = 1, y = 2 },
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     config = { extra = { seal = 'vis_bronze' }, max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
@@ -335,6 +327,8 @@ SMODS.Consumable {
     key = "chaos",
     set = "Spectral",
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 3, y = 2 },
     use = function(self)
@@ -355,6 +349,8 @@ SMODS.Consumable {
     key = "pact",
     set = "Spectral",
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 5, y = 2 },
     loc_vars = function(self, info_queue, card)
@@ -365,7 +361,6 @@ SMODS.Consumable {
         local colour = (not pact_c or pact_c.name == 'The Soul' or pact_c.name == 'c_vis_pact') and G.C.RED or G.C.GREEN
 
         if pact_c and not (pact_c.name == 'The Soul' or pact_c.name == 'c_vis_pact') then
-            print("C_name: "..pact_c.name)
             info_queue[#info_queue + 1] = pact_c
         end
 
@@ -410,14 +405,9 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = "crystal_ball",
     set = "Tarot",
-    loc_txt = {
-        name = "Crystal Ball",
-        text = {
-            "{C:green}#1# in #2#{} chance to create",
-            "a {C:spectral}Spectral{} card"
-        },
-    },
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 3, y = 0 },
     config = { extra = { odds = 4 } },
@@ -475,15 +465,9 @@ SMODS.Consumable {
     key = 'future',
     set = 'Tarot',
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
-    loc_txt = {
-        name = "Future",
-        text = {
-            "Enhances {C:attention}#1#{} selected",
-            "card into a",
-            "{C:attention}Plastic Card",
-        }
-    },
     pos = { x = 0, y = 1 },
     config = { max_highlighted = 1, mod_conv = 'm_vis_plastic' },
     loc_vars = function(self, info_queue, card)
@@ -496,65 +480,13 @@ SMODS.Consumable {
     key = 'constant',
     set = 'Tarot',
     atlas = "TextureAtlasConsumables",
+    discovered = true,
+    unlocked = true,
     pools = { ["c_Visibility"] = true },
-    loc_txt = {
-        name = "Constant",
-        text = {
-            "Enhances {C:attention}#1#{} selected",
-            "card into a",
-            "{C:attention}Notebook Page",
-        }
-    },
     pos = { x = 1, y = 1 },
     config = { max_highlighted = 2, mod_conv = 'm_vis_notebook' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
-}
-
-SMODS.Consumable {
-    key = 'denial',
-    set = 'Spectral',
-    pos = { x = 6, y = 2 },
-    atlas = "TextureAtlasConsumables",
-    config = { max_highlighted = 1 },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.max_highlighted } }
-    end,
-    use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                local candidates = {}
-
-                -- Only include cards with NO edition
-                for _, c in ipairs(G.hand.cards) do
-                    if not c.edition then
-                        table.insert(candidates, c)
-                    end
-                end
-
-                if #candidates > 0 then
-                    local target_card = pseudorandom_element(candidates, pseudoseed('vis_denial'))
-                    target_card:set_edition('e_negative', true)
-                    target_card:juice_up(0.3, 0.5)
-                end
-
-                return true
-            end
-        }))
-    end,
-    can_use = function(self, card)
-        if not G.hand or #G.hand.cards == 0 then return false end
-
-        -- Only usable if there's at least one card with no edition
-        for _, c in ipairs(G.hand.cards) do
-            if not c.edition then
-                return true
-            end
-        end
-        return false
-    end
 }

@@ -1,16 +1,7 @@
-SMODS.Sound({key = "creamer", path = "creamer.ogg",})
+SMODS.Sound({ key = "creamer", path = "creamer.ogg" })
 
 SMODS.Joker {
     key = "creamer",
-    loc_txt = {
-        name = "Creamer",
-        text = {
-            "At the end of the round",
-            "create a {C:attention}random{} tag",
-            "gets destroyed after 3 rounds",
-            "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
-        }
-    },
     discovered = true,
     unlocked = true,
     blueprint_compat = false,

@@ -1,5 +1,3 @@
-
--- Stone
 SMODS.Enhancement {
     key = 'brick',
     atlas = "TextureAtlasEnhancements",

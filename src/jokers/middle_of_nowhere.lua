@@ -15,7 +15,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		if context.repetition and context.cardarea == G.play then
-            if G.GAME.current_round.discards_used == 3 then
+            if G.GAME.current_round.discards_used == card.ability.extra.cond_discards then
                 return {
                     repetitions = card.ability.extra.retriggers
                 }

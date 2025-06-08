@@ -1,8 +1,19 @@
+SMODS.Atlas({
+    key = 'TextureAtlasBlinds',
+    path = 'TextureAtlasBlinds.png',
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 21,
+    px = 34,
+    py = 34
+})
+
 SMODS.Blind {
     name = "boss_transparent",
     key = "boss_transparent",
     dollars = 5,
     mult = 2,
+    atlas = 'TextureAtlasBlinds',
+    pos = {x=0, y=0},
     loc_txt = {
         name = 'Transparent',
         text = {

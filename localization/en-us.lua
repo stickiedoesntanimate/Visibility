@@ -428,6 +428,15 @@ return {
                     "to {C:attention}1{} random card in hand"
                 }
             },
+            c_vis_desideratum = {
+                name = "Desideratum",
+                text = {
+                    "Gain a {C:spectral}Divine Tag{}, but {C:attention}level down",
+                    "your most played poker hand by {C:attention}#1#",
+                    "May {C:red}not{} be used if resulting level is below {C:attention}1",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}, lvl: {C:attention}#3#{C:inactive})",
+                }
+            },
             c_vis_chaos = {
                 name = "Chaos",
                 text = {
@@ -474,7 +483,15 @@ return {
             },
         },
         Stake={},
-        Tag={},
+        Tag={
+            tag_vis_divine={
+                name="Divine Tag",
+                text={
+                    "Initial cards in next",
+                    "shop are {C:spectral}Spectral{}",
+                },
+            },
+        },
         Tarot={
             c_vis_slate = {
                 name = "Slate",

@@ -1,7 +1,3 @@
----
---- Created by gunnablescum.
---- DateTime: 21.05.25 20:44
----
 SMODS.Atlas {
 	key = "TextureAtlasJokers",
 	path = "TextureAtlasJokers.png",
@@ -48,6 +44,13 @@ SMODS.Atlas {
 	path = "TextureAtlasSeals.png",
 	px = 71,
 	py = 95
+}
+
+SMODS.Atlas {
+	key = "TextureAtlasTags",
+	path = "TextureAtlasTags.png",
+	px = 34,
+	py = 34
 }
 
 SMODS.Atlas({

@@ -45,12 +45,13 @@ local joker_list = {
 }
 
 assert(SMODS.load_file('src/textures.lua'))()
+assert(SMODS.load_file('src/blinds.lua'))()
 assert(SMODS.load_file('src/consumables.lua'))()
 assert(SMODS.load_file('src/enhancements.lua'))()
 assert(SMODS.load_file('src/vouchers.lua'))()
 assert(SMODS.load_file('src/backs.lua'))()
 assert(SMODS.load_file('src/hooks.lua'))()
-assert(SMODS.load_file('src/seals.lua'))()
+--assert(SMODS.load_file('src/seals.lua'))()
 assert(SMODS.load_file('src/boosters.lua'))()
 assert(SMODS.load_file('src/objecttypes.lua'))()
 assert(SMODS.load_file('src/hands.lua'))()

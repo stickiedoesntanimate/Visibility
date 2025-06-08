@@ -11,7 +11,6 @@ SMODS.Joker {
 	pos = { x = 4, y = 2 },
 	cost = 4,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
 		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.judgement_odds, card.ability.extra.wraith_odds } }
 	end,
 	calculate = function(self, card, context)

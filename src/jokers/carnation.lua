@@ -5,6 +5,7 @@ SMODS.Joker {
     blueprint_compat = true,
     unlocked = true,
 	discovered = true,
+    pools = { ["Visibility"] = true },
     atlas = "TextureAtlasJokers",
     pos = { x = 9, y = 0 },
     config = { },

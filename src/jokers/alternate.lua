@@ -6,6 +6,7 @@ SMODS.Joker {
     unlocked = true,
 	discovered = true,
     eternal_compat = true,
+    pools = { ["Visibility"] = true },
     atlas = "TextureAtlasJokers",
     pos = { x = 5, y = 2 },
     config = { extra = { previous_joker = nil, last_debuffed = nil } },

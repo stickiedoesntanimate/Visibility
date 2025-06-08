@@ -10,7 +10,7 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 2, y = 2 },
-	cost = 10,
+	cost = 5,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chip_mod, card.ability.extra.chips } }
 	end,

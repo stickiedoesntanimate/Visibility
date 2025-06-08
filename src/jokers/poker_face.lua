@@ -4,6 +4,7 @@ SMODS.Joker {
     perishable_compat = false,
     rarity = 3,
     cost = 8,
+    pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
     pos = { x = 1, y = 4 },
     config = { extra = { Xchips_gain = 0.1, Xchips = 1 } },

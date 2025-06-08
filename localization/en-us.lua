@@ -437,6 +437,14 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}, lvl: {C:attention}#3#{C:inactive})",
                 }
             },
+            c_vis_calamity = {
+                name = "Calamity",
+                text = {
+                    "Selected Joker gets {C:attention}pinned{} to the left",
+                    "and gains {C:dark_edition}Foil{}, {C:dark_edition}Holographic{} or {C:dark_edition}Polychrome{}",
+                    "edition"
+                }
+            },
             c_vis_chaos = {
                 name = "Chaos",
                 text = {
@@ -506,7 +514,7 @@ return {
                 text = {
                     "Remove all {C:attention}additions{} from all cards",
                     "in your {C:attention}hand{} and gain",
-                    "{C:gold}$#1#{} per removed {C:dark_edition}edition{},",
+                    "{C:gold}$#1#{} per removed {C:dark_edition}Edition{},",
                     "{C:gold}$#2#{} per removed {C:blue}Seal{} and",
                     "{C:gold}$#3#{} per removed {C:red}Enhancement{}",
                     "{s:0.7,C:inactive}(Currently {s:0.7,C:gold}$#4#{s:0.7,C:inactive})"

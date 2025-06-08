@@ -17,6 +17,7 @@ SMODS.Voucher {
     end,
 }
 
+
 SMODS.Voucher {
     key = 'fallout',
     pos = { x = 1, y = 0 },
@@ -28,7 +29,6 @@ SMODS.Voucher {
         return { vars = { card.ability.extra.deduction, card.ability.extra.slots } }
     end,
     redeem = function(self, card)
-        -- Apply ante change
         ease_ante(-card.ability.extra.deduction)
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
         G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.deduction

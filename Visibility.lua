@@ -42,6 +42,11 @@ local joker_list = {
     "forged",
     "carnation",
     "totem", 
+    "party_noob"
+}
+
+SMODS.current_mod.optional_features = {
+    retrigger_joker = true,
 }
 
 assert(SMODS.load_file('src/textures.lua'))()

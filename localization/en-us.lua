@@ -45,6 +45,14 @@ return {
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
                 }
             },
+            j_vis_party_noob = {
+                name = "Party Noob",
+                text = {
+                    "{C:attention}Retriggers{} the Jokers",
+                    "{C:attention}adjacent{} to this",
+                    "of they are {C:common}Common{}",
+                }
+            },
             j_vis_forged = {
                 name = "Forged Joker",
                 text = {

@@ -14,6 +14,7 @@ return {
                     "- WarpedCloset",
                     "- StickieAnimates",
                     "- SadCube",
+                    "(Credits will be added to each card later, but for the demo this shall suffice)",
                     " ",
                     "Idea Contributors:",
                     "- One Punch Idiot",
@@ -22,7 +23,24 @@ return {
                 }
             }
         },
-        Back={},
+        Back={
+            b_vis_poptart = {
+                name = "Poptart Deck",
+                text = {
+                    "{C:attention}Visibility{} Jokers are",
+                    "{X:blue,C:white}X#1#{} more likely to appear",
+                    "in the shop"
+                }
+            },
+            b_vis_gardening = {
+                name = "Gardening Deck",
+                text = {
+                    "Start run with",
+                    "{C:attention}26 {C:clubs}Clubs{} and",
+                    "{C:attention}26 {C:diamonds}Diamonds{} in deck",
+                }
+            },
+        },
         Blind={},
         Edition={},
         Enhanced={

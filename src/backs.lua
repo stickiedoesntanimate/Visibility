@@ -1,43 +1,22 @@
 SMODS.Back({
     key = "poptart",
     atlas = "TextureAtlasDecks",
-    loc_txt = {
-        name = "Poptart Deck",
-        text = {
-            "{C:attention}Visibility{} Jokers are",
-            "{X:blue}X#1#{} more likely to appear",
-            "in the shop"
-        }
-    },
     pos = { x = 0, y = 0 },
+    unlocked = true,
+    discovered = true,
+    config = { likeliness = 3 },
     loc_vars = function(self, info_queue, card)
-        return {vars = {self.config.hand_size}}
+        return {vars = { self.config.likeliness }}
     end,
-    calculate = {
-        calculate_joker_pool = function(self, cards)
-            local filtered = {}
-            for _, card in ipairs(cards) do
-                if card.pool == "Visibility" then
-                    table.insert(filtered, card)
-                end
-            end
-            return filtered
-        end
-    }
+    apply = function (self, back)
+        G.GAME.visibility_rate = 45
+    end
 })
 
 
 SMODS.Back {
     key = "gardening",
     atlas = "TextureAtlasDecks",
-    loc_txt = {
-        name = "Gardening Deck",
-        text = {
-            "Start run with",
-            "{C:attention}26{C:clubs} Clubs{} and",
-            "{C:attention}26{C:diamonds} Diamonds{} in deck",
-        }
-    },
     pos = { x = 1, y = 0 },
     unlocked = true,
     discovered = true,
@@ -56,15 +35,4 @@ SMODS.Back {
             end
         }))
     end,
-    locked_loc_vars = function(self, info_queue, back)
-        local other_name = localize('k_unknown')
-        if G.P_CENTERS['b_black'].unlocked then
-            other_name = localize { type = 'name_text', set = 'Back', key = 'b_black' }
-        end
-
-        return { vars = { other_name } }
-    end,
-    check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_black') > 1
-    end
 }

@@ -1,6 +1,7 @@
 SMODS.Consumable {
     key = "calamity",
     set = "Spectral",
+	cost = 4,
     atlas = "TextureAtlasConsumables",
     discovered = true,
     unlocked = true,

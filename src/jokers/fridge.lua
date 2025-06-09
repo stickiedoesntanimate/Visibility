@@ -58,8 +58,6 @@ SMODS.Joker {
 					message = localize('k_upgrade_ex'),
 					colour = G.C.CHIPS
 				}
-			else
-				print("Not all suits found.")
 			end
 		end
     end,

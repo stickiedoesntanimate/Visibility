@@ -1,6 +1,7 @@
 SMODS.Consumable {
     key = "chaos",
     set = "Spectral",
+	cost = 4,
     atlas = "TextureAtlasConsumables",
     discovered = true,
     unlocked = true,

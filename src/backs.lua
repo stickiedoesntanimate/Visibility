@@ -36,3 +36,21 @@ SMODS.Back {
         }))
     end,
 }
+
+SMODS.Back {
+    key = "heavenly",
+    atlas = "TextureAtlasDecks",
+    pos = { x = 2, y = 0 },
+    config = { voucher = 'v_vis_divine_merchant', consumables = { 'c_vis_pact' } },
+    loc_vars = function (self, info_queue, card)
+        return {
+            vars = {
+                "Divine Merchant",
+                "Pact",
+                colours = { G.C.SET.Divine } 
+            },
+        }
+    end,
+    unlocked = true,
+    discovered = true,
+}

@@ -1,6 +1,7 @@
 SMODS.Consumable {
     key = 'hamsa',
-    set = 'Spectral',
+    set = "Spectral",
+	cost = 4,
     pos = { x = 2, y = 2 },
     atlas = "TextureAtlasConsumables",
     discovered = true,

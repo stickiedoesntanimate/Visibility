@@ -40,6 +40,14 @@ return {
                     "{C:attention}26 {C:diamonds}Diamonds{} in deck",
                 }
             },
+            b_vis_heavenly = {
+                name = "Hevenly Deck",
+                text = {
+                    "Start run with the",
+                    "{V:1,T:v_vis_divine_merchant}#1#{} voucher",
+                    "and a {C:spectral,T:c_vis_pact}#2#{}",
+                }
+            },
         },
         Blind={},
         Edition={},
@@ -700,6 +708,22 @@ return {
                     "{C:attention}-#2#{} consumable size",
                     "each round",
                 }
+            },
+            v_vis_divine_merchant = {
+                name="Divine Merchant",
+                text={
+                    "{V:1}Divine{} cards appear",
+                    "{C:attention}#1#X{} more frequently",
+                    "in the shop",
+                },
+            },
+            v_vis_divine_tycoon = {
+                name = "Divine Tycoon",
+                text = {
+                    "{V:1}Divine{} cards appear",
+                    "{C:attention}#1#X{} more frequently",
+                    "in the shop",
+                },
             },
         },
     },

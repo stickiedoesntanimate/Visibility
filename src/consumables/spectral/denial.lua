@@ -1,6 +1,7 @@
 SMODS.Consumable {
     key = 'denial',
-    set = 'Spectral',
+    set = "Spectral",
+	cost = 4,
     pos = { x = 6, y = 2 },
     discovered = true,
     unlocked = true,

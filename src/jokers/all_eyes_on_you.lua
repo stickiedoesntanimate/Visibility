@@ -15,33 +15,30 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
         local spawn_tarot = 0
-		if context.remove_playing_cards then
+		if context.remove_playing_cards and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             for k, v in pairs(context.removed) do
                 if v:get_id() == 9 or v:get_id() == 8 or v:get_id() == 7 then
                     spawn_tarot = spawn_tarot + 1
                 end
             end
-            if spawn_tarot > G.consumeables.config.card_limit - #G.consumeables.cards then
-                spawn_tarot = G.consumeables.config.card_limit - #G.consumeables.cards
+            if spawn_tarot > G.consumeables.config.card_limit + G.GAME.consumeable_buffer - #G.consumeables.cards then
+                spawn_tarot = G.consumeables.config.card_limit + G.GAME.consumeable_buffer - #G.consumeables.cards
             end
-            if spawn_tarot <= 0 then
-                return
+            for i = 1, spawn_tarot do
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (
+                        function()
+                            local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_death')
+                            card:add_to_deck()
+                            G.consumeables:emplace(card)
+                            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
+                            return true
+                        end)
+                }))
             end
-            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + spawn_tarot
-            print("Consumable buffer: "..tostring(G.GAME.consumeable_buffer))
-            G.E_MANAGER:add_event(Event({
-            trigger = 'before',
-            delay = 0.0,
-            func = (
-                function()
-                    local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_death')
-                    card:add_to_deck()
-                    G.consumeables:emplace(card)
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
-                    print("Consumable buffer: "..tostring(G.GAME.consumeable_buffer))
-                    return G.GAME.consumeable_buffer <= 0
-                end)})
-            )
             return {
                 message = localize { type = 'variable', key = 'k_plus_x_tarot', vars = { spawn_tarot } },
                 colour = G.C.PURPLE

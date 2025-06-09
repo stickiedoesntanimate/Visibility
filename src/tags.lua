@@ -1,27 +1,9 @@
---[[SMODS.Tag {
-    key = "black_tag",
-    loc_txt = {
-        name = "Black Market Tag",
-        text = 
-        "Gives a {C:attention}Black Market{} pack"
-    },
-    atlas = "TexturesAtlasTags",
-    pos = { x = 0, y = 0},
-    min_ante = 2,
-
-    apply = function(self, tag, context)
-        tag:yep('+', G.C.DARK_EDITION, print() )
-        print("hello")
-
-        tag.triggered = true
-        return true
-    end,
-}]]
-
 SMODS.Tag {
     key = "foresight",
     atlas = "TextureAtlasTags",
     pos = { x = 0, y = 0 },
+    unlocked = true,
+    discovered = true,
     config = { extra = { shop_started = false } },
     apply = function(self, tag, context)
         if context.type == 'shop_start' then
@@ -45,6 +27,8 @@ SMODS.Tag {
     key = "divine",
     atlas = "TextureAtlasTags",
     pos = { x = 2, y = 0 },
+    unlocked = true,
+    discovered = true,
     loc_vars = function (self, info_queue, tag)
         return { vars = { colours = { G.C.SET.Divine } } }
     end,
@@ -70,6 +54,8 @@ SMODS.Tag {
     key = "black_market",
     atlas = "TextureAtlasTags",
     pos = { x = 1, y = 0 },
+    unlocked = true,
+    discovered = true,
     loc_vars = function (self, info_queue, tag)
         return { }
     end,

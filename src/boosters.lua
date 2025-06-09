@@ -33,15 +33,19 @@ SMODS.Booster{
     kind = "VisibilityPack",
 
     create_card = function(self, card, i)
-        ease_background_colour(HEX("ffac00"))
+        local _types = {}
+        for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
+            _types[#_types + 1] = v
+        end
+        local type = pseudorandom_element(_types, pseudoseed('bmp'))
         return SMODS.create_card({
-            set = "Visibility",
+            set = type,
             area = G.pack_cards,
             skip_materialize = true,
             soulable = true,
         })
     end,
-    select_card = 'jokers',
+    select_card = 'consumeables',
 
     in_pool = function() return true end
 }
@@ -68,15 +72,19 @@ SMODS.Booster{
     kind = "VisibilityPack",
 
     create_card = function(self, card, i)
-        ease_background_colour(HEX("ffac00"))
+        local _types = {}
+        for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
+            _types[#_types + 1] = v
+        end
+        local type = pseudorandom_element(_types, pseudoseed('bmp'))
         return SMODS.create_card({
-            set = "Visibility",
+            set = type,
             area = G.pack_cards,
             skip_materialize = true,
             soulable = true,
         })
     end,
-    select_card = 'jokers',
+    select_card = 'consumeables',
 
     in_pool = function() return true end
 }
@@ -103,15 +111,19 @@ SMODS.Booster{
     kind = "VisibilityPack",
 
     create_card = function(self, card, i)
-        ease_background_colour(HEX("ffac00"))
+        local _types = {}
+        for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
+            _types[#_types + 1] = v
+        end
+        local type = pseudorandom_element(_types, pseudoseed('bmp'))
         return SMODS.create_card({
-            set = "Visibility",
+            set = type,
             area = G.pack_cards,
             skip_materialize = true,
             soulable = true,
         })
     end,
-    select_card = 'jokers',
+    select_card = 'consumeables',
 
     in_pool = function() return true end
 }

@@ -412,6 +412,7 @@ return {
                 text = {
                     "All {C:attention}scored{} cards are retriggered {C:attention}#1#{} times",
                     "if {C:attention}#2# {C:red}discards{} were used",
+                    "{C:inactive}(Currently #3#)",
                 },
             },
             j_vis_all_eyes_on_you = {

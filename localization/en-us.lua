@@ -661,11 +661,18 @@ return {
         },
         Stake={},
         Tag={
-            tag_vis_foresight={
+            tag_vis_foresight = {
                 name="Foresight Tag",
                 text={
                     "Initial cards in next",
                     "shop are {C:spectral}Spectral{}",
+                },
+            },
+            tag_vis_divine = {
+                name="Divine Tag",
+                text={
+                    "Gives a free",
+                    "{V:1}Mega Divine Pack",
                 },
             },
         },

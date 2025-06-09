@@ -10,7 +10,7 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 1, y = 0 },
-	cost = 8,
+	cost = 7,
 	loc_vars = function(self, info_queue, card)
 	    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
         return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }

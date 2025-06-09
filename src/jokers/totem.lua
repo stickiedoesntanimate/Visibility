@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "totem",
     rarity = 2,
-    cost = 4,
+    cost = 5,
     eternal_compat = true,
     blueprint_compat = true,
     unlocked = true,

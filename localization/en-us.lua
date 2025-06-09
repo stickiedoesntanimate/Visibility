@@ -434,21 +434,53 @@ return {
                 name = 'Black Market Pack',
                 text = { 
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {V:1}Visibility{C:joker} Joker{} cards",
+                    "{C:attention}#2# {V:1}Visibility{} Joker cards",
                 },
             },
             p_vis_black_market_jumbo_1 = {
                 name = 'Jumbo Black Market Pack',
                 text = { 
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {V:1}Visibility{C:joker} Joker{} cards",
+                    "{C:attention}#2# {V:1}Visibility{} Joker cards",
                 },
             },
             p_vis_black_market_mega_1 = {
                 name = 'Mega Black Market Pack',
                 text = { 
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {V:1}Visibility{C:joker} Joker{} cards",
+                    "{C:attention}#2# {V:1}Visibility{} Joker cards",
+                },
+            },
+            p_vis_divine_normal_1 = {
+                name = 'Divine Pack',
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {V:1}Divine{} cards to",
+                    "be used immediately",
+                },
+            },
+            p_vis_divine_normal_2 = {
+                name = 'Divine Pack',
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {V:1}Divine{} cards to",
+                    "be used immediately",
+                },
+            },
+            p_vis_divine_jumbo_1 = {
+                name = 'Jumbo Divine Pack',
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {V:1}Divine{} cards to",
+                    "be used immediately",
+                },
+            },
+            p_vis_divine_mega_1 = {
+                name = 'Mega Divine Pack',
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {V:1}Divine{} cards to",
+                    "be used immediately",
                 },
             },
         },
@@ -654,9 +686,9 @@ return {
             k_meteor="Meteorite",
             k_space_rock="Space Rock",
             k_divine="Divine",
-            k_divine_pack="Divine Pack",
             k_spectral_pack="Spectral Pack",
-            k_visibilitypack_pack="Black Market Pack",
+            k_visibility_pack="Black Market Pack",
+            k_divine_pack="Divine Pack",
         },
         high_scores={},
         labels={},

@@ -1,6 +1,6 @@
 SMODS.Consumable {
     key = 'echo',
-    set = 'Tarot',
+    set = 'Divine',
     atlas = "TextureAtlasConsumables",
     discovered = true,
     unlocked = true,

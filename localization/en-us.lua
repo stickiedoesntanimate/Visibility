@@ -72,7 +72,7 @@ return {
                 text = {
                     "{C:attention}Retriggers{} the Jokers",
                     "{C:attention}adjacent{} to this",
-                    "of they are {C:common}Common{}",
+                    "if they are {C:common}Common{}",
                 }
             },
             j_vis_forged = {
@@ -429,7 +429,29 @@ return {
                 },
             },
         },
-        Other={},
+        Other={
+            p_vis_black_market_normal_1 = {
+                name = 'Black Market Pack',
+                text = { 
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {V:1}Visibility{C:joker} Joker{} cards",
+                },
+            },
+            p_vis_black_market_jumbo_1 = {
+                name = 'Jumbo Black Market Pack',
+                text = { 
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {V:1}Visibility{C:joker} Joker{} cards",
+                },
+            },
+            p_vis_black_market_mega_1 = {
+                name = 'Mega Black Market Pack',
+                text = { 
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {V:1}Visibility{C:joker} Joker{} cards",
+                },
+            },
+        },
         Planet={
             c_vis_impactor={
                 name="Impactor",
@@ -461,7 +483,7 @@ return {
             c_vis_desideratum = {
                 name = "Desideratum",
                 text = {
-                    "Gain a {C:spectral}Divine Tag{}, but {C:attention}level down",
+                    "Gain a {C:spectral}Foresight Tag{}, but {C:attention}level down",
                     "your most played poker hand by {C:attention}#1#",
                     "May {C:red}not{} be used if resulting level is below {C:attention}1",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}, lvl: {C:attention}#3#{C:inactive})",
@@ -520,36 +542,7 @@ return {
                 },
             },
         },
-        Stake={},
-        Tag={
-            tag_vis_divine={
-                name="Divine Tag",
-                text={
-                    "Initial cards in next",
-                    "shop are {C:spectral}Spectral{}",
-                },
-            },
-        },
-        Tarot={
-            c_vis_slate = {
-                name = "Slate",
-                text = {
-                    "Enhances {C:attention}#1#{} selected",
-                    "card into a",
-                    "{C:attention}#2#",
-                }
-            },
-            c_vis_shore = {
-                name = "Shore",
-                text = {
-                    "Remove all {C:attention}additions{} from all cards",
-                    "in your {C:attention}hand{} and gain",
-                    "{C:gold}$#1#{} per removed {C:dark_edition}Edition{},",
-                    "{C:gold}$#2#{} per removed {C:blue}Seal{} and",
-                    "{C:gold}$#3#{} per removed {C:red}Enhancement{}",
-                    "{s:0.7,C:inactive}(Currently {s:0.7,C:gold}$#4#{s:0.7,C:inactive})"
-                }
-            },
+        Divine={
             c_vis_weakness = {
                 name = 'Weakness',
                 text = {
@@ -596,13 +589,37 @@ return {
                     "a {C:spectral}Spectral{} card"
                 },
             },
-            c_vis_mortal = {
-                name = "Mortal",
+            c_vis_slate = {
+                name = "Slate",
                 text = {
-                    "Summon a random {C:dark_edition}negative{} {C:common}Common{} Joker",
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                }
+            },
+            c_vis_shore = {
+                name = "Shore",
+                text = {
+                    "Remove all {C:attention}additions{} from all cards",
+                    "in your {C:attention}hand{} and gain",
+                    "{C:gold}$#1#{} per removed {C:dark_edition}Edition{},",
+                    "{C:gold}$#2#{} per removed {C:blue}Seal{} and",
+                    "{C:gold}$#3#{} per removed {C:red}Enhancement{}",
+                    "{s:0.7,C:inactive}(Currently {s:0.7,C:gold}$#4#{s:0.7,C:inactive})"
                 }
             },
         },
+        Stake={},
+        Tag={
+            tag_vis_foresight={
+                name="Foresight Tag",
+                text={
+                    "Initial cards in next",
+                    "shop are {C:spectral}Spectral{}",
+                },
+            },
+        },
+        Tarot={},
         Voucher={
             v_vis_warhead = {
                 name = "Warhead",
@@ -629,18 +646,23 @@ return {
         challenge_names={},
         collabs={},
         dictionary={
+            b_divine_cards="Divine Cards",
             k_shuffle = "Shuffled!",
             k_restock = "Restocked!",
             k_plus_plastic = "+1 Plastic",
             k_edition_negative = "Subtraction!",
             k_meteor="Meteorite",
             k_space_rock="Space Rock",
+            k_divine="Divine",
+            k_divine_pack="Divine Pack",
+            k_spectral_pack="Spectral Pack",
+            k_visibilitypack_pack="Black Market Pack",
         },
         high_scores={},
         labels={},
         poker_hand_descriptions={
             ["vis_industrialization"] = {'Five Brick Cards'},
-            ["vis_heavyweight"] = {'A Full House of Enhancements featuring at least 2 suitless cards'},
+            ["vis_heavyweight"] = {'A Full House of Enhancements', 'featuring at least 2 suitless cards'},
         },
         poker_hands={
             ["vis_industrialization"] = "Industrialization",

@@ -1,6 +1,6 @@
 SMODS.Consumable {
     key = 'mint',
-    set = 'Tarot',
+    set = 'Divine',
     pos = { x = 1, y = 0 },
     atlas = "TextureAtlasConsumables",
     discovered = true,

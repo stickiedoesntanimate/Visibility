@@ -19,7 +19,7 @@
 }]]
 
 SMODS.Tag {
-    key = "divine",
+    key = "foresight",
     atlas = "TextureAtlasTags",
     pos = { x = 0, y = 0 },
     config = { extra = { shop_started = false } },

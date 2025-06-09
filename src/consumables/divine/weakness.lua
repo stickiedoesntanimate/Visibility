@@ -1,6 +1,6 @@
 SMODS.Consumable {
     key = 'weakness',
-    set = 'Tarot',
+    set = 'Divine',
     pos = { x = 0, y = 0 },
     config = { max_highlighted = 2 },
     pools = { ["c_Visibility"] = true },

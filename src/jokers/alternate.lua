@@ -46,8 +46,6 @@ SMODS.Joker {
             end
             if card.ability.extra.previous_joker.config.center.blueprint_compat then
                 return SMODS.blueprint_effect(card, card.ability.extra.previous_joker, context)
-            else
-                print(card.ability.extra.previous_joker.label..": Nuh uh")
             end
         end
     end,

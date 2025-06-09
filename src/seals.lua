@@ -1,15 +1,5 @@
 SMODS.Seal {
     key = 'bronze',
-    loc_txt = {
-        name = "Bronze Seal",
-        label = "Bronze Seal",
-        text = {
-            "Copies the effect of",
-            "the leftmost scored card",
-            "{C:attention}Copying{} other bronze-sealed cards",
-            "{C:attention}retriggers{} this card instead",
-        },
-    },
     atlas = "TextureAtlasSeals",
     pos = { x = 0, y = 0 },
     config = { extra = { retriggers = 1 } },
@@ -32,15 +22,6 @@ SMODS.Seal {
 
 SMODS.Seal {
     key = "wooden",
-    loc_txt = {
-        name = "Wooden Seal",
-        label = "Wooden Seal",
-        text = {
-            "{X:mult,C:white} X#1# {} Mult",
-            "{C:green}#2# in #3#{} chance to",
-            "destroy card",
-        },
-    },
     atlas = "TextureAtlasSeals",
     pos = { x = 1, y = 0 },
     config = { extra = { x_mult = 2, odds = 4 } },
@@ -55,6 +36,45 @@ SMODS.Seal {
         if context.main_scoring then
             return {
                 x_mult = card.ability.seal.extra.x_mult,
+            }
+        end
+    end,
+}
+
+SMODS.Seal {
+    key = "mitosis",
+    atlas = "TextureAtlasSeals",
+    pos = { x = 2, y = 0 },
+    config = {  },
+    badge_colour = HEX('DC6094'),
+    calculate = function(self, card, context)
+        if context.main_scoring and context.full_hand[1] == card then
+            if #context.full_hand ~= 1 then return end
+            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+            local copy_card = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+            copy_card:add_to_deck()
+            G.deck.config.card_limit = G.deck.config.card_limit + 1
+            table.insert(G.playing_cards, copy_card)
+            G.hand:emplace(copy_card)
+            copy_card.states.visible = nil
+
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    copy_card:start_materialize()
+                    return true
+                end
+            }))
+            return {
+                message = localize('k_copied_ex'),
+                colour = G.C.CHIPS,
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.calculate_context({ playing_card_added = true, cards = { copy_card } })
+                            return true
+                        end
+                    }))
+                end
             }
         end
     end,

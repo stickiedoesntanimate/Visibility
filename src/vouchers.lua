@@ -76,9 +76,7 @@ SMODS.Voucher {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
-                print("Divine Tycoon check, rate: "..tostring(G.GAME.divine_rate))
                 G.GAME.divine_rate = (G.GAME.divine_rate or 6) * math.floor(card.ability.extra.display/2)
-                print("Divine Tycoon check, rate: "..tostring(G.GAME.divine_rate))
                 return true
             end
         }))

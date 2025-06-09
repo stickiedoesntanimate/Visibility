@@ -1,22 +1,17 @@
 SMODS.Consumable {
-    key = 'spire',
-    set = "Spectral",
-	cost = 4,
-    pos = { x = 1, y = 2 },
+    key = "gum",
+    set = "BlackMarket",
+	cost = 5,
     atlas = "TextureAtlasConsumables",
     discovered = true,
     unlocked = true,
     pools = { ["c_Visibility"] = true },
+    pos = { x = 6, y = 0 },
+    display_size = { w = 71 * 0.5, h = 95 * 0.9 },
     config = { extra = { seal = 'vis_mitosis' }, max_highlighted = 1 },
-    loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
-        return { 
-            vars = { card.ability.max_highlighted,
-            colours = {
-                HEX('623938')
-            }
-         },
-        }
+    loc_vars = function (self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { colours = { HEX("DC6094") } } }
     end,
     use = function(self, card, area, copier)
         local conv_card = G.hand.highlighted[1]
@@ -47,4 +42,7 @@ SMODS.Consumable {
             end
         }))
     end,
+    can_use = function (self, card)
+        return #G.hand.highlighted == 1
+    end
 }

@@ -467,21 +467,21 @@ return {
                 name = 'Black Market Pack',
                 text = { 
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {V:1}Visibility{} Joker cards",
+                    "{C:attention}#2# {V:1}Consumable{} cards",
                 },
             },
             p_vis_black_market_jumbo_1 = {
                 name = 'Jumbo Black Market Pack',
                 text = { 
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {V:1}Visibility{} Joker cards",
+                    "{C:attention}#2# {V:1}Consumable{} cards",
                 },
             },
             p_vis_black_market_mega_1 = {
                 name = 'Mega Black Market Pack',
                 text = { 
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2# {V:1}Visibility{} Joker cards",
+                    "{C:attention}#2# {V:1}Consumable{} cards",
                 },
             },
             p_vis_divine_normal_1 = {
@@ -514,6 +514,30 @@ return {
                     "Choose {C:attention}#1#{} of up to",
                     "{C:attention}#2# {V:1}Divine{} cards to",
                     "be used immediately",
+                },
+            },
+            vis_wooden_seal = {
+                name = "Wooden Seal",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult",
+                    "{C:green}#2# in #3#{} chance to",
+                    "destroy card",
+                },
+            },
+            vis_mitosis_seal = {
+                name = "Mitosis Seal",
+                text = {
+                    "Copy this card to your hand",
+                    "if this card is played solo",
+                },
+            },
+            vis_bronze_seal = {
+                name = "Bronze Seal",
+                text = {
+                    "Copies the effect of",
+                    "the leftmost scored card",
+                    "{C:attention}Copying{} other bronze-sealed cards",
+                    "{C:attention}retriggers{} this card instead",
                 },
             },
         },
@@ -607,7 +631,25 @@ return {
                 },
             },
         },
-        Divine={
+        BlackMarket = {
+            c_vis_gum = {
+                name="Gum",
+                text={
+                    "Add a {V:1}Mitosis Seal{}",
+                    "to {C:attention}1{} selected",
+                    "card in your hand",
+                },
+            },
+            c_vis_nails = {
+                name="Box of Nails",
+                text={
+                    "Add a {V:1}Wooden Seal{}",
+                    "to {C:attention}1{} selected",
+                    "card in your hand",
+                },
+            },
+        },
+        Divine = {
             c_vis_weakness = {
                 name = 'Weakness',
                 text = {
@@ -703,16 +745,16 @@ return {
             v_vis_warhead = {
                 name = "Warhead",
                 text = {
-                    "{C:attention}-#1#{} Ante,",
-                    "{C:attention}-#2#{} hand size",
+                    "{C:attention}+#1#{} Ante,",
+                    "{C:attention}+#2#{} hand size",
                     "each round",
                 }
             },
             v_vis_fallout = {
                 name = "Fallout",
                 text = {
-                    "{C:attention}-#1#{} Ante,",
-                    "{C:attention}-#2#{} consumable size",
+                    "{C:attention}+#1#{} Ante,",
+                    "{C:attention}+#2#{} consumable size",
                     "each round",
                 }
             },
@@ -742,6 +784,7 @@ return {
         collabs={},
         dictionary={
             b_divine_cards="Divine Cards",
+            b_blackmarket_cards="Black Market Cards",
             k_shuffle = "Shuffled!",
             k_restock = "Restocked!",
             k_plus_plastic = "+1 Plastic",
@@ -750,12 +793,17 @@ return {
             k_meteor="Meteorite",
             k_space_rock="Space Rock",
             k_divine="Divine",
+            k_blackmarket="Black Market",
             k_spectral_pack="Spectral Pack",
             k_visibility_pack="Black Market Pack",
             k_divine_pack="Divine Pack",
         },
         high_scores={},
-        labels={},
+        labels={
+            vis_bronze_seal = "Bronze Seal",
+            vis_wooden_seal = "Wooden Seal",
+            vis_mitosis_seal = "Mitosis Seal",
+        },
         poker_hand_descriptions={
             ["vis_industrialization"] = {'Five Brick Cards'},
             ["vis_heavyweight"] = {'A Full House of Enhancements', 'featuring at least 2 suitless cards'},

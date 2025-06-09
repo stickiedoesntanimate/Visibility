@@ -2,12 +2,15 @@ SMODS.Sound({
 	key = "music_divine",
 	path = "music_divine.ogg",
 	select_music_track = function()
-		return (
-            G.pack_cards
-            and G.pack_cards.cards
-            and G.pack_cards.cards[1]
-            and G.pack_cards.cards[1].ability.set == "Divine"
-        )
+        if not G.pack_cards or not G.pack_cards.cards then return false end
+        if #G.pack_cards.cards == 0 then return false end
+        local divine = true
+        for _, v in ipairs(G.pack_cards.cards) do
+            if v.ability.set ~= "Divine" then
+                divine = false
+            end
+        end
+        return divine
 	end,
 })
 
@@ -29,7 +32,7 @@ SMODS.Booster{
         return { vars = { card.ability.choose, card.ability.extra, colours = { HEX("bdc3c7") }} }
     end,
     weight = 0.5,
-    cost = 8,
+    cost = 6,
     kind = "VisibilityPack",
 
     create_card = function(self, card, i)
@@ -68,7 +71,7 @@ SMODS.Booster{
         return { vars = { card.ability.choose, card.ability.extra, colours = { HEX("bdc3c7") } } }
     end,
     weight = 0.66,
-    cost = 10,
+    cost = 8,
     kind = "VisibilityPack",
 
     create_card = function(self, card, i)
@@ -107,7 +110,7 @@ SMODS.Booster{
         return { vars = { card.ability.choose, card.ability.extra, colours = { HEX("bdc3c7") } } }
     end,
     weight = 0.66,
-    cost = 14,
+    cost = 10,
     kind = "VisibilityPack",
 
     create_card = function(self, card, i)
@@ -220,7 +223,7 @@ SMODS.Booster{
         return { vars = { card.ability.choose, card.ability.extra, colours = { HEX("B4CEFF") } } }
     end,
     weight = 0.66,
-    cost = 4,
+    cost = 6,
     kind = "Divine",
 
     create_card = function(self, card, i)
@@ -257,7 +260,7 @@ SMODS.Booster{
         return { vars = { card.ability.choose, card.ability.extra, colours = { HEX("B4CEFF") } } }
     end,
     weight = 0.66,
-    cost = 4,
+    cost = 8,
     kind = "Divine",
 
     create_card = function(self, card, i)

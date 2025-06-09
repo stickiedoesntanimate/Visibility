@@ -72,4 +72,12 @@ SMODS.Joker {
             }
         end
 	end,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_no_suit(playing_card) and SMODS.has_no_rank(playing_card) then
+                return true
+            end
+        end
+        return false
+    end
 }

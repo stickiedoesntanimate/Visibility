@@ -2,6 +2,8 @@ SMODS.Joker {
     key = "poker_face",
     blueprint_compat = true,
     perishable_compat = false,
+    unlocked = true,
+    discovered = true,
     rarity = 3,
     cost = 8,
     pools = { ["Visibility"] = true },

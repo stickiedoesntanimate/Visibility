@@ -45,13 +45,33 @@ local joker_list = {
     "party_noob"
 }
 
+-- There's probably a better way to do this, but I have no idea.
+local consumables_list = {
+    "tarot/constant",
+    "tarot/crystal_ball",
+    "tarot/echo",
+    "tarot/future",
+    "tarot/mint",
+    "tarot/shore",
+    "tarot/slate",
+    "tarot/weakness",
+    "spectral/calamity",
+    "spectral/chaos",
+    "spectral/denial",
+    "spectral/desideratum",
+    "spectral/hamsa",
+    "spectral/mortal",
+    "spectral/pact",
+    "spectral/spire",
+    "spectral/vault",
+}
+
 SMODS.current_mod.optional_features = {
     retrigger_joker = true,
 }
 
 assert(SMODS.load_file('src/textures.lua'))()
 assert(SMODS.load_file('src/blinds.lua'))()
-assert(SMODS.load_file('src/consumables.lua'))()
 assert(SMODS.load_file('src/enhancements.lua'))()
 assert(SMODS.load_file('src/vouchers.lua'))()
 assert(SMODS.load_file('src/backs.lua'))()
@@ -67,6 +87,10 @@ for _, joker in ipairs(joker_list) do
     assert(SMODS.load_file(joker_path))()
 end
 
+for _, consumable in ipairs(consumables_list) do
+    local consumable_path = 'src/consumables/' .. consumable .. '.lua'
+    assert(SMODS.load_file(consumable_path))()
+end
 
 ----------------------------------------------
 ------------MOD CODE END----------------------

@@ -1,5 +1,27 @@
 return {
     descriptions = {
+        Mod = {
+            VISIBILITY = {
+                name = "Visibility",
+                text = {
+                    "A vanilla(-ish) styled Balatro Mod!",
+                    " ",
+                    "Main Programmer: GunnableScum",
+                    "Secondary Programmer: InvisibleSides {C:inactive}(He's trying, okay?)",
+                    "Art: Monachrome",
+                    " ",
+                    "Guest Artists:",
+                    "- WarpedCloset",
+                    "- StickieAnimates",
+                    "- SadCube",
+                    " ",
+                    "Idea Contributors:",
+                    "- One Punch Idiot",
+                    "- LegEatherHK",
+                    "- WarpedCloset"
+                }
+            }
+        },
         Back={},
         Blind={},
         Edition={},
@@ -448,9 +470,9 @@ return {
             c_vis_calamity = {
                 name = "Calamity",
                 text = {
-                    "Selected Joker gets {C:attention}pinned{} to the left",
-                    "and gains {C:dark_edition}Foil{}, {C:dark_edition}Holographic{} or {C:dark_edition}Polychrome{}",
-                    "edition"
+                    "{C:attention}#1#{} selected Joker gets {C:attention}pinned{} to the left",
+                    "and gains {C:dark_edition}Foil{}, {C:dark_edition}Holographic{} or",
+                    "{C:dark_edition}Polychrome{} edition"
                 }
             },
             c_vis_chaos = {

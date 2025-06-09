@@ -86,6 +86,8 @@ true
 
 SMODS.Joker {
     key = "living_card",
+    discovered = true,
+    unlocked = true,
     blueprint_compat = false,
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',

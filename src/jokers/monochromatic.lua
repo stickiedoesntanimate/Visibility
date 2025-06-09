@@ -2,7 +2,7 @@
 SMODS.Joker {
 	key = 'monochromatic_joker',
 	config = { extra = { odds = 8 } },
-	rarity = 1,
+	rarity = 2,
 	discovered = true,
 	unlocked = true,
 	blueprint_compat = true,

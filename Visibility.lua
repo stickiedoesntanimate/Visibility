@@ -42,7 +42,8 @@ local joker_list = {
     "forged",
     "carnation",
     "totem", 
-    "party_noob"
+    "party_noob",
+    "golbo"
 }
 
 -- There's probably a better way to do this, but I have no idea.
@@ -77,10 +78,11 @@ assert(SMODS.load_file('src/enhancements.lua'))()
 assert(SMODS.load_file('src/vouchers.lua'))()
 assert(SMODS.load_file('src/backs.lua'))()
 assert(SMODS.load_file('src/hooks.lua'))()
---assert(SMODS.load_file('src/seals.lua'))()
+assert(SMODS.load_file('src/seals.lua'))()
 assert(SMODS.load_file('src/boosters.lua'))()
 assert(SMODS.load_file('src/objecttypes.lua'))()
 assert(SMODS.load_file('src/hands.lua'))()
+--assert(SMODS.load_file('src/sticker.lua'))()
 assert(SMODS.load_file('src/tags.lua'))()
 
 for _, joker in ipairs(joker_list) do

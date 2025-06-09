@@ -93,6 +93,14 @@ return {
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
                 }
             },
+            j_vis_golbo = {
+                name="Golbo",
+                text={
+                    "Create a {V:1}Divine{} card",
+                    "when {C:attention}Blind{} is selected",
+                    "{C:inactive}(Must have room)",
+                },
+            },
             j_vis_party_noob = {
                 name = "Party Noob",
                 text = {
@@ -122,7 +130,6 @@ return {
                     "is {C:attention}retriggered #1#{} times",
                     "when scored",
                     "{s:0.8}Card changes every round",
-                    "{s:0.8}synergizes with {C:attention,s:0.8}The Idol{}",
                 },
             },
             j_vis_unemployed = {
@@ -738,6 +745,7 @@ return {
             k_shuffle = "Shuffled!",
             k_restock = "Restocked!",
             k_plus_plastic = "+1 Plastic",
+            k_plus_divine = "+1 Divine",
             k_edition_negative = "Subtraction!",
             k_meteor="Meteorite",
             k_space_rock="Space Rock",

@@ -7,10 +7,12 @@ SMODS.Consumable {
     unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 8, y = 2 },
+    config = { extra = { max = 1 } },
     loc_vars = function (self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.e_foil
         info_queue[#info_queue+1] = G.P_CENTERS.e_holo
         info_queue[#info_queue+1] = G.P_CENTERS.e_polychrome
+        return { vars = { card.ability.extra.max } }
     end,
     use = function(self)
         G.E_MANAGER:add_event(Event({
@@ -32,6 +34,6 @@ SMODS.Consumable {
         delay(0.6)
     end,
     can_use = function(self, card)
-        return #G.jokers.highlighted == 1
+        return #G.jokers.highlighted == card.ability.extra.max
     end,
 }

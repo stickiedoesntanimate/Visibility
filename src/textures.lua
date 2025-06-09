@@ -47,6 +47,13 @@ SMODS.Atlas {
 }
 
 SMODS.Atlas {
+	key = "TextureAtlasStickers",
+	path = "TextureAtlasStickers.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas {
 	key = "TextureAtlasTags",
 	path = "TextureAtlasTags.png",
 	px = 34,

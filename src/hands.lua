@@ -1,6 +1,6 @@
 SMODS.PokerHand {
     key = 'industrialization',
-    visible = false,
+    visible = true,
     chips = 5,
     mult = 25,
     l_chips = 5,
@@ -89,8 +89,7 @@ end
 SMODS.Consumable {
     set = 'Planet',
     key = 'impactor',
-    --! `h_` prefix was removed
-    config = { hand_type = 'vis_industrialization' },
+    config = { hand_type = 'vis_industrialization', softlock = true },
     pos = { x = 0, y = 4 },
     atlas = 'TextureAtlasConsumables',
     discovered = true,
@@ -104,8 +103,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     set = 'Planet',
     key = 'arrokoth',
-    --! `h_` prefix was removed
-    config = { hand_type = 'vis_heavyweight' },
+    config = { hand_type = 'vis_heavyweight', softlock = true },
     pos = { x = 1, y = 4 },
     atlas = 'TextureAtlasConsumables',
     discovered = true,

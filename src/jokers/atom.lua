@@ -4,6 +4,7 @@ SMODS.Joker {
     rarity = 1,
     unlocked = true,
     discovered = true,
+    blueprint_compat = true,
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
     pos = { x = 0, y = 3 },
@@ -19,12 +20,7 @@ SMODS.Joker {
         end
     end,
     add_to_deck = function (self, card, from_debuff)
-        local _atoms = { card }
-        for k, v in pairs(G.jokers.cards) do
-            if v.label == "j_vis_atom" then
-                _atoms[#_atoms + 1] = v
-            end
-        end
+        local _atoms = SMODS.find_card("j_vis_atom", true)
         if #_atoms >= 2 then
             for k, v in pairs(_atoms) do
                 v:remove_from_deck()

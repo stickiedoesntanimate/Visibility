@@ -9,7 +9,7 @@ SMODS.Joker {
     pools = { ["Visibility"] = true },
     atlas = "TextureAtlasJokers",
     pos = { x = 5, y = 2 },
-    config = { extra = { previous_joker = nil, last_debuffed = nil } },
+    config = { extra = { previous_joker = nil } },
     loc_vars = function(self, info_queue, card)
         return { vars = {  } }
     end,
@@ -17,7 +17,7 @@ SMODS.Joker {
         if not G.jokers or not G.jokers.cards then return end
         for i, v in ipairs(G.jokers.cards) do
             if v == card then
-                if i <= 1 then
+                if i == 1 then
                     card.ability.extra.previous_joker = nil
                 else
                     card.ability.extra.previous_joker = G.jokers.cards[i - 1]
@@ -27,59 +27,37 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        if context.before then
-            if card.ability.extra.last_debuffed then
-                if card.ability.extra.previous_joker == card.ability.extra.last_debuffed then
-                    return -- Do not debuff if the last debuffed joker is the same as the previous one
-                end
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        -- Check if last debuffed even has a set_debuff function
-                        if card.ability.extra.last_debuffed.set_debuff then
-                            card.ability.extra.last_debuffed:set_debuff(false)
-                        else
-                            return true
-                        end
-                        card.ability.extra.last_debuffed = nil
-                        return true
-                    end
-                }))
-            end
-        end
         if card.ability.extra.previous_joker then
-            
-            if card.ability.extra.previous_joker.debuff and not card.ability.extra.last_debuffed == card.ability.extra.previous_joker then
-                return -- Do not continue if the previous joker is debuffed and it wasn't alternate
-            end
-
             if context.final_scoring_step then
+                local debuffed = false
                 G.E_MANAGER:add_event(Event({
                     func = function()
-                        card.ability.extra.last_debuffed = card.ability.extra.previous_joker
+                        if card.ability.extra.previous_joker.debuff then return true end
                         card.ability.extra.previous_joker:set_debuff(true)
+                        debuffed = true
                         return true
                     end
                 }))
+                if not debuffed then return end
+                return {
+                    message = "Nothing is worth the risk.",
+                    card = card.ability.extra.previous_joker,
+                }
             end
             if card.ability.extra.previous_joker.config.center.blueprint_compat then
                 return SMODS.blueprint_effect(card, card.ability.extra.previous_joker, context)
+            else
+                print(card.ability.extra.previous_joker.label..": Nuh uh")
             end
         end
     end,
     remove_from_deck = function (self, card, from_debuff)
-        if card.ability.extra.last_debuffed then
-            if card.ability.extra.previous_joker == card.ability.extra.last_debuffed then
-                return -- Do not debuff if the last debuffed joker is the same as the previous one
-            end
+        if card.ability.extra.previous_joker then
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    -- Check if last debuffed even has a set_debuff function
-                    if card.ability.extra.last_debuffed.set_debuff then
-                        card.ability.extra.last_debuffed:set_debuff(false)
-                    else
-                        return true
+                    if card.ability.extra.previous_joker.set_debuff then
+                        card.ability.extra.previous_joker:set_debuff(false)
                     end
-                    card.ability.extra.last_debuffed = nil
                     return true
                 end
             }))

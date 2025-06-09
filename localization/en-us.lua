@@ -41,7 +41,7 @@ return {
                 }
             },
             b_vis_heavenly = {
-                name = "Hevenly Deck",
+                name = "Heavenly Deck",
                 text = {
                     "Start run with the",
                     "{V:1,T:v_vis_divine_merchant}#1#{} voucher",
@@ -254,9 +254,9 @@ return {
             j_vis_alternate = {
                 name = "Alternate",
                 text = {
-                    "{C:attention}Copies{} the abillity of",
-                    "the joker to the right, but it is",
-                    "{C:mult}debuffed{} until you change the Joker it's copying",
+                    "{C:attention}Copies{} the ability of",
+                    "the joker to the left, but it is",
+                    "{C:mult}debuffed{} until the end of the round",
                 }
             },
             j_vis_poker_face = {

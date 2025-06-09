@@ -668,6 +668,13 @@ return {
                     "shop are {C:spectral}Spectral{}",
                 },
             },
+            tag_vis_black_market = {
+                name="Black Market Tag",
+                text={
+                    "Gives a free",
+                    "{C:attention}Jumbo Black Market Pack",
+                },
+            },
             tag_vis_divine = {
                 name="Divine Tag",
                 text={

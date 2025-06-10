@@ -33,7 +33,7 @@ SMODS.Seal {
         if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and pseudorandom('wooden') < G.GAME.probabilities.normal / card.ability.seal.extra.odds then
             return { remove = true }
         end
-        if context.main_scoring then
+        if context.main_scoring and context.cardarea == G.play then
             return {
                 x_mult = card.ability.seal.extra.x_mult,
             }

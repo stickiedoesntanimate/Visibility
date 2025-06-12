@@ -91,7 +91,7 @@ function SMODS.calculate_card_areas(_type, context, return_table, args)
 	if not context.after and not context.setting_blind then return flags end
 	for _, _card in ipairs(G.jokers.cards) do
 		local is_delirious = _card.ability.vis_is_delirious
-		if not is_delirious then return flags end
+		if not is_delirious then goto continue end
 		G.E_MANAGER:add_event(Event({
 			trigger = 'after',
 			delay = 0.35,
@@ -100,6 +100,7 @@ function SMODS.calculate_card_areas(_type, context, return_table, args)
 				return true
 			end
 		}))
+		::continue::
 	end
 	return flags
 end

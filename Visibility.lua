@@ -43,7 +43,8 @@ local joker_list = {
     "carnation",
     "totem", 
     "party_noob",
-    "golbo"
+    "golbo",
+    "delirious" -- Works mostly, known issue: Texture disappears when loading the run
 }
 
 -- There's probably a better way to do this, but I have no idea.

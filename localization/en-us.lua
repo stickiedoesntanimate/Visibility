@@ -101,6 +101,15 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
+            j_vis_delirious = {
+                name="Delirious",
+                text={
+                    "Becomes a random",
+                    "{C:red}Rare{} Joker after",
+                    "each hand",
+                    "{C:inactive}(Photograph included)"
+                },
+            },
             j_vis_party_noob = {
                 name = "Party Noob",
                 text = {
@@ -773,6 +782,22 @@ return {
                     "{V:1}Divine{} cards appear",
                     "{C:attention}#1#X{} more frequently",
                     "in the shop",
+                },
+            },
+            v_vis_stacked_odds = {
+                name = "Stacked Odds",
+                text={
+                    "Doubles all {C:attention}listed",
+                    "{C:green,E:1,S:1.1}probabilities",
+                    "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
+                },
+            },
+            v_vis_lady_lucks = {
+                name = "Luck be a Lady",
+                text={
+                    "Doubles all {C:attention}listed",
+                    "{C:green,E:1,S:1.1}probabilities",
+                    "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
                 },
             },
         },

@@ -28,3 +28,19 @@ function set_consumeable_usage(card)
     end
     G:save_settings()
 end
+
+-- Bugfix for Ankh in Black Market Pack
+local cu = Card.check_use
+function Card:check_use()
+    if self.ability.name == "Ankh" and G.pack_cards and G.pack_cards.cards then
+        for _, v in ipairs(G.pack_cards.cards) do
+            if v == self then
+                return false
+            end
+        end
+    end
+    
+    local ret = cu(self)
+    return ret
+end
+

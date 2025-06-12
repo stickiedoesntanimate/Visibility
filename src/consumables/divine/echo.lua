@@ -8,33 +8,35 @@ SMODS.Consumable {
     pos = { x = 4, y = 0 },
     config = { },
     can_use = function (self, card)
-        local all_jokers_unperishable = true
+        local has_valid_joker = false
         if G.jokers and #G.jokers.cards > 0 then
             for _, joker in ipairs(G.jokers.cards) do
                 if joker.config.center.perishable_compat then
-                    all_jokers_unperishable = false
+                    has_valid_joker = true
                     break
                 end
             end
         end
-        return G.jokers and ((#G.jokers.cards < G.jokers.config.card_limit) and (#G.jokers.cards > 0)) and not all_jokers_unperishable
+        return G.jokers and ((#G.jokers.cards < G.jokers.config.card_limit) and (#G.jokers.cards > 0)) and has_valid_joker
     end,
     use = function (self, card, area, copier)
-        local _perishable = {}
-        if G.jokers and #G.jokers.cards > 0 then
-            for _, joker in ipairs(G.jokers.cards) do
-                if joker.config.center.perishable_compat then
-                    _perishable[#_perishable + 1] = joker
-                    break
-                end
+        local valid_jokers = {}
+        for _, joker in ipairs(G.jokers.cards) do
+            if joker.config.center.perishable_compat then
+                table.insert(valid_jokers, joker)
             end
         end
-        local random_joker = pseudorandom_element(_perishable, pseudoseed('echo'))
+        local random_joker = pseudorandom_element(valid_jokers, pseudoseed('echo'))
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.15,
             func = function()
                 local copy = copy_card(random_joker)
+                if copy.set_eternal then
+                    copy:set_eternal(false)
+                else
+                    copy.eternal = false 
+                end
                 copy:set_perishable(true)
                 copy.ability.perish_tally = 1
                 copy:add_to_deck()

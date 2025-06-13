@@ -237,6 +237,14 @@ return {
                     "Balance {C:mult}Mult{} and {C:chips}Chips{} by {C:attention}#1#%{}",
                 }
             },
+            j_vis_conspiracy = {
+                name = "Conspiracy Theorist",
+                text = {
+                    "{C:green}#1# in #2#{} chance",
+                    "to balance out the current",
+                    "{C:mult}Mult{} and {C:chips}Chips{}"
+                }
+            },
             j_vis_gambling_addict = {
                 name = "Gambling Addict",
                 text = {

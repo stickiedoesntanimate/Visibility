@@ -21,9 +21,8 @@ SMODS.Blind {
             'Visibility Jokers',
         }
     },
-    boss_colour = HEX('eb4bf8'),
-    blindcolor = "eb4bf8",
     boss = { showdown = true },
+    boss_colour = HEX('eb4bf8'),
     recalc_debuff = function(self, card)
         for i = 1, #G.jokers.cards do
             if not G.GAME.blind.disabled and G.jokers.cards[i].config.center.pools and G.jokers.cards[i].config.center.pools.Visibility then
@@ -56,11 +55,11 @@ SMODS.Blind {
     },
     key = "boss_flip",
     dollars = 5,
-    mult = 1.5,
+    mult = 3,
+    boss = { min = 4 },
+    boss_colour = HEX('177CAD'),
     atlas = 'TextureAtlasBlinds',
     pos = {x=0, y=1},
-    boss = { showdown = true },
-    boss_colour = HEX('177cad'),
     loc_vars = function(self)
         return { vars = { localize(G.GAME.current_round.most_played_poker_hand, 'poker_hands') } }
     end,

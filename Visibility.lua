@@ -46,6 +46,8 @@ local joker_list = {
     "golbo",
     "conspiracy",
     "minuteman",
+    "9_ball",
+    "handicap_parking",
     "delirious", -- Works mostly, known issue: Texture disappears when loading the run
 }
 

@@ -244,6 +244,15 @@ return {
                     "first played hand"
                 }
             },
+            j_vis_9_ball = {
+                name = "9 Ball",
+                text = {
+                    "{C:green}#1# in #2#{} chance for each",
+                    "played {C:attention}9{} to create a",
+                    "{V:1}Divine{} card when scored",
+                    "{C:inactive}(Must have room)",
+                },
+            },
             j_vis_conspiracy = {
                 name = "Conspiracy Theorist",
                 text = {
@@ -431,6 +440,15 @@ return {
                     "{C:attention}booster packs{} in the shop when {C:green}rerolling{}",
                 },
             },
+            j_vis_handicap_parking = {
+                name = "Handicap Parking",
+                text = {
+                    "Each empty {C:attention}Joker{} slot",
+                    "has a {C:green}#3# in #4#{} chance",
+                    "to give {C:money}$#1#{}",
+                },
+            },
+
             j_vis_middle_of_nowhere = {
                 name = "Middle of Nowhere",
                 text = {

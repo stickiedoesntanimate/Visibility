@@ -237,6 +237,13 @@ return {
                     "Balance {C:mult}Mult{} and {C:chips}Chips{} by {C:attention}#1#%{}",
                 }
             },
+            j_vis_minuteman = {
+                name = "Minuteman",
+                text = {
+                    "{C:mult}+#1#{} {C:mult}Mult{} on your",
+                    "first played hand"
+                }
+            },
             j_vis_conspiracy = {
                 name = "Conspiracy Theorist",
                 text = {

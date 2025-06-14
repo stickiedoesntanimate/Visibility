@@ -159,6 +159,14 @@ return {
                     "{C:inactive}(Currently: {X:mult,C:white}X#4#{} {C:inactive}Mult)",
                 }
             },
+            j_vis_blackbeard = {
+                name = "Blackbeard",
+                text = {
+                    "Gains {X:mult,C:white}X#1#{} Mult for {C:gold}Dollar",
+                    "of {C:attention}sell value{} on your consumables",
+                    "{C:inactive}(Currently: {X:mult,C:white}X#2#{} {C:inactive}Mult)",
+                }
+            },
             j_vis_garrab = {
                 name = "Garrab",
                 text = {

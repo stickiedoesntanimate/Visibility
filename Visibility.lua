@@ -63,6 +63,7 @@ local consumables_list = {
     "divine/shore",
     "divine/slate",
     "divine/weakness",
+    "divine/mandela",
     "spectral/calamity",
     "spectral/chaos",
     "spectral/denial",

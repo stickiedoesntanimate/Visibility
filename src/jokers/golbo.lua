@@ -7,6 +7,10 @@ SMODS.Joker {
     rarity = 2,
     cost = 6,
     pos = { x = 9, y = 3 },
+    credits = {
+        idea = "Monachrome",
+        art = "SadCube"
+    },
     pools = { ["Visibility"] = true },
     loc_vars = function (self, info_queue, card)
         return { vars = { colours = { G.C.SET.Divine } } }

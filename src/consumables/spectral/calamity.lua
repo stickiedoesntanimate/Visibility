@@ -7,6 +7,10 @@ SMODS.Consumable {
     unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 8, y = 2 },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+    },
     config = { extra = { max = 1 } },
     loc_vars = function (self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.e_foil

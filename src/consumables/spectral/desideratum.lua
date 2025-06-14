@@ -8,6 +8,10 @@ SMODS.Consumable {
     pools = { ["c_Visibility"] = true },
     pos = { x = 7, y = 2 },
     config = { extra = { level_downs = 2 } },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+    },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_TAGS['tag_vis_foresight']
         return { vars = { card.ability.extra.level_downs, localize(G.GAME.current_round.most_played_poker_hand, 'poker_hands'), G.GAME.hands[G.GAME.current_round.most_played_poker_hand].level } }

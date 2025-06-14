@@ -7,6 +7,10 @@ SMODS.Consumable {
     pools = { ["c_Visibility"] = true },
     pos = { x = 5, y = 0 },
     config = { extra = { e_money = 8, en_money = 2, seal_money = 4, current = 0 } },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+    },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.e_money, card.ability.extra.seal_money, card.ability.extra.en_money, card.ability.extra.current } }
     end,

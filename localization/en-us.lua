@@ -14,11 +14,10 @@ return {
                     "- WarpedCloset",
                     "- StickieAnimates",
                     "- SadCube",
-                    "(Credits will be added to each card later, but for the demo this shall suffice)",
                     " ",
                     "Idea Contributors:",
                     "- One Punch Idiot",
-                    "- LegEatherHK",
+                    "- LegEaterHK",
                     "- WarpedCloset"
                 }
             }
@@ -603,7 +602,7 @@ return {
                 name = "Indigo Seal",
                 text = {
                     "Create a {C:spectral}Spectral{} card",
-                    "after this card is played {C:attention}#1#{} times",
+                    "after this card is played {C:attention}#4#{} times",
                     "{C:green}#1# in #2#{} chance to {C:red}self destruct{}",
                     "every time this card is played",
                     "{C:inactive}(Currently: {C:attention}#3#{C:inactive}/{C:attention}#4#{C:inactive})",
@@ -784,6 +783,14 @@ return {
                     "{s:0.7,C:inactive}(Currently {s:0.7,C:gold}$#4#{s:0.7,C:inactive})"
                 }
             },
+            c_vis_mandela = {
+                name = "Mandela",
+                text = {
+                    "Add an {V:1}Indigo Seal{}",
+                    "to {C:attention}1{} selected",
+                    "card in your hand",
+                }
+            },
         },
         Stake={},
         Tag={
@@ -907,6 +914,10 @@ return {
             k_plus_x_tarot="+#1# Tarot",
             k_pbalanced = "Balanced by #1#%",
             k_seal_rounds="#1#/#2#",
+            vis_art = "Art by: #1#",
+            vis_remix = "Art Remixed by: #1#",
+            vis_semi_remix = "Some Art Remixed by: #1#",
+            vis_idea = "Idea by: #1#",
         },
         v_text={},
     },

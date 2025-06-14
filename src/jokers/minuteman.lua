@@ -7,6 +7,10 @@ SMODS.Joker {
     cost = 8,
     atlas = "TextureAtlasJokers",
     config = { extra = { mult = 20 }, },
+    credits = {
+        idea = "WarpedCloset",
+        remix = "Monachrome"
+    },
     pos = { x = 1, y = 5 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.mult } }

@@ -8,6 +8,10 @@ SMODS.Joker {
     pools = { ["Visibility"] = true },
     atlas = "TextureAtlasJokers",
     pos = { x = 9, y = 0 },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+    },
     config = { },
     calculate = function(self, card, context)
         if context.selling_card and context.card == card then

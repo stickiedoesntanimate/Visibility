@@ -45,6 +45,10 @@ SMODS.Seal {
     key = "mitosis",
     atlas = "TextureAtlasSeals",
     pos = { x = 2, y = 0 },
+    credits = {
+        idea = "Monachrome",
+        art = "SadCube"
+    },
     config = {  },
     badge_colour = HEX('DC6094'),
     calculate = function(self, card, context)
@@ -84,6 +88,10 @@ SMODS.Seal {
     key = "indigo",
     atlas = "TextureAtlasSeals",
     pos = { x = 3, y = 0 },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset"
+    },
     config = { extra = { rounds = 0, needed = 4, odds = 8 } },
     badge_colour = HEX('514CDB'),
     loc_vars = function(self, info_queue, card)

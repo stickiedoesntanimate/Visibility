@@ -7,6 +7,10 @@ SMODS.Consumable {
     unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 5, y = 2 },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+    },
     loc_vars = function(self, info_queue, card)
         -- This vanilla variable only checks for vanilla Tarots and Planets, you would have to keep track on your own for any custom consumables
         local pact_c = G.GAME.last_spectral and G.P_CENTERS[G.GAME.last_spectral] or nil

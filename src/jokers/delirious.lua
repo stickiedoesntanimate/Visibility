@@ -9,6 +9,11 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	atlas = "TextureAtlasJokers",
 	pos = { x = 9, y = 4 },
+	credits = {
+        idea = "StickieAnimates",
+        art = "StickieAnimates",
+		semi_remix = "Monachrome",
+    },
 	cost = 6
 }
 

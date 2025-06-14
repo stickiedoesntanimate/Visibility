@@ -583,6 +583,16 @@ return {
                     "{C:attention}retriggers{} this card instead",
                 },
             },
+            vis_indigo_seal = {
+                name = "Indigo Seal",
+                text = {
+                    "Create a {C:spectral}Spectral{} card",
+                    "after this card is played {C:attention}#1#{} times",
+                    "{C:green}#1# in #2#{} chance to {C:red}self destruct{}",
+                    "every time this card is played",
+                    "{C:inactive}(Currently: {C:attention}#3#{C:inactive}/{C:attention}#4#{C:inactive})",
+                },
+            },
         },
         Planet={
             c_vis_impactor={
@@ -862,6 +872,7 @@ return {
             vis_bronze_seal = "Bronze Seal",
             vis_wooden_seal = "Wooden Seal",
             vis_mitosis_seal = "Mitosis Seal",
+            vis_indigo_seal = "Indigo Seal",
         },
         poker_hand_descriptions={
             ["vis_industrialization"] = {'Five Brick Cards'},
@@ -878,7 +889,8 @@ return {
         tutorial={},
         v_dictionary={
             k_plus_x_tarot="+#1# Tarot",
-            k_pbalanced = "Balanced by #1#%"
+            k_pbalanced = "Balanced by #1#%",
+            k_seal_rounds="#1#/#2#",
         },
         v_text={},
     },

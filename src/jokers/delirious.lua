@@ -126,8 +126,7 @@ function end_round()
 	for _, _card in ipairs(G.jokers.cards) do
 		if not _card.ability.vis_is_delirious then goto continue end
 		if _card.ability.x_mult then _card.ability.vis_saved = _card.ability.x_mult end
-		_card:set_ability(G.P_CENTERS["j_vis_delirious"])
-		change_delirious_texture(_card, true)
+		do_the_tony_hawk(_card, "j_vis_delirious")
 		::continue::
 	end
 end
@@ -138,9 +137,40 @@ function change_joker(card)
 	if card.label == "Obelisk" then 
 		card.ability.vis_saved = card.ability.x_mult
 	end
-	card:set_ability(G.P_CENTERS[random_joker])
+	do_the_tony_hawk(card, random_joker)
 	if random_joker == "j_obelisk" then
 		card.ability.x_mult = card.ability.vis_saved or 2
 	end
-	change_delirious_texture(card, false)
+end
+
+function do_the_tony_hawk(card, joker_to_set)
+	G.E_MANAGER:add_event(Event({
+		trigger = 'after',
+		delay = 0.15,
+		func = function()
+			play_sound('tarot1')
+			card:flip()
+			card:juice_up(0.3, 0.3)
+			return true
+		end
+	}))
+	G.E_MANAGER:add_event(Event({
+		trigger = 'after',
+		delay = 0.3,
+		func = function()
+			card:set_ability(G.P_CENTERS[joker_to_set])
+			change_delirious_texture(card, joker_to_set == "j_vis_delirious")
+			return true
+		end
+	}))
+	G.E_MANAGER:add_event(Event({
+		trigger = 'after',
+		delay = 0.55,
+		func = function()
+			play_sound('tarot2')
+			card:flip()
+			card:juice_up(0.3, 0.3)
+			return true
+		end
+	}))
 end

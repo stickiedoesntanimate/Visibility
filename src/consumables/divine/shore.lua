@@ -48,9 +48,9 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.15,
             func = function()
+                play_sound('card1')
                 for k, v in pairs(G.hand.cards) do
                     v:flip()
-                    play_sound('card1')
                     v:juice_up(0.3, 0.3)
                 end
                 return true
@@ -86,9 +86,9 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.9,
             func = function()
+                play_sound('tarot2')
                 for k, v in pairs(G.hand.cards) do
                     v:flip()
-                    play_sound('tarot2')
                     v:juice_up(0.3, 0.3)
                 end
                 return true

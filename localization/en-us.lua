@@ -48,6 +48,14 @@ return {
                     "and a {C:spectral,T:c_vis_pact}#2#{}",
                 }
             },
+            b_vis_burnt = {
+                name = "Burnt Deck",
+                text = {
+                    "Upgrade the level of",
+                    "the first {C:attention}discarded",
+                    "poker hand each round",
+                }
+            },
         },
         Blind={},
         Edition={},

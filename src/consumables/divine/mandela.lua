@@ -9,7 +9,12 @@ SMODS.Consumable {
         info_queue[#info_queue+1] = G.P_SEALS[card.ability.extra.seal]
         return { vars = { colours = { HEX("514CDB") } } }
     end,
-    pos = { x = 9, y = 9 }, -- Texture TBD
+    pos = { x = 3, y = 1 },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+        remix = "Monachrome"
+    },
     config = { max_highlighted = 1, extra = { seal = 'vis_indigo' } },
     use = function (self, card, area, copier)
         G.E_MANAGER:add_event(Event({

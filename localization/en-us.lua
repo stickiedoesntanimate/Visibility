@@ -439,6 +439,16 @@ return {
                     "gives {X:chips,C:white} X#1# {} Chips",
                 },
             },
+            j_charlie = {
+                name = "Charlie",
+                text = {
+                    "If {C:attention}poker hand{} is a {C:attention}#1#{},",
+                    "apply a {C:negative}negative edition{}",
+                    "to all {C:attention}played cards{}",
+                    "in that hand",
+                    "{C:inactive}(changes each round)"
+                }
+            },
             j_creamer = {
                 name = "Creamer",
                 text = {

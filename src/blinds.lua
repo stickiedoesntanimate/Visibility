@@ -78,5 +78,33 @@ SMODS.Blind {
         end
     end
 }
+SMODS.Blind {
+    key = "forge",
+    dollars = 5,
+    loc_txt = {
+        name = "The Forge",
+        text = {
+            "Enhanced cards",
+            "are debuffed",
+        },
+    },
+    atlas = 'TextureAtlasBlinds',
+    mult = 2,
+    pos = { x = 0, y = 2 },
+    boss = { min = 4 },
+    boss_colour = HEX("e5c10b"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.debuff_card and context.debuff_card.area ~= G.jokers then
+                local enhancements = SMODS.get_enhancements(context.debuff_card)
+                if enhancements and next(enhancements) then
+                    return {
+                        debuff = true
+                    }
+                end
+            end
+        end
+    end
+}
 
 

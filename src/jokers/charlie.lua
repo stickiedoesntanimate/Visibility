@@ -12,6 +12,10 @@ SMODS.Joker {
                 }
             },
 	unlocked = true,
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+    },
 	blueprint_compat = false,
 	eternal_compat = true,
 	pools = { ["Visibility"] = true },

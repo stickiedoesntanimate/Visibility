@@ -51,6 +51,7 @@ local joker_list = {
     "delirious", -- Works mostly, known issue: Texture disappears when loading the run
     "blackbeard",
     "charlie",
+    "impact_frame",
 }
 
 -- There's probably a better way to do this, but I have no idea.

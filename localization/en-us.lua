@@ -148,6 +148,15 @@ return {
                     "{s:0.8}Card changes every round",
                 },
             },
+            j_vis_impact_frame = {
+                name = "Impact Frame",
+                text = {
+                    "Each played {C:attention}#2#{} of {V:1}#3#",
+                    "gives {C:mult}+#1#{} Mult",
+                    "when scored",
+                    "{s:0.8}Card changes every round",
+                },
+            },
             j_vis_unemployed = {
                 name = "Unemployed Joker",
                 text = {

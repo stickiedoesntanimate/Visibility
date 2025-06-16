@@ -52,6 +52,7 @@ local joker_list = {
     "blackbeard",
     "charlie",
     "impact_frame",
+    "russian_roulette",
 }
 
 -- There's probably a better way to do this, but I have no idea.

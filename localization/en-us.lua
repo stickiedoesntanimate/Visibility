@@ -296,6 +296,14 @@ return {
                     "lose {C:gold}$#6#{} for every hand played"
                 }
             },
+            j_vis_russian_roulette = {
+                name = "Russian Roulette Doog",
+                text = {
+                    "{C:diamonds}1 in 6{} chance for",
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "{C:inactive}(odds cant be increased)"
+                }
+            },
             j_vis_sd_card = {
                 name = "Standard SD Card",
                 text = {

@@ -53,6 +53,7 @@ local joker_list = {
     "charlie",
     "impact_frame",
     "russian_roulette",
+    "plastic_joker",
 }
 
 -- There's probably a better way to do this, but I have no idea.

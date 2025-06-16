@@ -7,6 +7,10 @@ SMODS.Joker {
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
     pos = { x = 8, y = 5 },
+    credits = {
+        art = "WarpedCloset",
+        remix = "Monachrome"
+    },
     cost = 1,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.x_mult } }

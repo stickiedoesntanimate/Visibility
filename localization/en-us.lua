@@ -296,8 +296,17 @@ return {
                     "lose {C:gold}$#6#{} for every hand played"
                 }
             },
+            j_vis_plastic_joker = {
+                name = "Plastic Joker",
+                text = {
+                    "Gives {X:chips,C:white} X#1# {} Chips",
+                    "for each {C:attention}Plastic Card",
+                    "in your {C:attention}full deck",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Chips)",
+                },
+            },
             j_vis_russian_roulette = {
-                name = "Russian Roulette Doog",
+                name = "Dogs Playing Russian Roulette",
                 text = {
                     "{C:diamonds}1 in 6{} chance for",
                     "{X:mult,C:white}X#1#{} Mult",

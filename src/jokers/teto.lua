@@ -1,7 +1,7 @@
 SMODS.Joker {
 	key = 'teto',
 	config = { extra = { triggered = false } },
-	rarity = 1,
+	rarity = 2,
 	discovered = true,
 	unlocked = true,
 	blueprint_compat = true,

@@ -9,7 +9,6 @@ SMODS.ObjectType({
 	inject = function(self)
 		SMODS.ObjectType.inject(self)
 		-- insert base game food jokers
-		-- egg is not present here on purpose
 		self:inject_card(G.P_CENTERS.j_gros_michel)
 		self:inject_card(G.P_CENTERS.j_ice_cream)
 		self:inject_card(G.P_CENTERS.j_cavendish)
@@ -18,6 +17,7 @@ SMODS.ObjectType({
 		self:inject_card(G.P_CENTERS.j_popcorn)
 		self:inject_card(G.P_CENTERS.j_ramen)
 		self:inject_card(G.P_CENTERS.j_selzer)
+		self:inject_card(G.P_CENTERS.j_egg)
 	end,
 })
 

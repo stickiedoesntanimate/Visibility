@@ -1,6 +1,6 @@
 SMODS.Joker {
     key = "russian_roulette",
-    config = { extra = { x_mult = 6 }},
+    config = { extra = { odds = 6, x_mult = 6 }},
     rarity = 2,
     unlocked = true,
     discovered = true,
@@ -13,12 +13,12 @@ SMODS.Joker {
     },
     cost = 1,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.x_mult } }
+        return { vars = { 1, card.ability.extra.odds, card.ability.extra.x_mult } }
     end,
     calculate = function(self, card, context)
         if not context.joker_main then return end 
-         local roll = math.random(1, 6)
-        if roll == 6 then
+        local roll = pseudorandom("russian_roulette")
+        if roll < 1 / card.ability.extra.odds then
             return { x_mult = card.ability.extra.x_mult }
         end
     end

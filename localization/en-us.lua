@@ -161,7 +161,7 @@ return {
                 name = "Unemployed Joker",
                 text = {
                     "Spawns a {C:dark_edition}negative{} food Joker",
-                    "with {C:gold}$-1{} sell value that",
+                    "with {C:gold}$-5{} sell value that",
                     "is {C:mult}destroyed{} at the end of the round",
                 }
             },
@@ -308,8 +308,8 @@ return {
             j_vis_russian_roulette = {
                 name = "Dogs Playing Russian Roulette",
                 text = {
-                    "{C:diamonds}1 in 6{} chance for",
-                    "{X:mult,C:white}X#1#{} Mult",
+                    "{C:diamonds}#1# in #2#{} chance for",
+                    "{X:mult,C:white}X#3#{} Mult",
                     "{C:inactive}(odds cant be increased)"
                 }
             },

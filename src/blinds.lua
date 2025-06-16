@@ -71,7 +71,7 @@ SMODS.Blind {
             if context.modify_hand then
                 if context.scoring_name == G.GAME.current_round.most_played_poker_hand then
                     blind.triggered = true
-                    mult = -1
+                    mult = 0
                     update_hand_text({ sound = 'debuff1', modded = true }, { mult = mult })
                 end
             end

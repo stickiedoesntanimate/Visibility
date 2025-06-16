@@ -902,6 +902,19 @@ return {
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
                 },
             },
+            v_vis_deadbeat = {
+                name = "Deadbeat",
+                text = {
+                    "Can go up to",
+                    "{C:red}-$20{} in dept"
+                }
+            },
+            v_vis_proficient_scammer = {
+                name = "Proficient Scammer",
+                text = {
+                    ""
+                }
+            },
             v_vis_lady_lucks = {
                 name = "Luck be a Lady",
                 text={

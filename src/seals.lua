@@ -52,7 +52,7 @@ SMODS.Seal {
     config = {  },
     badge_colour = HEX('DC6094'),
     calculate = function(self, card, context)
-        if context.main_scoring and context.full_hand[1] == card then
+        if context.after and context.full_hand[1] == card then
             if #context.full_hand ~= 1 then return end
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
             local copy_card = copy_card(context.full_hand[1], nil, nil, G.playing_card)

@@ -27,7 +27,6 @@ local joker_list = {
 	"j_oops",
 	"j_vagabond",
 	"j_obelisk",
-	"j_invisible",
 
 	"j_photograph",
 }

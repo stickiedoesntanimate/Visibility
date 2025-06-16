@@ -54,6 +54,7 @@ local joker_list = {
     "impact_frame",
     "russian_roulette",
     "plastic_joker",
+    "flat_earth",
 }
 
 -- There's probably a better way to do this, but I have no idea.

@@ -5,7 +5,7 @@ SMODS.Joker {
     discovered = true,
     blueprint_compat = true,
     eternal_compat = true,
-    rarity = 2,
+    rarity = 1,
     cost = 5,
     pools = { ["Visibility"] = true },
     pos = { x = 7, y = 5 },

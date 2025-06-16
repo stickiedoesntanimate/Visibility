@@ -7,7 +7,7 @@ SMODS.Joker {
     atlas = "TextureAtlasJokers",
     credits = {
         idea = "WarpedCloset",
-        art = "WarpedCloset",
+        art = "Monachrome",
     },
     config = { extra = { xchips = 0.2 } },
     loc_vars = function(self, info_queue, card)

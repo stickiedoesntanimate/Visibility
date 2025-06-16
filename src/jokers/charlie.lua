@@ -1,4 +1,4 @@
-SMODS.Joker {
+    SMODS.Joker {
     key = "charlie",
 	discovered = true,
     loc_txt = {
@@ -14,7 +14,7 @@ SMODS.Joker {
 	unlocked = true,
     credits = {
         idea = "WarpedCloset",
-        art = "WarpedCloset",
+        art = "Monachrome",
     },
 	blueprint_compat = false,
 	eternal_compat = true,

@@ -4,12 +4,14 @@ SMODS.Joker {
     rarity = 2,
     unlocked = true,
     discovered = true,
+    blueprint_compat = true,
     pools = { ["Visibility"] = true },
     atlas = 'TextureAtlasJokers',
     pos = { x = 8, y = 5 },
     credits = {
         art = "WarpedCloset",
-        remix = "Monachrome"
+        remix = "Monachrome",
+        developer = true,
     },
     cost = 1,
     loc_vars = function(self, info_queue, card)

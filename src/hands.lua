@@ -1,6 +1,6 @@
 SMODS.PokerHand {
     key = 'industrialization',
-    visible = true,
+    visible = false,
     chips = 5,
     mult = 25,
     l_chips = 5,
@@ -25,7 +25,7 @@ SMODS.PokerHand {
 
 SMODS.PokerHand {
     key = 'heavyweight',
-    visible = true,
+    visible = false,
     chips = 80,
     mult = 6,
     l_chips = 10,

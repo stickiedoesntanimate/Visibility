@@ -328,9 +328,10 @@ return {
             j_vis_flat_earth = {
                 name = "Flat Earth",
                 text = {
-                    "Earn {C:money}$#1#{} at end of",
-                    "round for every {C:attention}Full House{} level",
-                    "{C:inactive}(Currently {C:money}$#3#{C:inactive}, Level {C:attention}#2#{C:inactive})",
+                    "Earn {C:money}$#2#{} at end of",
+                    "round for every {C:attention}#1#{} level",
+                    "{C:inactive}(Currently {C:money}$#4#{C:inactive}, Level {C:attention}#3#{C:inactive})",
+                    "{s:0.7}The Hand picked is your least ranked, least played hand"
                 },
             },
             j_vis_atomic_bomb = {

@@ -325,6 +325,14 @@ return {
                     "{C:attention}+#1#{} consumable slots",
                 }
             },
+            j_vis_flat_earth = {
+                name = "Flat Earth",
+                text = {
+                    "Earn {C:money}$#1#{} at end of",
+                    "round for every {C:attention}Full House{} level",
+                    "{C:inactive}(Currently {C:money}$#3#{C:inactive}, Level {C:attention}#2#{C:inactive})",
+                },
+            },
             j_vis_atomic_bomb = {
                 name = "Atomic Bomb",
                 text = {

@@ -40,11 +40,9 @@ SMODS.Booster{
         for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
             _types[#_types + 1] = v
         end
-        _types[#_types + 1] = "Joker"
         local type = pseudorandom_element(_types, pseudoseed('bmp'))
         return SMODS.create_card({
-            set = "Joker",
-            rarity = "Legendary",
+            set = type,
             area = G.pack_cards,
             skip_materialize = true,
             soulable = true,

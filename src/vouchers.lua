@@ -118,7 +118,7 @@ SMODS.Voucher {
     end
 }
 
-SMODS.Voucher {
+--[[SMODS.Voucher {
     key = 'deadbeat',
     atlas = "TextureAtlasVouchers",
     pos = { x = 3, y = 5 },
@@ -162,4 +162,4 @@ function ease_dollars(mod, instant)
         if G.GAME.blind then
         end
     end
-end
+end]]

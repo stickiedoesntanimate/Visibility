@@ -474,23 +474,12 @@ return {
                     "gives {X:chips,C:white} X#1# {} Chips",
                 },
             },
-            j_charlie = {
+            j_vis_charlie = {
                 name = "Charlie",
                 text = {
-                    "If {C:attention}poker hand{} is a {C:attention}#1#{},",
-                    "apply a {C:negative}negative edition{}",
-                    "to all {C:attention}played cards{}",
-                    "in that hand",
-                    "{C:inactive}(changes each round)"
-                }
-            },
-            j_creamer = {
-                name = "Creamer",
-                text = {
-                    "At the end of the round",
-                    "create a {C:attention}random{} tag",
-                    "gets destroyed after 3 rounds",
-                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#3# rounds)",
+                    "After scoring your first hand,",
+                    "apply {C:dark_edition}negative",
+                    "to a random scored card",
                 }
             },
             j_vis_d20 = {

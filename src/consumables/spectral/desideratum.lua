@@ -10,7 +10,7 @@ SMODS.Consumable {
     config = { extra = { level_downs = 2 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_TAGS['tag_vis_foresight']
-        return { vars = { card.ability.extra.level_downs, localize(G.GAME.current_round.most_played_poker_hand, 'poker_hands'), G.GAME.hands[G.GAME.current_round.most_played_poker_hand].level } }
+        return { vars = { card.ability.extra.level_downs, localize(G.GAME.current_round.most_played_poker_hand, 'poker_hands'), to_big(G.GAME.hands[G.GAME.current_round.most_played_poker_hand].level) } }
     end,
     use = function (self, card, area, copier)
         -- Next shop is guaranteed to be all (initial) spectral cards, 
@@ -30,6 +30,6 @@ SMODS.Consumable {
         delay(0.6)
     end,
     can_use = function (self, card)
-        return G.GAME.hands[G.GAME.current_round.most_played_poker_hand].level - card.ability.extra.level_downs >= 1
+        return to_big(G.GAME.hands[G.GAME.current_round.most_played_poker_hand].level) - to_big(card.ability.extra.level_downs) >= to_big(1)
     end
 }

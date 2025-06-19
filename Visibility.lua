@@ -97,5 +97,10 @@ for _, consumable in ipairs(consumables_list) do
     assert(SMODS.load_file(consumable_path))()
 end
 
+-- BUGFIX for Talisman 
+to_big = to_big or function(num)
+    return num
+end
+
 ----------------------------------------------
 ------------MOD CODE END----------------------

@@ -178,7 +178,7 @@ return {
             j_vis_blackbeard = {
                 name = "Blackbeard",
                 text = {
-                    "Gains {X:mult,C:white}X#1#{} Mult for {C:gold}Dollar",
+                    "Gains {X:mult,C:white}X#1#{} Mult for every {C:gold}Dollar",
                     "of {C:attention}sell value{} on your consumables",
                     "{C:inactive}(Currently: {X:mult,C:white}X#2#{} {C:inactive}Mult)",
                 }
@@ -302,7 +302,7 @@ return {
                     "Gives {X:chips,C:white} X#1# {} Chips",
                     "for each {C:attention}Plastic Card",
                     "in your {C:attention}full deck",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Chips)",
+                    "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)",
                 },
             },
             j_vis_russian_roulette = {
@@ -551,6 +551,14 @@ return {
                     "If played hand contains exactly {C:attention}2{}",
                     "cards, convert the {C:attention}left{} card",
                     "into the {C:attention}right{} card",
+                },
+            },
+            j_vis_playing_piece = {
+                name = "Playing Piece",
+                text = {
+                    "If your hand contains a {C:attention}Flush{}, {C:attention}#1#{} and {C:attention}#2#{},",
+                    "gain a Divine Card",
+                    "{s:0.7}Ranks change every round"
                 },
             },
         },

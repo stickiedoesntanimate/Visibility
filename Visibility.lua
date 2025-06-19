@@ -55,6 +55,7 @@ local joker_list = {
     "russian_roulette",
     "plastic_joker",
     "flat_earth",
+    "playing_piece"
 }
 
 -- There's probably a better way to do this, but I have no idea.

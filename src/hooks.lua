@@ -132,7 +132,6 @@ function SMODS.create_mod_badges(obj, badges)
         end
         for i = 1, #badges do
             if eq_col(badges[i].nodes[1].config.colour, HEX("BDC3C7")) then
-                print("THIS SHIT IS EQUAL")
                 badges[i].nodes[1].nodes[2].config.object:remove()
                 badges[i] = badge
                 break

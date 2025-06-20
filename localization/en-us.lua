@@ -772,6 +772,22 @@ return {
                     "card in your hand",
                 },
             },
+            c_vis_floppy_disk = {
+                name="Floppy Disk",
+                text={
+                    "Creates up to {C:attention}#1#",
+                    "random {C:attention}Consumable{} cards",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_vis_coupon = {
+                name="Coupon",
+                text={
+                    "Your current reroll cost",
+                    "is {C:attention}halved when used",
+                    "{s:0.7,C:inactive}(Minimum {s:0.7,C:gold}$5{s:0.7,C:inactive})",
+                },
+            },
         },
         Divine = {
             c_vis_weakness = {

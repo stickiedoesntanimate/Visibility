@@ -82,7 +82,9 @@ local consumables_list = {
     "spectral/spire",
     "spectral/vault",
     "blackmarket/gum",
-    "blackmarket/nails"
+    "blackmarket/nails",
+    "blackmarket/floppy_disk",
+    "blackmarket/coupon"
 }
 
 SMODS.current_mod.optional_features = {

@@ -11,7 +11,7 @@ SMODS.ConsumableType {
 SMODS.ConsumableType {
     key = 'BlackMarket',
     default = 'c_vis_gum',
-    collection_rows = { 2, 1 },
+    collection_rows = { 2, 2 },
     cards = {},
     shop_rate = 0.0,
     primary_colour = HEX("000000"),

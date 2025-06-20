@@ -7,7 +7,8 @@ SMODS.Consumable {
     unlocked = true,
     pools = { ["c_Visibility"] = true },
     pos = { x = 6, y = 0 },
-    display_size = { w = 71 * 0.5, h = 95 * 0.9 },
+    display_size = { w = 39, h = 95 },
+    pixel_size = { w = 39, h = 95 },
     config = { extra = { seal = 'vis_mitosis' }, max_highlighted = 1 },
     loc_vars = function (self, info_queue, card)
         info_queue[#info_queue+1] = G.P_SEALS[card.ability.extra.seal]

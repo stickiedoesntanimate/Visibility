@@ -24,11 +24,8 @@ local joker_list = {
 	"j_stuntman",
 	"j_ancient",
 	"j_blueprint",
-	"j_oops",
 	"j_vagabond",
 	"j_obelisk",
-
-	"j_photograph",
 }
 
 function change_delirious_texture(card, restore)
@@ -49,9 +46,6 @@ function change_delirious_texture(card, restore)
     card.children.center.states.drag = card.states.drag
     card.children.center.states.collide.can = false
     card.children.center:set_role({major = card, role_type = 'Glued', draw_major = card})
-	if card.config.center.name == "Photograph" and not restore then 
-		card.children.center.scale.y = card.children.center.scale.y/1.2
-	end
 end
 
 SMODS.Joker:take_ownership("dna", {

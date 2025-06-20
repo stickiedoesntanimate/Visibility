@@ -7,10 +7,9 @@ SMODS.Joker {
 	discovered = true,
     pools = { ["Visibility"] = true },
     atlas = "TextureAtlasJokers",
-    pos = { x = 9, y = 9 }, -- Texture TBD
+    pos = { x = 2, y = 6 },
     config = { extra = { rank = { 2, 3 } } },
     loc_vars = function(self, info_queue, card)
-        print("Rank 1: " .. card.ability.extra.rank[1] .. ", Rank 2: " .. card.ability.extra.rank[2])
         return { vars = { localize(tostring(card.ability.extra.rank[1]), 'ranks'), localize(tostring(card.ability.extra.rank[2]), 'ranks') } }
     end,
     credits = {

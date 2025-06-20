@@ -140,3 +140,25 @@ function SMODS.create_mod_badges(obj, badges)
     end
 
 end
+
+-- Graffiti
+local has = SMODS.has_any_suit
+function SMODS.has_any_suit(card)
+    local ret = has(card)
+    if #SMODS.find_card("j_vis_graffiti") < 1 then return ret end 
+    for k, _ in pairs(SMODS.get_enhancements(card)) do
+        if k == 'm_stone' or k == 'm_vis_brick' then return true end
+    end
+    return ret
+end
+
+local hns = SMODS.has_no_suit
+function SMODS.has_no_suit(card)
+    local ret = hns(card)
+    if #SMODS.find_card("j_vis_graffiti") < 1 then return ret end 
+    local is_suitless = false
+    for k, _ in pairs(SMODS.get_enhancements(card)) do
+        if k == 'm_stone' or k == 'm_vis_brick' then is_suitless = true end
+    end
+    return not is_suitless
+end

@@ -100,6 +100,13 @@ return {
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
                 }
             },
+            j_vis_graffiti = {
+                name = "Graffiti",
+                text = {
+                    "All suitless cards count as",
+                    "{C:attention}Wild Cards{}",
+                }
+            },
             j_vis_golbo = {
                 name="Golbo",
                 text={

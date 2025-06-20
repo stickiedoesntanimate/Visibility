@@ -67,7 +67,7 @@ return {
                 }
             },
             m_vis_notebook = {
-                name = "Notebook Page",
+                name = "Notebook Card",
                 text = {
                     "{C:green}#1# in #3#{} chance",
                     "for {C:chips}+#2#{} Chips",
@@ -84,7 +84,7 @@ return {
                 }
             },
             m_vis_table_cloth = {
-                name = "Table Cloth",
+                name = "Table Cloth Card",
                 text = {
                     "{X:chips,C:white}X1.25{} Chips"
                 }
@@ -561,6 +561,13 @@ return {
                     "{s:0.7}Ranks change every round"
                 },
             },
+            j_vis_insomnia = {
+                name = "Insomnia",
+                text = {
+                    "Before scoring, debuff the first card",
+                    "in exchange for {X:mult,C:white}X#1#{} Mult"
+                },
+            },
         },
         Other={
             p_vis_black_market_normal_1 = {
@@ -769,7 +776,7 @@ return {
                 }
             },
             c_vis_mint = {
-                name = 'The Mint',
+                name = 'Mint',
                 text = {
                     "Gives you a {C:attention}quarter{} of all",
                     "{C:chips}+Chips{} cards in your hand as {C:gold}money{}",
@@ -817,7 +824,7 @@ return {
             c_vis_shore = {
                 name = "Shore",
                 text = {
-                    "Remove all {C:attention}additions{} from all cards",
+                    "Remove all {C:attention}modifiers{} from all cards",
                     "in your {C:attention}hand{} and gain",
                     "{C:gold}$#1#{} per removed {C:dark_edition}Edition{},",
                     "{C:gold}$#2#{} per removed {C:blue}Seal{} and",

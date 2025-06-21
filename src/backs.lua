@@ -13,6 +13,20 @@ SMODS.Back({
     end
 })
 
+SMODS.Back {
+    key = "rolling",
+    atlas = "TextureAtlasDecks",
+    pos = { x = 4, y = 0 },
+    config = { vouchers = { 'v_reroll_surplus', "v_reroll_glut" } },
+    loc_vars = function (self, info_queue, card)
+        return { vars = { "Reroll Surplus", "Reroll Glut" } }
+    end,
+    unlocked = true,
+    discovered = true,
+    apply = function(self,back)
+        change_shop_size(-1)
+    end
+}
 
 SMODS.Back {
     key = "gardening",
@@ -53,4 +67,21 @@ SMODS.Back {
     end,
     unlocked = true,
     discovered = true,
+}
+
+SMODS.Back {
+    key = "burnt",
+    atlas = "TextureAtlasDecks",
+    pos = { x = 3, y = 0 },
+    unlocked = true,
+    discovered = true,
+    calculate = function (self, back, context)
+        if context.pre_discard and G.GAME.current_round.discards_used <= 0 and not context.hook then
+            local text, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
+            return {
+                level_up = true,
+                level_up_hand = text
+            }
+        end
+    end
 }

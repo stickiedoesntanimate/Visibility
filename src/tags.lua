@@ -2,6 +2,9 @@ SMODS.Tag {
     key = "foresight",
     atlas = "TextureAtlasTags",
     pos = { x = 0, y = 0 },
+    credits = {
+        idea = "GunnableScum",
+    },
     unlocked = true,
     discovered = true,
     config = { extra = { shop_started = false } },

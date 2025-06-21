@@ -10,6 +10,9 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 1, y = 0 },
+	credits = {
+        developer = true
+    },
 	cost = 7,
 	loc_vars = function(self, info_queue, card)
 	    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative

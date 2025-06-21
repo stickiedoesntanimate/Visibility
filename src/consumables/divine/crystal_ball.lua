@@ -12,9 +12,20 @@ SMODS.Consumable {
     end,
     use = function(self, card, area, copier)
         if pseudorandom('vis_crystal_ball') < G.GAME.probabilities.normal / card.ability.extra.odds then
-            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-					card_to_generate = 'c_soul'
-            G.GAME.consumeable_buffer = 0
+            if G.consumeables.config.card_limit <= #G.consumeables.cards then return end
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    if G.consumeables.config.card_limit > #G.consumeables.cards then
+                        play_sound('timpani')
+                        SMODS.add_card({ set = 'Spectral' })
+                        card:juice_up(0.3, 0.5)
+                    end
+                    return true
+                end
+            }))
+            delay(0.6)
         else
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',

@@ -9,6 +9,9 @@ SMODS.Joker {
 	cost = 8,
 	pos = { x = 6, y = 3 },
 	config = { extra = { } },
+    credits = {
+        idea = "One Punch Idiot"
+    }
 }
 
 -- Hook(s) for Red/Purple seal

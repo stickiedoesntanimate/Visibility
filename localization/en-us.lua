@@ -14,11 +14,10 @@ return {
                     "- WarpedCloset",
                     "- StickieAnimates",
                     "- SadCube",
-                    "(Credits will be added to each card later, but for the demo this shall suffice)",
                     " ",
                     "Idea Contributors:",
                     "- One Punch Idiot",
-                    "- LegEatherHK",
+                    "- LegEaterHK",
                     "- WarpedCloset"
                 }
             }
@@ -48,8 +47,48 @@ return {
                     "and a {C:spectral,T:c_vis_pact}#2#{}",
                 }
             },
+            b_vis_burnt = {
+                name = "Burnt Deck",
+                text = {
+                    "Upgrade the level of",
+                    "the first {C:attention}discarded",
+                    "poker hand each round",
+                }
+            },
+            b_vis_rolling = {
+                name = "Rolling Deck",
+                text = {
+                    "Start run with a",
+                    "{C:attention,T:v_reroll_surplus}#1#{}",
+                    "and a {C:attention,T:v_reroll_glut}#2#{}",
+                    "{C:attention}-1{} Card Slot available",
+                    "in shop"
+                }
+            },
         },
-        Blind={},
+        Blind={
+            bl_vis_forge = {
+                name = "The Forge",
+                text = {
+                    "Enhanced cards",
+                    "are debuffed",
+                },
+            },
+            bl_vis_boss_flip = {
+                name = 'The Flip',
+                text = {
+                    "Playing a #1# sets",
+                    "the starting {C:mult}mult{} to {C:mult}0{}",
+                }
+            },
+            bl_vis_boss_transparent = {
+                name = 'Transparent',
+                text = {
+                    'Debuffs all',
+                    'Visibility Jokers',
+                }
+            },
+        },
         Edition={},
         Enhanced={
             m_vis_brick = {
@@ -60,7 +99,7 @@ return {
                 }
             },
             m_vis_notebook = {
-                name = "Notebook Page",
+                name = "Notebook Card",
                 text = {
                     "{C:green}#1# in #3#{} chance",
                     "for {C:chips}+#2#{} Chips",
@@ -77,7 +116,7 @@ return {
                 }
             },
             m_vis_table_cloth = {
-                name = "Table Cloth",
+                name = "Table Cloth Card",
                 text = {
                     "{X:chips,C:white}X1.25{} Chips"
                 }
@@ -93,12 +132,27 @@ return {
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#)",
                 }
             },
+            j_vis_graffiti = {
+                name = "Graffiti",
+                text = {
+                    "All suitless cards count as",
+                    "{C:attention}Wild Cards{}",
+                }
+            },
             j_vis_golbo = {
                 name="Golbo",
                 text={
                     "Create a {V:1}Divine{} card",
                     "when {C:attention}Blind{} is selected",
                     "{C:inactive}(Must have room)",
+                },
+            },
+            j_vis_delirious = {
+                name = "Delirious",
+                text = {
+                    "Becomes a random",
+                    "{C:red}Rare{} Joker after",
+                    "each hand",
                 },
             },
             j_vis_party_noob = {
@@ -132,11 +186,20 @@ return {
                     "{s:0.8}Card changes every round",
                 },
             },
+            j_vis_impact_frame = {
+                name = "Impact Frame",
+                text = {
+                    "Each played {C:attention}#2#{} of {V:1}#3#",
+                    "gives {C:mult}+#1#{} Mult",
+                    "when scored",
+                    "{s:0.8}Card changes every round",
+                },
+            },
             j_vis_unemployed = {
                 name = "Unemployed Joker",
                 text = {
                     "Spawns a {C:dark_edition}negative{} food Joker",
-                    "with {C:gold}$-1{} sell value that",
+                    "with {C:gold}$-5{} sell value that",
                     "is {C:mult}destroyed{} at the end of the round",
                 }
             },
@@ -148,6 +211,14 @@ return {
                     "Hands {C:attention}change{} every played hand,",
                     "{C:red}resets{} when either is played",
                     "{C:inactive}(Currently: {X:mult,C:white}X#4#{} {C:inactive}Mult)",
+                }
+            },
+            j_vis_blackbeard = {
+                name = "Blackbeard",
+                text = {
+                    "Gains {X:mult,C:white}X#1#{} Mult for every {C:gold}Dollar",
+                    "of {C:attention}sell value{} on your consumables",
+                    "{C:inactive}(Currently: {X:mult,C:white}X#2#{} {C:inactive}Mult)",
                 }
             },
             j_vis_garrab = {
@@ -228,6 +299,30 @@ return {
                     "Balance {C:mult}Mult{} and {C:chips}Chips{} by {C:attention}#1#%{}",
                 }
             },
+            j_vis_minuteman = {
+                name = "Minuteman",
+                text = {
+                    "{C:mult}+#1#{} Mult on your",
+                    "first played hand"
+                }
+            },
+            j_vis_9_ball = {
+                name = "9 Ball",
+                text = {
+                    "{C:green}#1# in #2#{} chance for each",
+                    "played {C:attention}9{} to create a",
+                    "{V:1}Divine{} card when scored",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            j_vis_conspiracy = {
+                name = "Conspiracy Theorist",
+                text = {
+                    "{C:green}#1# in #2#{} chance",
+                    "to balance out the current",
+                    "{C:mult}Mult{} and {C:chips}Chips{}"
+                }
+            },
             j_vis_gambling_addict = {
                 name = "Gambling Addict",
                 text = {
@@ -237,6 +332,23 @@ return {
                     "and gaining {C:gold}$#5#",
                     "{s:2}BUT",
                     "lose {C:gold}$#6#{} for every hand played"
+                }
+            },
+            j_vis_plastic_joker = {
+                name = "Plastic Joker",
+                text = {
+                    "Gives {X:chips,C:white} X#1# {} Chips",
+                    "for each {C:attention}Plastic Card",
+                    "in your {C:attention}full deck",
+                    "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)",
+                },
+            },
+            j_vis_russian_roulette = {
+                name = "Dogs Playing Russian Roulette",
+                text = {
+                    "{C:diamonds}#1# in #2#{} chance for",
+                    "{X:mult,C:white}X#3#{} Mult",
+                    "{C:inactive}(odds cant be increased)"
                 }
             },
             j_vis_sd_card = {
@@ -250,6 +362,15 @@ return {
                 text = {
                     "{C:attention}+#1#{} consumable slots",
                 }
+            },
+            j_vis_flat_earth = {
+                name = "Flat Earth",
+                text = {
+                    "Earn {C:money}$#2#{} at end of",
+                    "round for every {C:attention}#1#{} level",
+                    "{C:inactive}(Currently {C:money}$#4#{C:inactive}, Level {C:attention}#3#{C:inactive})",
+                    "{s:0.7}The Hand picked is your least ranked, least played hand"
+                },
             },
             j_vis_atomic_bomb = {
                 name = "Atomic Bomb",
@@ -391,13 +512,12 @@ return {
                     "gives {X:chips,C:white} X#1# {} Chips",
                 },
             },
-            j_creamer = {
-                name = "Creamer",
+            j_vis_charlie = {
+                name = "Charlie",
                 text = {
-                    "At the end of the round",
-                    "create a {C:attention}random{} tag",
-                    "gets destroyed after 3 rounds",
-                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#3# rounds)",
+                    "After scoring your first hand,",
+                    "apply {C:dark_edition}negative",
+                    "to a random scored card",
                 }
             },
             j_vis_d20 = {
@@ -407,6 +527,16 @@ return {
                     "{C:attention}booster packs{} in the shop when {C:green}rerolling{}",
                 },
             },
+            j_vis_handicap_parking = {
+                name = "Handicap Parking",
+                text = {
+                    "Each empty {C:attention}Joker{} slot",
+                    "has a {C:green}#3# in #4#{} chance",
+                    "to give {C:money}$#1#{}",
+                    "after each hand played",
+                },
+            },
+
             j_vis_middle_of_nowhere = {
                 name = "Middle of Nowhere",
                 text = {
@@ -460,6 +590,21 @@ return {
                     "If played hand contains exactly {C:attention}2{}",
                     "cards, convert the {C:attention}left{} card",
                     "into the {C:attention}right{} card",
+                },
+            },
+            j_vis_playing_piece = {
+                name = "Playing Piece",
+                text = {
+                    "If your hand contains a {C:attention}Flush{}, {C:attention}#1#{} and {C:attention}#2#{},",
+                    "gain a Divine Card",
+                    "{s:0.7}Ranks change every round"
+                },
+            },
+            j_vis_insomnia = {
+                name = "Insomnia",
+                text = {
+                    "Before scoring, debuff the first card",
+                    "in exchange for {X:mult,C:white}X#1#{} Mult"
                 },
             },
         },
@@ -539,6 +684,16 @@ return {
                     "the leftmost scored card",
                     "{C:attention}Copying{} other bronze-sealed cards",
                     "{C:attention}retriggers{} this card instead",
+                },
+            },
+            vis_indigo_seal = {
+                name = "Indigo Seal",
+                text = {
+                    "Create a {C:spectral}Spectral{} card",
+                    "after this card is played {C:attention}#4#{} times",
+                    "{C:green}#1# in #2#{} chance to {C:red}self destruct{}",
+                    "every time this card is played",
+                    "{C:inactive}(Currently: {C:attention}#3#{C:inactive}/{C:attention}#4#{C:inactive})",
                 },
             },
         },
@@ -649,6 +804,22 @@ return {
                     "card in your hand",
                 },
             },
+            c_vis_floppy_disk = {
+                name="Floppy Disk",
+                text={
+                    "Creates up to {C:attention}#1#",
+                    "random {C:attention}Consumable{} cards",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_vis_coupon = {
+                name="Coupon",
+                text={
+                    "Your current reroll cost",
+                    "is {C:attention}halved when used",
+                    "{s:0.7,C:inactive}(Minimum {s:0.7,C:gold}$5{s:0.7,C:inactive})",
+                },
+            },
         },
         Divine = {
             c_vis_weakness = {
@@ -660,7 +831,7 @@ return {
                 }
             },
             c_vis_mint = {
-                name = 'The Mint',
+                name = 'Mint',
                 text = {
                     "Gives you a {C:attention}quarter{} of all",
                     "{C:chips}+Chips{} cards in your hand as {C:gold}money{}",
@@ -708,13 +879,30 @@ return {
             c_vis_shore = {
                 name = "Shore",
                 text = {
-                    "Remove all {C:attention}additions{} from all cards",
+                    "Remove all {C:attention}modifiers{} from all cards",
                     "in your {C:attention}hand{} and gain",
                     "{C:gold}$#1#{} per removed {C:dark_edition}Edition{},",
                     "{C:gold}$#2#{} per removed {C:blue}Seal{} and",
                     "{C:gold}$#3#{} per removed {C:red}Enhancement{}",
                     "{s:0.7,C:inactive}(Currently {s:0.7,C:gold}$#4#{s:0.7,C:inactive})"
                 }
+            },
+            c_vis_mandela = {
+                name = "Mandela",
+                text = {
+                    "Add an {V:1}Indigo Seal{}",
+                    "to {C:attention}1{} selected",
+                    "card in your hand",
+                }
+            },
+            c_vis_mind = {
+                name = "Mind",
+                text = {
+                    "Creates the last",
+                    "{V:1}Divine{} card",
+                    "used during this run",
+                    "{s:0.8,V:1}Mind {s:0.8}excluded",
+                },
             },
         },
         Stake={},
@@ -775,6 +963,35 @@ return {
                     "in the shop",
                 },
             },
+            v_vis_stacked_odds = {
+                name = "Stacked Odds",
+                text={
+                    "Doubles all {C:attention}listed",
+                    "{C:green,E:1,S:1.1}probabilities",
+                    "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
+                },
+            },
+            v_vis_deadbeat = {
+                name = "Deadbeat",
+                text = {
+                    "Can go up to",
+                    "{C:red}-$20{} in dept"
+                }
+            },
+            v_vis_proficient_scammer = {
+                name = "Proficient Scammer",
+                text = {
+                    ""
+                }
+            },
+            v_vis_lady_lucks = {
+                name = "Luck be a Lady",
+                text={
+                    "Doubles all {C:attention}listed",
+                    "{C:green,E:1,S:1.1}probabilities",
+                    "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
+                },
+            },
         },
     },
     misc = {
@@ -804,6 +1021,7 @@ return {
             vis_bronze_seal = "Bronze Seal",
             vis_wooden_seal = "Wooden Seal",
             vis_mitosis_seal = "Mitosis Seal",
+            vis_indigo_seal = "Indigo Seal",
         },
         poker_hand_descriptions={
             ["vis_industrialization"] = {'Five Brick Cards'},
@@ -820,7 +1038,12 @@ return {
         tutorial={},
         v_dictionary={
             k_plus_x_tarot="+#1# Tarot",
-            k_pbalanced = "Balanced by #1#%"
+            k_pbalanced = "Balanced by #1#%",
+            k_seal_rounds="#1#/#2#",
+            vis_art = "Art by: #1#",
+            vis_remix = "Art Remixed by: #1#",
+            vis_semi_remix = "Some Art Remixed by: #1#",
+            vis_idea = "Idea by: #1#",
         },
         v_text={},
     },

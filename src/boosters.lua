@@ -48,7 +48,7 @@ SMODS.Booster{
             soulable = true,
         })
     end,
-    select_card = 'consumeables',
+    select_card = (G.pack_cards and G.pack_cards.cards and G.pack_cards.highlighted[1].set == "Joker") and "joker" or 'consumeables',
 
     in_pool = function() return true end
 }

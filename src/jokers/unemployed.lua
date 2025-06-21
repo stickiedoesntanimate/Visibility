@@ -17,14 +17,24 @@ SMODS.Joker {
             local cards = create_card("Food", G.jokers, nil, nil, nil, nil, nil)
 			cards:add_to_deck()
 			cards:set_edition('e_negative', false)
-			cards.sell_cost = -1
+			cards.sell_cost = -5
 			G.jokers:emplace(cards)
 			card.ability.extra.generated_card = cards
 		end
-		if context.end_of_round and not context.game_over and card.ability.extra.generated_card then
-			local cards = card.ability.extra.generated_card
-			cards:remove_from_deck()
-			cards:start_dissolve()
+		if not context.other_card and context.end_of_round and not context.game_over and card.ability.extra.generated_card then
+			G.E_MANAGER:add_event(Event({
+				delay = 0.01,
+				trigger = "after",
+				func = function ()
+					local cards = card.ability.extra.generated_card
+					if not cards then return true end
+					cards:remove_from_deck()
+					cards:start_dissolve(nil)
+					card.ability.extra.generated_card = nil
+					return true
+				end
+			}))
+			
 		end
 	end,
 }

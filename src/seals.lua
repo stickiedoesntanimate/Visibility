@@ -45,10 +45,14 @@ SMODS.Seal {
     key = "mitosis",
     atlas = "TextureAtlasSeals",
     pos = { x = 2, y = 0 },
+    credits = {
+        idea = "Monachrome",
+        art = "SadCube"
+    },
     config = {  },
     badge_colour = HEX('DC6094'),
     calculate = function(self, card, context)
-        if context.main_scoring and context.full_hand[1] == card then
+        if context.after and context.full_hand[1] == card then
             if #context.full_hand ~= 1 then return end
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
             local copy_card = copy_card(context.full_hand[1], nil, nil, G.playing_card)
@@ -76,6 +80,57 @@ SMODS.Seal {
                     }))
                 end
             }
+        end
+    end,
+}
+
+SMODS.Seal {
+    key = "indigo",
+    atlas = "TextureAtlasSeals",
+    pos = { x = 3, y = 0 },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset"
+    },
+    config = { extra = { rounds = 0, needed = 4, odds = 8 } },
+    badge_colour = HEX('514CDB'),
+    loc_vars = function(self, info_queue, card)
+        return { vars = { (G.GAME.probabilities.normal or 1), card.ability.seal.extra.odds, card.ability.seal.extra.rounds, card.ability.seal.extra.needed } }
+    end,
+    calculate = function(self, card, context)
+        if context.repetition then return end
+        if context.destroy_card and context.destroy_card == card then
+            if pseudorandom('indigo') < G.GAME.probabilities.normal / card.ability.seal.extra.odds then
+                return {
+                    message = localize('k_extinct_ex'),
+                    colour = G.C.RED,
+                    remove = true,
+                    card = card
+                }
+            end
+        end
+        if context.cardarea == G.play and context.after then
+            card.ability.seal.extra.rounds = card.ability.seal.extra.rounds + 1
+            if card.ability.seal.extra.rounds >= card.ability.seal.extra.needed then
+                return {
+                    message = localize('k_plus_spectral'),
+                    colour = G.C.CHIPS,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                SMODS.add_card({ set = "Spectral" })
+                                card.ability.seal.extra.rounds = 0
+                                return true
+                            end
+                        }))
+                    end
+                }
+            else
+                return {
+                    message = localize{ type = 'variable', key = 'k_seal_rounds', vars = { card.ability.seal.extra.rounds, card.ability.seal.extra.needed } },
+                    colour = G.C.CHIPS,
+                }
+            end
         end
     end,
 }

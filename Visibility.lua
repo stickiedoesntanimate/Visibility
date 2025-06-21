@@ -43,12 +43,27 @@ local joker_list = {
     "carnation",
     "totem", 
     "party_noob",
-    "golbo"
+    "golbo",
+    "conspiracy",
+    "minuteman",
+    "9_ball",
+    "handicap_parking",
+    "delirious", -- Works mostly, known issue: Texture disappears when loading the run
+    "blackbeard",
+    "charlie",
+    "impact_frame",
+    "russian_roulette",
+    "plastic_joker",
+    "flat_earth",
+    "playing_piece",
+    "insomnia",
+    "graffiti"
 }
 
 -- There's probably a better way to do this, but I have no idea.
 local consumables_list = {
     "type",
+    "divine/mind",
     "divine/constant",
     "divine/crystal_ball",
     "divine/echo",
@@ -57,6 +72,7 @@ local consumables_list = {
     "divine/shore",
     "divine/slate",
     "divine/weakness",
+    "divine/mandela",
     "spectral/calamity",
     "spectral/chaos",
     "spectral/denial",
@@ -67,7 +83,9 @@ local consumables_list = {
     "spectral/spire",
     "spectral/vault",
     "blackmarket/gum",
-    "blackmarket/nails"
+    "blackmarket/nails",
+    "blackmarket/floppy_disk",
+    "blackmarket/coupon"
 }
 
 SMODS.current_mod.optional_features = {

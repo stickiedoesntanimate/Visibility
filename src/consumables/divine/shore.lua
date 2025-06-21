@@ -7,6 +7,10 @@ SMODS.Consumable {
     pools = { ["c_Visibility"] = true },
     pos = { x = 5, y = 0 },
     config = { extra = { e_money = 8, en_money = 2, seal_money = 4, current = 0 } },
+    credits = {
+        idea = "WarpedCloset",
+        art = "WarpedCloset",
+    },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.e_money, card.ability.extra.seal_money, card.ability.extra.en_money, card.ability.extra.current } }
     end,
@@ -44,9 +48,9 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.15,
             func = function()
+                play_sound('card1')
                 for k, v in pairs(G.hand.cards) do
                     v:flip()
-                    play_sound('card1')
                     v:juice_up(0.3, 0.3)
                 end
                 return true
@@ -82,9 +86,9 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.9,
             func = function()
+                play_sound('tarot2')
                 for k, v in pairs(G.hand.cards) do
                     v:flip()
-                    play_sound('tarot2')
                     v:juice_up(0.3, 0.3)
                 end
                 return true

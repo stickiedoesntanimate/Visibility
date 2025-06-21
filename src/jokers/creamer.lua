@@ -19,7 +19,12 @@ SMODS.Joker {
         if context.end_of_round and context.game_over == false and context.main_eval then
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    add_tag(Tag(get_next_tag_key()))
+                    local tag_key = get_next_tag_key()
+                    while tag_key == 'tag_orbital' do
+                        -- nuh uh
+                        tag_key = get_next_tag_key()
+                    end
+                    add_tag(Tag(tag_key))
                     play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
                     play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
                     return true

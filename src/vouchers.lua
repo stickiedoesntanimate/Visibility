@@ -82,3 +82,84 @@ SMODS.Voucher {
         }))
     end
 }
+
+SMODS.Voucher {
+    key = 'stacked_odds',
+    atlas = "TextureAtlasVouchers",
+    pos = { x = 0, y = 1 },
+    config = { },
+    discovered = true,
+    unlocked = true,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.probabilities.normal = (G.GAME.probabilities.normal or 1) * 2
+                return true
+            end
+        }))
+    end
+}
+
+SMODS.Voucher {
+    key = 'lady_lucks',
+    atlas = "TextureAtlasVouchers",
+    pos = { x = 1, y = 1 },
+    config = { },
+    discovered = true,
+    unlocked = true,
+    requires = { 'v_stacked_odds' },
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.probabilities.normal = G.GAME.probabilities.normal * 2
+                return true
+            end
+        }))
+    end
+}
+
+--[[SMODS.Voucher {
+    key = 'deadbeat',
+    atlas = "TextureAtlasVouchers",
+    pos = { x = 3, y = 5 },
+    config = { },
+    discovered = true,
+    unlocked = true,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.bankrupt_at = G.GAME.bankrupt_at - 20
+                return true
+            end
+        }))
+    end
+}
+
+SMODS.Voucher {
+    key = 'proficient_scammer',
+    atlas = "TextureAtlasVouchers",
+    pos = { x = 3, y = 5 },
+    config = { },
+    discovered = true,
+    unlocked = true,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.bankrupt_at = -2000000000
+                return true
+            end
+        }))
+    end
+}
+
+local ed = ease_dollars
+function ease_dollars(mod, instant)
+    ed(mod, instant)
+    if G.GAME.used_vouchers["v_vis_proficient_scammer"] then
+        -- Blind size is increased by 5% for every 10 dollars in debt
+        local debt = G.GAME.dollars < 0 and G.GAME.dollars or 0
+        if debt == 0 then return end
+        if G.GAME.blind then
+        end
+    end
+end]]

@@ -54,11 +54,27 @@ SMODS.Atlas {
 }
 
 SMODS.Atlas {
+	key = "TextureAtlasDelirious",
+	path = "TextureAtlasDelirious.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas {
 	key = "TextureAtlasTags",
 	path = "TextureAtlasTags.png",
 	px = 34,
 	py = 34
 }
+
+SMODS.Atlas({
+    key = 'TextureAtlasBlinds',
+    path = 'TextureAtlasBlinds.png',
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 21,
+    px = 34,
+    py = 34
+})
 
 SMODS.Atlas({
 	key = "modicon",

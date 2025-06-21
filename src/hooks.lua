@@ -60,6 +60,27 @@ function Card:check_use()
     return ret
 end
 
+local function reset_impact_frame_card()
+    G.GAME.current_round.vis_impact_frame_card = { rank = 'Ace', suit = 'Spades' }
+    local valid_cards = {}
+    for _, playing_card in ipairs(G.playing_cards) do
+        if not SMODS.has_no_suit(playing_card) and not SMODS.has_no_rank(playing_card) then
+            valid_cards[#valid_cards + 1] = playing_card
+        end
+    end
+    local idol_card = pseudorandom_element(valid_cards, pseudoseed('vis_impact_frame' .. G.GAME.round_resets.ante))
+    if idol_card then
+        G.GAME.current_round.vis_impact_frame_card.rank = idol_card.base.value
+        G.GAME.current_round.vis_impact_frame_card.suit = idol_card.base.suit
+        G.GAME.current_round.vis_impact_frame_card.id = idol_card.base.id
+    end
+end
+
+function SMODS.current_mod.reset_game_globals(run_start)
+    reset_impact_frame_card()
+end
+
+
 -- This is stolen from Cryptid.
 local smcmb = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)

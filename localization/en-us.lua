@@ -271,7 +271,7 @@ return {
             j_vis_minuteman = {
                 name = "Minuteman",
                 text = {
-                    "{C:mult}+#1#{} {C:mult}Mult{} on your",
+                    "{C:mult}+#1#{} Mult on your",
                     "first played hand"
                 }
             },
@@ -502,6 +502,7 @@ return {
                     "Each empty {C:attention}Joker{} slot",
                     "has a {C:green}#3# in #4#{} chance",
                     "to give {C:money}$#1#{}",
+                    "after each hand played",
                 },
             },
 

@@ -109,7 +109,7 @@ SMODS.Seal {
                 }
             end
         end
-        if context.after then
+        if context.cardarea == G.play and context.after then
             card.ability.seal.extra.rounds = card.ability.seal.extra.rounds + 1
             if card.ability.seal.extra.rounds >= card.ability.seal.extra.needed then
                 return {

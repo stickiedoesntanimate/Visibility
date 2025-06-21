@@ -55,6 +55,16 @@ return {
                     "poker hand each round",
                 }
             },
+            b_vis_rolling = {
+                name = "Rolling Deck",
+                text = {
+                    "Start run with a",
+                    "{C:attention,T:v_reroll_surplus}#1#{}",
+                    "and a {C:attention,T:v_reroll_glut}#2#{}",
+                    "{C:attention}-1{} Card Slot available",
+                    "in shop"
+                }
+            },
         },
         Blind={
             bl_vis_forge = {

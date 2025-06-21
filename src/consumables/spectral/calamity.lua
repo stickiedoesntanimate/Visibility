@@ -38,6 +38,6 @@ SMODS.Consumable {
         delay(0.6)
     end,
     can_use = function(self, card)
-        return #G.jokers.highlighted == card.ability.extra.max
+        return #G.jokers.highlighted == card.ability.extra.max and not G.jokers.highlighted[1].edition
     end,
 }

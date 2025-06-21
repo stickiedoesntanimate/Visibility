@@ -13,6 +13,20 @@ SMODS.Back({
     end
 })
 
+SMODS.Back {
+    key = "rolling",
+    atlas = "TextureAtlasDecks",
+    pos = { x = 4, y = 0 },
+    config = { vouchers = { 'v_reroll_surplus', "v_reroll_glut" } },
+    loc_vars = function (self, info_queue, card)
+        return { vars = { "Reroll Surplus", "Reroll Glut" } }
+    end,
+    unlocked = true,
+    discovered = true,
+    apply = function(self,back)
+        change_shop_size(-1)
+    end
+}
 
 SMODS.Back {
     key = "gardening",

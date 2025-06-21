@@ -17,12 +17,29 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
         if context.after then
+            if not context.poker_hands['Flush'] then
+				print("We don't got a flush boss")
+                return
+			end
             if context.poker_hands["Flush"] then
+                print("We got a flush")
                 local condition_met = false
+                local converted_rank = card.ability.extra.rank[1]
+                if converted_rank == 'Jack' then converted_rank = 11
+                elseif converted_rank == 'Queen' then converted_rank = 12
+                elseif converted_rank == 'King' then converted_rank = 13
+                elseif converted_rank == 'Ace' then converted_rank = 14
+                end
                 for _, playing_card in ipairs(context.scoring_hand) do
-                    if playing_card:get_id() == card.ability.extra.rank[1] then
+                    if playing_card:get_id() == converted_rank then
+                        converted_rank = card.ability.extra.rank[2]
+                        if converted_rank == 'Jack' then converted_rank = 11
+                        elseif converted_rank == 'Queen' then converted_rank = 12
+                        elseif converted_rank == 'King' then converted_rank = 13
+                        elseif converted_rank == 'Ace' then converted_rank = 14
+                        end
                         for _, playing_card in ipairs(context.scoring_hand) do
-                            if playing_card:get_id() == card.ability.extra.rank[2] then
+                            if playing_card:get_id() == converted_rank then
                                 condition_met = true
                                 break
                             end
@@ -65,14 +82,10 @@ SMODS.Joker {
                 card.ability.extra.rank[2] = pseudorandom("playing_piece_rank_2", 2, 14)
             end
             for i, rank in ipairs(card.ability.extra.rank) do
-                if rank == 11 then
-                    card.ability.extra.rank[i] = 'Jack'
-                elseif rank == 12 then
-                    card.ability.extra.rank[i] = 'Queen'
-                elseif rank == 13 then
-                    card.ability.extra.rank[i] = 'King'
-                elseif rank == 14 then
-                    card.ability.extra.rank[i] = 'Ace'
+                if rank == 11 then card.ability.extra.rank[i] = 'Jack'
+                elseif rank == 12 then card.ability.extra.rank[i] = 'Queen'
+                elseif rank == 13 then card.ability.extra.rank[i] = 'King'
+                elseif rank == 14 then card.ability.extra.rank[i] = 'Ace'
                 end
             end
         end
@@ -84,14 +97,10 @@ SMODS.Joker {
             card.ability.extra.rank[2] = pseudorandom("playing_piece_rank_2", 2, 14)
         end
         for i, rank in ipairs(card.ability.extra.rank) do
-            if rank == 11 then
-                card.ability.extra.rank[i] = 'Jack'
-            elseif rank == 12 then
-                card.ability.extra.rank[i] = 'Queen'
-            elseif rank == 13 then
-                card.ability.extra.rank[i] = 'King'
-            elseif rank == 14 then
-                card.ability.extra.rank[i] = 'Ace'
+            if rank == 11 then card.ability.extra.rank[i] = 'Jack'
+            elseif rank == 12 then card.ability.extra.rank[i] = 'Queen'
+            elseif rank == 13 then card.ability.extra.rank[i] = 'King'
+            elseif rank == 14 then card.ability.extra.rank[i] = 'Ace'
             end
         end
     end

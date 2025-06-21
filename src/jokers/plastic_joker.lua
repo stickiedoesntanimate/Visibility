@@ -9,6 +9,8 @@ SMODS.Joker {
         idea = "WarpedCloset",
         art = "Monachrome",
     },
+    unlocked = true,
+    discovered = true,
     config = { extra = { xchips = 0.2 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_vis_plastic

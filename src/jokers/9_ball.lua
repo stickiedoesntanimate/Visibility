@@ -4,6 +4,8 @@ SMODS.Joker {
     rarity = 2,
     cost = 5,
     pos = { x = 2, y = 5 },
+    unlocked = true,
+    discovered = true,
     atlas = "TextureAtlasJokers",
     config = { extra = { odds = 4 } },
     loc_vars = function(self, info_queue, card)

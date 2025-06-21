@@ -26,6 +26,7 @@ local joker_list = {
 	"j_blueprint",
 	"j_vagabond",
 	"j_obelisk",
+	"j_brainstorm",
 }
 
 function change_delirious_texture(card, restore)

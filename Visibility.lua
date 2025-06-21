@@ -63,6 +63,7 @@ local joker_list = {
 -- There's probably a better way to do this, but I have no idea.
 local consumables_list = {
     "type",
+    "divine/mind",
     "divine/constant",
     "divine/crystal_ball",
     "divine/echo",

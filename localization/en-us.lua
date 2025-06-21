@@ -56,7 +56,29 @@ return {
                 }
             },
         },
-        Blind={},
+        Blind={
+            bl_vis_forge = {
+                name = "The Forge",
+                text = {
+                    "Enhanced cards",
+                    "are debuffed",
+                },
+            },
+            bl_vis_boss_flip = {
+                name = 'The Flip',
+                text = {
+                    "Playing a #1# sets",
+                    "the starting {C:mult}mult{} to {C:mult}0{}",
+                }
+            },
+            bl_vis_boss_transparent = {
+                name = 'Transparent',
+                text = {
+                    'Debuffs all',
+                    'Visibility Jokers',
+                }
+            },
+        },
         Edition={},
         Enhanced={
             m_vis_brick = {
@@ -116,12 +138,11 @@ return {
                 },
             },
             j_vis_delirious = {
-                name="Delirious",
-                text={
+                name = "Delirious",
+                text = {
                     "Becomes a random",
                     "{C:red}Rare{} Joker after",
                     "each hand",
-                    "{C:inactive}(Photograph included)"
                 },
             },
             j_vis_party_noob = {
@@ -863,6 +884,15 @@ return {
                     "to {C:attention}1{} selected",
                     "card in your hand",
                 }
+            },
+            c_vis_mind = {
+                name = "Mind",
+                text = {
+                    "Creates the last",
+                    "{V:1}Divine{} card",
+                    "used during this run",
+                    "{s:0.8,V:1}Mind {s:0.8}excluded",
+                },
             },
         },
         Stake={},

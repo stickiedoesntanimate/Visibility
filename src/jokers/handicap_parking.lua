@@ -6,6 +6,8 @@ SMODS.Joker {
     pos = { x = 3, y = 5 },
     atlas = "TextureAtlasJokers",
     config = { extra = { odds = 2, dollars = 3 } },
+    unlocked = true,
+    discovered = true,
     loc_vars = function(self, info_queue, card)
         local empty_slots = G.jokers and (G.jokers.config.card_limit - #G.jokers.cards) or 0
         return { vars = { card.ability.extra.dollars, empty_slots, G.GAME and G.GAME.probabilities.normal or 1, card.ability.extra.odds } }

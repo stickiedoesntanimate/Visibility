@@ -3,10 +3,11 @@ function Game:init_game_object()
     local ret = igo(self)
     ret.visibility_rate = 0 -- Poptart
     ret.last_spectral = nil -- Pact
+    ret.last_divine = nil -- Mind
     return ret
 end
 
--- Hook for Pact
+-- Hook for Pact and Mind
 local scu = set_consumeable_usage
 function set_consumeable_usage(card)
     scu(card)
@@ -19,6 +20,21 @@ function set_consumeable_usage(card)
                     trigger = 'immediate',
                     func = function()
                         G.GAME.last_spectral = card.config.center_key
+                        return true
+                    end
+                }))
+                return true
+            end
+        }))
+    end
+    if card.config.center.set == 'Divine' then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = function()
+                        G.GAME.last_divine = card.config.center_key
                         return true
                     end
                 }))

@@ -10,8 +10,14 @@ SMODS.Consumable {
     use = function(self)
         G.E_MANAGER:add_event(Event({
             func = (function()
-                add_tag(Tag(get_next_tag_key()))
-                add_tag(Tag(get_next_tag_key()))
+                for i = 1, 2 do
+                    local tag_key = get_next_tag_key()
+                    while tag_key == 'tag_orbital' do
+                        -- nuh uh
+                        tag_key = get_next_tag_key()
+                    end
+                    add_tag(Tag(tag_key))
+                end
                 return true
             end),
         }))

@@ -1,27 +1,12 @@
-SMODS.Atlas({
-    key = 'TextureAtlasBlinds',
-    path = 'TextureAtlasBlinds.png',
-    atlas_table = 'ANIMATION_ATLAS',
-    frames = 21,
-    px = 34,
-    py = 34
-})
-
 SMODS.Blind {
     name = "boss_transparent",
     key = "boss_transparent",
     dollars = 5,
     mult = 2,
     atlas = 'TextureAtlasBlinds',
-    pos = {x=0, y=0},
-    loc_txt = {
-        name = 'Transparent',
-        text = {
-            'Debuffs all',
-            'Visibility Jokers',
-        }
-    },
+    pos = { x = 0, y = 0 },
     boss = { showdown = true },
+    discovered = true,
     boss_colour = HEX('eb4bf8'),
     recalc_debuff = function(self, card)
         for i = 1, #G.jokers.cards do
@@ -46,20 +31,14 @@ SMODS.Blind {
 
 SMODS.Blind {
     name = "boss_flip",
-    loc_txt = {
-        name = 'The Flip',
-        text = {
-            "Playing a #1# sets",
-            "the starting {C:mult}mult{} to {C:mult}-1{}",
-        }
-    },
     key = "boss_flip",
+    discovered = true,
     dollars = 5,
     mult = 3,
     boss = { min = 4 },
     boss_colour = HEX('177CAD'),
     atlas = 'TextureAtlasBlinds',
-    pos = {x=0, y=1},
+    pos = { x = 0, y = 1 },
     loc_vars = function(self)
         return { vars = { localize(G.GAME.current_round.most_played_poker_hand, 'poker_hands') } }
     end,
@@ -81,13 +60,7 @@ SMODS.Blind {
 SMODS.Blind {
     key = "forge",
     dollars = 5,
-    loc_txt = {
-        name = "The Forge",
-        text = {
-            "Enhanced cards",
-            "are debuffed",
-        },
-    },
+    discovered = true,
     atlas = 'TextureAtlasBlinds',
     mult = 2,
     pos = { x = 0, y = 2 },

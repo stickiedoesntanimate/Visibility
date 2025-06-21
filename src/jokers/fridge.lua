@@ -24,11 +24,8 @@ SMODS.Joker {
 			end
 		end
 
-		if context.before and not context.blueprint then
+		if context.before and next(context.poker_hands['Full House']) and not context.blueprint then
 			-- Check for a Full House
-			if not context.poker_hands['Full House'] then
-				return
-			end
 			local suits = {
 				['Hearts'] = 0,
 				['Diamonds'] = 0,

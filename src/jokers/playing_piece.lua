@@ -17,12 +17,7 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
         if context.after then
-            if not context.poker_hands['Flush'] then
-				print("We don't got a flush boss")
-                return
-			end
-            if context.poker_hands["Flush"] then
-                print("We got a flush")
+            if next(context.poker_hands["Flush"]) then
                 local condition_met = false
                 local converted_rank = card.ability.extra.rank[1]
                 if converted_rank == 'Jack' then converted_rank = 11

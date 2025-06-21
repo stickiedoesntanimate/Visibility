@@ -22,14 +22,12 @@ SMODS.Joker {
 			card.ability.extra.generated_card = cards
 		end
 		if not context.other_card and context.end_of_round and not context.game_over and card.ability.extra.generated_card then
-			print("Adding Event")
 			G.E_MANAGER:add_event(Event({
 				delay = 0.01,
 				trigger = "after",
 				func = function ()
 					local cards = card.ability.extra.generated_card
 					if not cards then return true end
-					print("Event trigger")
 					cards:remove_from_deck()
 					cards:start_dissolve(nil)
 					card.ability.extra.generated_card = nil

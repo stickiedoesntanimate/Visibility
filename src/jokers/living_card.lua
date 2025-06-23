@@ -98,5 +98,5 @@ SMODS.Joker {
 
 local card_is_face_ref = Card.is_face
 function Card:is_face(from_boss)
-    return card_is_face_ref(self, from_boss) or (self:get_id() == 14 and next(SMODS.find_card("j_vis_living_card")))
+    return card_is_face_ref(self, from_boss) or (self.base.value == 14 and next(SMODS.find_card("j_vis_living_card")))
 end

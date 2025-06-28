@@ -16,7 +16,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         local hand_level = G.GAME.hands[card.ability.extra.hand_picked] and G.GAME.hands[card.ability.extra.hand_picked].level or 0
         local total = hand_level * card.ability.extra.dollars_per_level
-        return { vars = { card.ability.extra.hand_picked, card.ability.extra.dollars_per_level, hand_level, total } }
+        return { vars = { localize(card.ability.extra.hand_picked, 'poker_hands'), card.ability.extra.dollars_per_level, hand_level, total } }
     end,
 
     update = function (self, card, dt)

@@ -19,7 +19,6 @@ local joker_list = {
     "3d_glasses",
     "biker",
     "poker_face",
-    "garrab",
     "sd_card",
     "crystal_geode",
     "atomic_bomb",
@@ -50,14 +49,15 @@ local joker_list = {
     "handicap_parking",
     "delirious", -- Works mostly, known issue: Texture disappears when loading the run
     "blackbeard",
-    "charlie",
     "impact_frame",
     "russian_roulette",
     "plastic_joker",
     "flat_earth",
     "playing_piece",
     "insomnia",
-    "graffiti"
+    "graffiti",
+    "garrab",
+    "charlie",
 }
 
 -- There's probably a better way to do this, but I have no idea.
@@ -73,6 +73,7 @@ local consumables_list = {
     "divine/slate",
     "divine/weakness",
     "divine/mandela",
+    "divine/text",
     "spectral/calamity",
     "spectral/chaos",
     "spectral/denial",

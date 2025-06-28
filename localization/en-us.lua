@@ -376,7 +376,7 @@ return {
                 name = "Atomic Bomb",
                 text = {
                     "Disables the current boss blind when sold and",
-                    "{C:red}destroys{} {C:attention}all{} random cards in hand"
+                    "{C:red}destroys{} {C:attention}all{} cards in hand"
                 }
             },
             j_vis_alternate = {
@@ -847,6 +847,14 @@ return {
             },
             c_vis_future = {
                 name = "Future",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                }
+            },
+            c_vis_text = {
+                name = "Text",
                 text = {
                     "Enhances {C:attention}#1#{} selected",
                     "card into a",

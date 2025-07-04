@@ -115,6 +115,7 @@ for _, consumable in ipairs(consumables_list) do
     assert(SMODS.load_file(consumable_path))()
 end
 
+
 -- Just in case it doesn't exist on the version the player is on
 SMODS.get_probability_vars = SMODS.get_probability_vars or function(trigger_obj, base_numerator, base_denominator)
     if not G.jokers then return base_numerator, base_denominator end
@@ -122,6 +123,11 @@ SMODS.get_probability_vars = SMODS.get_probability_vars or function(trigger_obj,
     additive.numerator = (additive.numerator or base_numerator) * ((G.GAME and G.GAME.probabilities.normal or 1) / (2 ^ #SMODS.find_card('j_oops')))
     local fixed = SMODS.calculate_context({fix_probability = true, numerator = additive.numerator or base_numerator, denominator = additive.denominator or base_denominator})
     return fixed.numerator or additive.numerator or base_numerator, fixed.denominator or additive.denominator or base_denominator
+
+-- BUGFIX for Talisman 
+to_big = to_big or function(num)
+    return num
+
 end
 
 ----------------------------------------------

@@ -816,7 +816,7 @@ return {
                 name="Coupon",
                 text={
                     "Your current reroll cost",
-                    "is {C:attention}halved when used",
+                    "is {C:attention}halved{} when used",
                     "{s:0.7,C:inactive}(Minimum {s:0.7,C:gold}$5{s:0.7,C:inactive})",
                 },
             },

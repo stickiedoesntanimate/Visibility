@@ -104,6 +104,7 @@ assert(SMODS.load_file('src/objecttypes.lua'))()
 assert(SMODS.load_file('src/hands.lua'))()
 --assert(SMODS.load_file('src/sticker.lua'))()
 assert(SMODS.load_file('src/tags.lua'))()
+assert(SMODS.load_file('src/helper_functions.lua'))()
 
 for _, joker in ipairs(joker_list) do
     local joker_path = 'src/jokers/' .. joker .. '.lua'
@@ -128,7 +129,6 @@ end
 -- BUGFIX for Talisman 
 to_big = to_big or function(num)
     return num
-
 end
 
 ----------------------------------------------

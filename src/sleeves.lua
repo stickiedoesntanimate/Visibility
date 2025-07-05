@@ -1,27 +1,33 @@
-if CardSleeves then
-    CardSleeves.Sleeve {
+if not CardSleeves then
+    return -- Proper indentation
+end
+
+-- Poptart Sleeve
+CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 0, y = 0 },
     config = { hands = 1 },
     key = "poptart",
     loc_vars = function(self)
         local key, vars
-            if self.get_current_deck_key() == "b_vis_poptart" then
-                key = self.key .. "_alt"
-                vars = { colours = { G.C.SET.Divine } }
-            else
-                key = self.key
-            end
-            return { key = key, vars = vars }
+        if self.get_current_deck_key() == "b_vis_poptart" then
+            key = self.key .. "_alt"
+            vars = { colours = { G.C.SET.Divine } }
+        else
+            key = self.key
+        end
+        return { key = key, vars = vars }
     end,
-       apply = function (self, sleeve)
+    apply = function (self, sleeve)
         CardSleeves.Sleeve.apply(sleeve) -- super() call
         if self.get_current_deck_key() == "b_vis_poptart" then
             G.GAME.divine_rate = G.GAME.divine_rate * 3
         end
         G.GAME.visibility_rate = 45
     end
-    }
+}
+
+-- Gardening Sleeve
 CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 1, y = 0 },
@@ -85,11 +91,9 @@ CardSleeves.Sleeve {
         }))
     end,
 }
---Add checkered sleeve and gardening deck unique interaction
 
+-- Checkered Sleeve mixin (hooking)
 local checkered_sleeve = CardSleeves.Sleeve:get_obj("sleeve_casl_checkered")
-
--- hook the sleeve's loc_vars
 local checkered_sleeve_loc_vars_ref = checkered_sleeve.loc_vars
 checkered_sleeve.loc_vars = function(self)
     if self.get_current_deck_key() == "b_vis_gardening" then
@@ -125,71 +129,55 @@ checkered_sleeve.loc_vars = function(self)
         return checkered_sleeve_loc_vars_ref(self)
     end
 end
--- possibly handle checkered_sleeve.calculate (need to hook similarly to loc_vars)
+-- NOTE: possibly handle checkered_sleeve.calculate (need to hook similarly to loc_vars)
 
-----------------------------------------------------
-    CardSleeves.Sleeve {
+-- Heavenly Sleeve (currently functionless)
+CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 2, y = 0 },
     config = { hands = 1 },
     key = "heavenly",
     loc_vars = function(self)
         local key, vars
-            if self.get_current_deck_key() == "b_vis_heavenly" then
-                key = self.key .. "_alt"
+        vars = { "Divine Merchant", "Pact", colours = { G.C.SET.Divine } }
+        vars[0] = "Divine Merchant"
+        if self.get_current_deck_key() == "b_vis_heavenly" then
+            key = self.key .. "_alt"
+            vars[0] = "Divine Tycoon"
+        end
+        return { key = key, vars = vars }
+    end
+}
 
-                return {
-                    key = key,
-                    vars = {
-                        "Divine Tycoon",
-                        "Pact",
-                        colours = { G.C.SET.Divine } 
-                    },
-                }
-            else
-                key = self.key
-                return {
-                    key = key,
-                    vars = {
-                        "Divine Merchant",
-                        "Pact",
-                        colours = { G.C.SET.Divine } 
-                    },
-                }
-            end
-        end,
-    }
-    CardSleeves.Sleeve {
+-- Burnt Sleeve
+CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 4, y = 0 },
     config = { odds = 4 },
     key = "burnt",
     loc_vars = function(self)
         local key, vars
-            if self.get_current_deck_key() == "b_vis_burnt" then
-                key = self.key .. "_alt"
-            else
-                key = self.key
-            end
-            return { key = key, vars = {G.GAME.probabilities.normal, self.config.odds} }
-        end,
-    calculate = function (self, back, context)
-        if context.pre_discard and G.GAME.current_round.discards_used <= 0 and not context.hook then
-            local text, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
-            return {
-                level_up = true,
-                level_up_hand = text
-            }
+        if self.get_current_deck_key() == "b_vis_burnt" then
+            key = self.key .. "_alt"
+        else
+            key = self.key
         end
-        if self.get_current_deck_key() == "b_vis_burnt" and context.pre_discard and pseudorandom('vis_burnt_sleeve') < G.GAME.probabilities.normal / self.config.odds and not context.hook then
+        return { key = key, vars = { G.GAME.probabilities.normal, self.config.odds } }
+    end,
+    calculate = function (self, back, context)
+        if context.pre_discard and not context.hook then -- We're discarding (not through the hook boss blind)
             local text, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
-            return {
-                level_up = true,
-                level_up_hand = text
-            }
+            local level_up_effect = { level_up = true, level_up_hand = text }
+            local is_burnt_deck = self.get_current_deck_key() == "b_vis_burnt"
+            if not is_burnt_deck then
+                return G.GAME.current_round.discards_used <= 0 and level_up_effect or nil
+            end
+            -- At this point we know we're in the burnt deck, so we can roll the dice
+            return pseudorandom('vis_burnt_sleeve') < G.GAME.probabilities.normal / self.config.odds and level_up_effect or nil
         end
     end
-    }
+}
+
 CardSleeves.Sleeve {
     key = "rolling",
     atlas = "TextureAtlasSleeves",
@@ -205,12 +193,10 @@ CardSleeves.Sleeve {
         return { key = key, vars = { "Reroll Surplus", "Reroll Glut" } }
     end,
     apply = function(self, sleeve)
-        if self.get_current_deck_key() == "b_vis_rolling" then
-            change_shop_size(1)
-        else
+        local is_rolling_deck = self.get_current_deck_key() == "b_vis_rolling"
+        change_shop_size(is_rolling_deck and 1 or -1)
+        if not is_rolling_deck then
             CardSleeves.Sleeve.apply(sleeve) -- super() call, Give the vouchers (shouldnt give them twice)
-            change_shop_size(-1)
         end
     end
 }
-end

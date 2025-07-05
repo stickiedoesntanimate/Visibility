@@ -104,6 +104,7 @@ assert(SMODS.load_file('src/objecttypes.lua'))()
 assert(SMODS.load_file('src/hands.lua'))()
 --assert(SMODS.load_file('src/sticker.lua'))()
 assert(SMODS.load_file('src/tags.lua'))()
+assert(SMODS.load_file('src/helper_functions.lua'))()
 
 for _, joker in ipairs(joker_list) do
     local joker_path = 'src/jokers/' .. joker .. '.lua'
@@ -123,11 +124,10 @@ SMODS.get_probability_vars = SMODS.get_probability_vars or function(trigger_obj,
     additive.numerator = (additive.numerator or base_numerator) * ((G.GAME and G.GAME.probabilities.normal or 1) / (2 ^ #SMODS.find_card('j_oops')))
     local fixed = SMODS.calculate_context({fix_probability = true, numerator = additive.numerator or base_numerator, denominator = additive.denominator or base_denominator})
     return fixed.numerator or additive.numerator or base_numerator, fixed.denominator or additive.denominator or base_denominator
-end
+
 -- BUGFIX for Talisman 
 to_big = to_big or function(num)
     return num
-
 end
 
 ----------------------------------------------

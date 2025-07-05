@@ -40,4 +40,24 @@ SMODS.Joker {
 			end
 	    end
 	end,
+	joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.joker_display_values", ref_value = "seal_count" },
+				{ text = " Seals"}
+            },
+            text_config = { colour = G.C.RED },
+            reminder_text_config = { scale = 0.3, colour = G.C.GREY },
+            calc_function = function (card)
+                card.joker_display_values.seal_count = 0
+                for k, v in pairs(G.hand.highlighted) do
+                    if v:get_id() == 6 then
+                        card.joker_display_values.seal_count = card.joker_display_values.seal_count + 1
+                    end
+                end
+            end
+        }
+    end
 }

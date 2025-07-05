@@ -135,17 +135,43 @@ end
 CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 2, y = 0 },
-    config = { hands = 1 },
+    config = { }, -- TODO Pact
     key = "heavenly",
     loc_vars = function(self)
         local key, vars
         vars = { "Divine Merchant", "Pact", colours = { G.C.SET.Divine } }
-        vars[0] = "Divine Merchant"
         if self.get_current_deck_key() == "b_vis_heavenly" then
             key = self.key .. "_alt"
-            vars[0] = "Divine Tycoon"
+            vars = { "Divine Tycoon", "Pact", colours = { G.C.SET.Divine } }
         end
         return { key = key, vars = vars }
+    end,
+    apply = function (self, sleeve)
+        local function apply_voucher(key)
+            G.GAME.used_vouchers[key] = true
+            G.GAME.starting_voucher_count = (G.GAME.starting_voucher_count or 0) + 1
+            G.E_MANAGER:add_event(Event({
+            func = function()
+                Card.apply_to_run(nil, G.P_CENTERS[key])
+                return true
+            end
+        }))
+        end
+        
+        if self.get_current_deck_key() == "b_vis_heavenly" then
+            apply_voucher('v_vis_divine_tycoon')
+        else
+            apply_voucher('v_vis_divine_merchant')
+        end
+        delay(0.4)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local card = create_card('Spectral', G.consumeables, nil, nil, nil, nil, 'c_vis_pact', 'deck')
+                card:add_to_deck()
+                G.consumeables:emplace(card)
+                return true
+            end
+        }))
     end
 }
 
@@ -153,7 +179,7 @@ CardSleeves.Sleeve {
 CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 4, y = 0 },
-    config = { odds = 4 },
+    config = { vouchers = { 'v_vis_divine_tycoon' } },
     key = "burnt",
     loc_vars = function(self)
         local key, vars

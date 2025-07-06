@@ -4,7 +4,7 @@ SMODS.Joker {
 	unlocked = true,
 	blueprint_compat = true,
 	eternal_compat = true,
-	pools = { ["Visibility"] = true },
+	--pools = { ["Visibility"] = true },
     config = { extra = { Xmult = 1, Xmult_mod = 0.25 } },
     rarity = 4,
     atlas = "TextureAtlasJokers",

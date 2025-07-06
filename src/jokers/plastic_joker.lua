@@ -32,17 +32,39 @@ SMODS.Joker {
         return false
     end,
     calculate = function(self, card, context)
-    if context.joker_main then
-        local plastic_tally = 0
-        for _, playing_card in ipairs(G.playing_cards) do
-            if SMODS.has_enhancement(playing_card, 'm_vis_plastic') then
-                plastic_tally = plastic_tally + 1
+        if context.joker_main then
+            local plastic_tally = 0
+            for _, playing_card in ipairs(G.playing_cards) do
+                if SMODS.has_enhancement(playing_card, 'm_vis_plastic') then
+                    plastic_tally = plastic_tally + 1
+                end
             end
+            return {
+                x_chips = 1 + card.ability.extra.xchips * plastic_tally
+            }
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        --- @type JDJokerDefinition
         return {
-            x_chips = 1 + card.ability.extra.xchips * plastic_tally
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.joker_display_values", ref_value = "x_chips", retrigger_type = "exp" }
+                    },
+                    border_colour = G.C.CHIPS
+                }
+            },
+            calc_function = function (card)
+                local plastic_tally = 0
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if SMODS.has_enhancement(playing_card, 'm_vis_plastic') then
+                        plastic_tally = plastic_tally + 1
+                    end
+                end
+                card.joker_display_values.x_chips = 1 + card.ability.extra.xchips * plastic_tally
+            end
         }
     end
-    return {}
-end
 }

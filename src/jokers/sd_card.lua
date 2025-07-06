@@ -17,11 +17,22 @@ SMODS.Joker {
     end,
 	add_to_deck = function (self, card, from_debuff)
         G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.extra_slots
+		G.GAME.pool_flags.sd_full = true
     end,
     remove_from_deck = function (self, card, from_debuff)
         G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.extra_slots
-        G.GAME.pool_flags.sd_full = true
     end,
+	joker_display_def = function (JokerDisplay)
+		--- @type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.ability.extra", ref_value = "extra_slots" },
+				{ text = " consumable", colour = G.C.GREY }
+			},
+			text_config = { colour = G.C.ORANGE }
+		}
+	end
 }
 
 SMODS.Joker {
@@ -47,4 +58,15 @@ SMODS.Joker {
     remove_from_deck = function (self, card, from_debuff)
         G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.extra_slots
     end,
+	joker_display_def = function (JokerDisplay)
+		--- @type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.ability.extra", ref_value = "extra_slots" },
+				{ text = " consumables", colour = G.C.GREY }
+			},
+			text_config = { colour = G.C.ORANGE }
+		}
+	end
 }

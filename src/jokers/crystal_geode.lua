@@ -79,5 +79,27 @@ SMODS.Joker {
             end
         end
         return false
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { ref_table = "card.joker_display_values", ref_value = "hand_balance" },
+                { text = "% Hand Balance" }
+            },
+            text_config = { colour = G.C.PURPLE },
+            calc_function = function (card)
+                local count = 0
+                local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+                if text ~= "Unknown" then
+                    for _, scoring_card in pairs(scoring_hand) do
+                        if SMODS.has_no_suit(scoring_card) and SMODS.has_no_rank(scoring_card) then
+                            count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                        end
+                    end
+                end
+                card.joker_display_values.hand_balance = count * card.ability.extra.balance_percentage
+            end
+        }
     end
 }

@@ -26,5 +26,36 @@ SMODS.Joker {
             end
         end
         return false
-    end
+    end,
+	joker_display_def = function (JokerDisplay)
+		--- @type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.joker_display_values", ref_value = "Xmult", retrigger_type = "exp" }
+					}
+				}
+			},
+			reminder_text = {
+				{ text = "(" },
+				{ text = "stone and brick" },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				local count = 0
+				local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+				if text ~= 'Unknown' then
+					for _, scoring_card in pairs(scoring_hand) do
+						if SMODS.has_enhancement(scoring_card, 'm_stone') or SMODS.has_enhancement(scoring_card, 'm_vis_brick') then
+							count = count +
+								JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+						end
+					end
+				end
+				card.joker_display_values.Xmult = math.max(card.ability.extra.Xmult * count, 1)
+			end
+		}
+	end
 }

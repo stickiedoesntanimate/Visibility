@@ -37,5 +37,36 @@ SMODS.Joker {
         end
         return false
 	end,
-	-- TODO: JokerDisplay
+	joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.joker_display_values", ref_value = "count" },
+            },
+            text_config = { colour = G.C.PURPLE },
+			extra = {
+                {
+                    { text = "("},
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")"},
+                }
+            },
+			extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local count = 0
+                local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+                if text ~= "Unknown" then
+                    for _, scoring_card in pairs(scoring_hand) do
+                        if SMODS.has_enhancement(scoring_card, 'm_stone') then
+                            count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                        end
+                    end
+                end
+                card.joker_display_values.count = count
+                local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+                card.joker_display_values.odds = localize { type = 'variable', key = 'jdis_odds', vars = { numerator, denominator } }
+            end,
+        }
+    end
 }

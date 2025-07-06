@@ -23,4 +23,39 @@ SMODS.Joker {
             }
         end
     end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { ref_table = "card.joker_display_values", ref_value = "retriggers", },
+                { text = " Retriggers" },
+            },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "idol_card", colour = G.C.FILTER },
+                { text = ")" },
+            },
+            text_config = { colour = G.C.ORANGE },
+            calc_function = function(card)
+                local count = 0
+                local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+                if text ~= 'Unknown' then
+                    for _, scoring_card in pairs(scoring_hand) do
+                        if scoring_card:is_suit(G.GAME.current_round.idol_card.suit) and scoring_card:get_id() and scoring_card:get_id() == G.GAME.current_round.idol_card.id then
+                            count = count +
+                                JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                        end
+                    end
+                end
+                card.joker_display_values.retriggers = card.ability.extra.retriggers * count
+                card.joker_display_values.idol_card = localize { type = 'variable', key = "jdis_rank_of_suit", vars = { localize(G.GAME.current_round.idol_card.rank, 'ranks'), localize(G.GAME.current_round.idol_card.suit, 'suits_plural') } }
+            end,
+            style_function = function(card, text, reminder_text, extra)
+                if reminder_text and reminder_text.children[4] then
+                    reminder_text.children[4].config.colour = lighten(G.C.SUITS[G.GAME.current_round.idol_card.suit], 0.35)
+                end
+                return false
+            end
+        }
+    end
 }

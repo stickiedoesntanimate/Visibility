@@ -26,7 +26,7 @@ SMODS.Joker {
                 for i = 1, booster_slots do
                     local _pool, _pool_key = get_current_pool("Booster")
                     local key
-                    while G.P_CENTERS[key] == nil do -- I don't know why this happens, but it does.
+                    while G.P_CENTERS[key] == nil do -- This is probably because of G.GAME.banned_keys
                         key = pseudorandom_element(_pool, pseudoseed(_pool_key))
                     end
                     local card = Card(G.shop_booster.T.x + G.shop_booster.T.w/2, G.shop_booster.T.y, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
@@ -38,5 +38,22 @@ SMODS.Joker {
                 }
             end
         end
-    end
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            extra = {
+                {
+                    { text = "("},
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")"},
+                }
+            },
+			extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+                card.joker_display_values.odds = localize { type = 'variable', key = 'jdis_odds', vars = { numerator, denominator } }
+            end,
+        }
+    end,
 }

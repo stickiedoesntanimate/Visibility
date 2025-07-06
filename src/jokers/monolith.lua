@@ -62,5 +62,39 @@ SMODS.Joker {
         table.remove(_poker_hands, poker_hand_key)
         card.ability.extra.poker_hands[1] = poker_hand
         card.ability.extra.poker_hands[2] = pseudorandom_element(_poker_hands, pseudoseed('monolith'))
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            },
+            extra = {
+                {
+                    { ref_table = "card.joker_display_values", ref_value = "banned_one" }
+                },
+                {
+                    { ref_table = "card.joker_display_values", ref_value = "banned_two" }
+                }
+            },
+            extra_config = { colour = G.C.RED, scale = 0.3 },
+            calc_function = function(card)
+                card.joker_display_values.banned_one = localize(card.ability.extra.poker_hands[1], 'poker_hands')
+                card.joker_display_values.banned_two = localize(card.ability.extra.poker_hands[2], 'poker_hands')
+                local hand = G.hand.highlighted
+                local text, _, _ = JokerDisplay.evaluate_hand(hand)
+                local hand_exists = text ~= 'Unknown' and G.GAME and G.GAME.hands and G.GAME.hands[text]
+                if hand_exists and (card.joker_display_values.banned_one == text or card.joker_display_values.banned_two == text) then
+                    card.joker_display_values.xmult = 1
+                    return
+                end
+                card.joker_display_values.xmult = card.ability.extra.xmult
+            end
+        }
     end
 }

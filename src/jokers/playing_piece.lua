@@ -98,5 +98,55 @@ SMODS.Joker {
             elseif rank == 14 then card.ability.extra.rank[i] = 'Ace'
             end
         end
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.joker_display_values", ref_value = "divine_count", retrigger_type = "exp" },
+                { text = " Divine" }
+            },
+            reminder_text = {
+                { text = "("},
+                { ref_table = "card.ability.extra.rank", ref_value = 1, },
+                { text = " and "},
+                { ref_table = "card.ability.extra.rank", ref_value = 2 },
+                { text = ")"}
+            },
+            text_config = { colour = G.C.SECONDARY_SET.Divine },
+            calc_function = function (card)
+                local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+                if text ~= "Flush" then 
+                    card.joker_display_values.divine_count = 0
+                    return
+                end
+                local condition_met = false
+                local converted_rank = card.ability.extra.rank[1]
+                if converted_rank == 'Jack' then converted_rank = 11
+                elseif converted_rank == 'Queen' then converted_rank = 12
+                elseif converted_rank == 'King' then converted_rank = 13
+                elseif converted_rank == 'Ace' then converted_rank = 14
+                end
+                for _, playing_card in ipairs(scoring_hand) do
+                    if playing_card:get_id() == converted_rank then
+                        converted_rank = card.ability.extra.rank[2]
+                        if converted_rank == 'Jack' then converted_rank = 11
+                        elseif converted_rank == 'Queen' then converted_rank = 12
+                        elseif converted_rank == 'King' then converted_rank = 13
+                        elseif converted_rank == 'Ace' then converted_rank = 14
+                        end
+                        for _, playing_card in ipairs(scoring_hand) do
+                            if playing_card:get_id() == converted_rank then
+                                condition_met = true
+                                break
+                            end
+                        end
+                        break
+                    end
+                end
+                card.joker_display_values.divine_count = condition_met and 1 or 0
+            end
+        }
     end
 }

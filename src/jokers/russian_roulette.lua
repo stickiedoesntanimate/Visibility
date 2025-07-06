@@ -23,5 +23,29 @@ SMODS.Joker {
         if roll < 1 / card.ability.extra.odds then
             return { x_mult = card.ability.extra.x_mult }
         end
-    end
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "x_mult" }
+                    }
+                }
+            },
+            extra = {
+                {
+                    { text = "("},
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")"},
+                }
+            },
+			extra_config = { colour = G.C.ORANGE, scale = 0.3 },
+            calc_function = function(card)
+                card.joker_display_values.odds = localize { type = 'variable', key = 'jdis_odds', vars = { 1, card.ability.extra.odds } }
+            end,
+        }
+    end,
 }

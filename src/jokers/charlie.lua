@@ -18,7 +18,7 @@ SMODS.Joker {
         info_queue[#info_queue+1] = G.P_CENTERS.e_negative_playing_card
     end,
     calculate = function(self, card, context)
-        if context.after then
+        if context.after and G.GAME.current_round.hands_played == 0 then
             local _cards = {}
             for _, scored_card in ipairs(context.scoring_hand) do
                 if not scored_card.edition then
@@ -30,9 +30,9 @@ SMODS.Joker {
                 -- Welp, no non-negative cards to pick from
                 return nil
             end
-            picked_card:set_edition('e_negative', true)
             G.E_MANAGER:add_event(Event({
                 func = function()
+                    picked_card:set_edition('e_negative', true)
                     picked_card:juice_up()
                     return true
                 end
@@ -50,6 +50,9 @@ SMODS.Joker {
                 { text = "+" },
                 { ref_table = "card.joker_display_values", ref_value = "count" },
                 { text = " " .. localize('negative', 'labels') },
+            },
+            reminder_text = {
+                { text = "(first hand)"}
             },
             text_config = { colour = G.C.DARK_EDITION },
             calc_function = function(card)

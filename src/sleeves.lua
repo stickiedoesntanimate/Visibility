@@ -135,7 +135,7 @@ end
 CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 2, y = 0 },
-    config = { }, -- TODO Pact
+    config = { },
     key = "heavenly",
     loc_vars = function(self)
         local key, vars

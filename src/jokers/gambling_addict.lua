@@ -25,5 +25,13 @@ SMODS.Joker {
                 }
             end
         end
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = { 
+                { text = "???", colour = G.C.RED }
+            }
+        }
     end
 }

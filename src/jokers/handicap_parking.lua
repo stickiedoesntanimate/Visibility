@@ -31,5 +31,30 @@ SMODS.Joker {
                 }
             end
         end
-    end
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            extra = {
+                {
+                    { text = "("},
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")"},
+                }
+            },
+            text = {
+                { text = "+$" },
+                { ref_table = "card.joker_display_values", ref_value = "dollars" }
+            },
+            text_config = { colour = G.C.GOLD },
+			extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local empty_slots = G.jokers and (G.jokers.config.card_limit - #G.jokers.cards) or 0
+                card.joker_display_values.dollars = card.ability.extra.dollars * empty_slots
+                
+                local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+                card.joker_display_values.odds = localize { type = 'variable', key = 'jdis_odds', vars = { numerator, denominator } }
+            end,
+        }
+    end,
 }

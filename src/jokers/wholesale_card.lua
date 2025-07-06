@@ -34,5 +34,12 @@ SMODS.Joker {
                 return true
             end
         }))
+	end,
+	joker_display_def = function (JokerDisplay)
+		return {
+			text = {
+				{ text = "25% off", colour = G.C.ORANGE }
+			}
+		}
 	end
 }

@@ -38,5 +38,24 @@ SMODS.Joker {
                 }
             end
         end
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.joker_display_values", ref_value = "chips" }
+            },
+            text_config = { colour = G.C.CHIPS },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "hands_left" },
+                { text = " hands left)" }
+            },
+            calc_function = function (card)
+                card.joker_display_values.hands_left = card.ability.extra.hands_left
+                card.joker_display_values.chips = (G.GAME.current_round.hands_played + 1) * card.ability.extra.chips
+            end
+        }
     end
 }

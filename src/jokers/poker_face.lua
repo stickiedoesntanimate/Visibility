@@ -37,5 +37,19 @@ SMODS.Joker {
             end
         end
         return false
+    end,
+    joker_display_def = function(JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "Xchips", retrigger_type = "exp" }
+                    },
+                    border_colour = G.C.CHIPS
+                }
+            }
+        }
     end
 }

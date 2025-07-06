@@ -41,4 +41,18 @@ SMODS.Joker {
             }
         end
     end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { text = "+1" },
+            },
+            text_config = { colour = G.C.SECONDARY_SET.Divine },
+            reminder_text = {
+                { text = "(", colour = G.C.UI.TEXT_INACTIVE },
+                { text = "on blind select", colour = G.C.UI.TEXT_INACTIVE },
+                { text = ")", colour = G.C.UI.TEXT_INACTIVE },
+            },
+        }
+    end
 }

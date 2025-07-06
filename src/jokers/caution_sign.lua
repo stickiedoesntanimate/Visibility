@@ -24,6 +24,16 @@ SMODS.Joker {
                 }
             end
         end
+    end,
+    -- For other cards like baron
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+                return held_in_hand and JokerDisplay.calculate_joker_triggers(joker_card) or 0
+            end
+        }
     end
+    
 }
 

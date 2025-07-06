@@ -4,7 +4,7 @@ SMODS.Joker {
     discovered = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 8,
+    cost = 4,
     atlas = "TextureAtlasJokers",
     config = { extra = { mult = 20 }, },
     credits = {
@@ -21,5 +21,18 @@ SMODS.Joker {
                 mult = card.ability.extra.mult
             }
         end
+    end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+            },
+            text_config = { colour = G.C.MULT },
+            calc_function = function(card)
+                card.joker_display_values.mult = G.GAME.current_round.hands_played == 0 and card.ability.extra.mult or 0
+            end,
+        }
     end
 }

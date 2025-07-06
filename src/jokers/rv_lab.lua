@@ -26,4 +26,29 @@ SMODS.Joker {
             end
         end
     end,
+	joker_display_def = function (JokerDisplay)
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.joker_display_values", ref_value = "xchips", retrigger_type = "exp" }
+					},
+					border_colour = G.C.CHIPS
+				}	
+			},
+			calc_function = function(card)
+				local playing_hand = next(G.play.cards)
+				local count = 0
+				for _, playing_card in ipairs(G.hand.cards) do
+					if playing_hand or not playing_card.highlighted then
+						if not (playing_card.facing == 'back') and not playing_card.debuff and playing_card:get_id() and playing_card:get_id() == 11 then
+							count = count + JokerDisplay.calculate_card_triggers(playing_card, nil, true)
+						end
+					end
+				end
+				card.joker_display_values.xchips = card.ability.extra.xchips ^ count
+			end
+		}
+	end
 }

@@ -58,4 +58,24 @@ SMODS.Joker {
             end
         end
     end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                { text = "+1 Tag(s)" }
+            },
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "remain_count" },
+                    { text = " remaining)" }
+                }
+            },
+            text_config = { colour = G.C.GREEN },
+            extra_config = { colour = G.C.GREY },
+            calc_function = function (card)
+                card.joker_display_values.remain_count = card.ability.extra.total_rounds - card.ability.extra.cream_rounds
+            end
+        }
+    end
 }

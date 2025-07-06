@@ -4,7 +4,7 @@ SMODS.Joker {
 	unlocked = true,
 	blueprint_compat = true,
 	eternal_compat = true,
-	pools = { ["Visibility"] = true },
+	--pools = { ["Visibility"] = true },
     config = { extra = { Xmult = 1, Xmult_mod = 0.25 } },
     rarity = 4,
     atlas = "TextureAtlasJokers",
@@ -32,6 +32,18 @@ SMODS.Joker {
                 }
             end
         end
-
 	end,
+    joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "Xmult", retrigger_type = "exp" }
+                    },
+                }
+            }
+        }
+    end
 }

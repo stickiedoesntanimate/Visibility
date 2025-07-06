@@ -37,5 +37,18 @@ SMODS.Joker {
 	end,
 	remove_from_deck = function (self, card, from_debuff)
 		G.hand:change_size(card.ability.extra.deducted)
-	end
+	end,
+	joker_display_def = function (JokerDisplay)
+        --- @type JDJokerDefinition
+		return {
+            text = {
+                { text = "+$" },
+                { ref_table = "card.joker_display_values", ref_value = "dollars" }
+            },
+            text_config = { colour = G.C.GOLD },
+            calc_function = function (card)
+                card.joker_display_values.dollars = G.GAME.current_round.hands_left * card.ability.extra.money
+            end
+        }
+    end,
 }

@@ -56,6 +56,7 @@ local joker_list = {
     "playing_piece",
     "insomnia",
     "graffiti",
+    "comp_notebook",
     "garrab",
     "charlie",
 }

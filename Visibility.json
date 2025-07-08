@@ -5,6 +5,7 @@
     "description": "Read the localization file.",
     "prefix": "vis",
     "main_file": "Visibility.lua",
+    "priority": 1,
     "badge_colour": "bdc3c7",
     "dependencies": [
         "Steamodded (>=1.0.0~ALPHA-1225a)"

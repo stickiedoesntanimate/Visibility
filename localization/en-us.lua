@@ -593,6 +593,13 @@ return {
                     "also count as {C:attention}Wild Cards{}",
                 }
             },
+            j_vis_comp_notebook= {
+                name = "Comprehensive Notebook",
+                text = {
+                    "Played cards have a {C:green}#1# in #2#{}",
+                    "chance to become {C:attention}Notebook Cards"
+                }
+            },
         },
         Sleeve = {
             sleeve_vis_poptart = {  -- "sleeve_" + mod prefix + "_" + sleeve original key
@@ -1086,6 +1093,7 @@ return {
             k_edition_negative = "Subtraction!",
             k_meteor="Meteorite",
             k_space_rock="Space Rock",
+            k_noted="Noted!",
             k_divine="Divine",
             k_blackmarket="Black Market",
             k_spectral_pack="Spectral Pack",

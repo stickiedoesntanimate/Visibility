@@ -11,6 +11,7 @@ SMODS.Joker {
 	eternal_compat = true,
 	pools = { ["Visibility"] = true },
 	loc_vars = function(self, info_queue, back)
+		info_queue[#info_queue + 1] = G.P_TAGS['tag_double']
 		return { vars = { localize { type = 'name_text', key = 'tag_double', set = 'Tag' } } }
 	end,
 	calculate = function(self, back, context)

@@ -12,7 +12,13 @@ SMODS.Joker {
 	pos = { x = 3, y = 1 },
 	cost = 8,
 	loc_vars = function(self, info_queue, card)
-        return { vars = {  } }
+		info_queue[#info_queue + 1] = G.P_CENTERS[("c_strength")]
+		info_queue[#info_queue + 1] = G.P_CENTERS[("c_vis_weakness")]
+		return { 
+			vars = {
+				colours = { G.C.SET.Divine } 
+			},
+		}
 	end,
 	calculate = function(self, card, context)
         if context.using_consumeable and (context.consumeable.ability.name == 'Strength' or context.consumeable.ability.name == 'c_vis_weakness') then

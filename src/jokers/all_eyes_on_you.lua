@@ -10,6 +10,10 @@ SMODS.Joker {
 	atlas = 'TextureAtlasJokers',
 	pos = { x = 7, y = 3 },
 	cost = 4,
+	loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[("c_death")]
+        return { vars = { card.ability.extra.retriggers, card.ability.extra.cond_discards } }
+	end,
 	calculate = function(self, card, context)
         local spawn_tarot = 0
 		if context.remove_playing_cards and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then

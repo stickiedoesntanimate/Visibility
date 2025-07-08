@@ -13,7 +13,12 @@ SMODS.Joker {
     pos = { x = 7, y = 4 },
     cost = 3,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.cream_rounds, card.ability.extra.total_rounds } }
+        if card.ability.extra.total_rounds - card.ability.extra.cream_rounds == 1 then --Making the text plural, if needed
+            return { vars = { card.ability.extra.total_rounds - card.ability.extra.cream_rounds, "" } }
+        else
+            return { vars = { card.ability.extra.total_rounds - card.ability.extra.cream_rounds, "s" } }
+        end
+        
     end,
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and context.main_eval then

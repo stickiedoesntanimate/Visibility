@@ -12,6 +12,7 @@ SMODS.Joker {
 	pos = { x = 0, y = 0 },
 	cost = 4,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS[("c_hanged_man")]
 		return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult } }
 	end,
 	calculate = function(self, card, context)

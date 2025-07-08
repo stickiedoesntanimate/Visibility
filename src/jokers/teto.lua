@@ -11,7 +11,10 @@ SMODS.Joker {
 	pos = { x = 8, y = 0 },
 	cost = -7,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.triggered and "{s:0}" or "Active!" } }
+        if card.ability.extra.triggered then
+            return { vars = { 'Inactive', colours = {G.C.UI.TEXT_INACTIVE}}}
+        end
+            return { vars = { 'Active!', colours = {G.C.FILTER}}} --orange
     end,
     calculate = function (self, card, context)
         if context.first_hand_drawn and not context.blueprint then

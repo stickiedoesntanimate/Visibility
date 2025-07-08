@@ -10,7 +10,7 @@ SMODS.Joker {
     discovered = true,
     loc_vars = function(self, info_queue, card)
         local empty_slots = G.jokers and (G.jokers.config.card_limit - #G.jokers.cards) or 0
-        return { vars = { card.ability.extra.dollars, empty_slots, G.GAME and G.GAME.probabilities.normal or 1, card.ability.extra.odds } }
+        return { vars = { card.ability.extra.dollars, G.GAME and G.GAME.probabilities.normal or 1, card.ability.extra.odds } }
     end,
     calculate = function(self, card, context)
         if context.joker_main and pseudorandom('vishandicap_parking') < G.GAME.probabilities.normal / card.ability.extra.odds then

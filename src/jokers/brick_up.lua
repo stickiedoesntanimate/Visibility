@@ -10,6 +10,10 @@ SMODS.Joker {
 	cost = 6,
 	pos = { x = 1, y = 1 },
 	config = { extra = { repetitions = 1 } },
+	loc_vars = function (self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS[("m_stone")]
+		info_queue[#info_queue + 1] = G.P_CENTERS[("m_vis_brick")]
+	end,
 	calculate = function(self, card, context)
 		if context.repetition and context.cardarea == G.play and (SMODS.has_enhancement(context.other_card, 'm_stone') or SMODS.has_enhancement(context.other_card, 'm_vis_brick')) then
 			return {

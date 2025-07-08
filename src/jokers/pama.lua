@@ -8,10 +8,16 @@ SMODS.Joker {
 	pools = { ["Visibility"] = true },
 	cost = 8,
 	pos = { x = 6, y = 3 },
-	config = { extra = { } },
+	config = { extra = { seal1 = 'Blue', seal2 = 'Red', seal3 = 'Gold', seal4 = 'Purple' } },
     credits = {
         idea = "One Punch Idiot"
-    }
+    },
+    loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal1]
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal3]
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal2]
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal4]
+	end,
 }
 
 -- Hook(s) for Red/Purple seal

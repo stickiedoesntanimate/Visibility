@@ -15,7 +15,7 @@ SMODS.Joker {
     },
 	cost = 2,
 	loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.hands_left } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.hands_left, G.GAME.current_round.hands_played * card.ability.extra.chips, } }
 	end,
     calculate = function (self, card, context)
         if context.joker_main then

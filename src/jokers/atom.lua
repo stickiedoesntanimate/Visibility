@@ -10,6 +10,7 @@ SMODS.Joker {
     pos = { x = 0, y = 3 },
     cost = 1,
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[("j_vis_atomic_bomb")]
         return { vars = { card.ability.extra.chips } }
     end,
     calculate = function(self, card, context)

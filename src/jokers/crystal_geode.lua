@@ -11,6 +11,8 @@ SMODS.Joker {
 	blueprint_compat = false,
 	cost = 9,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS[("m_stone")]
+		info_queue[#info_queue + 1] = G.P_CENTERS[("m_vis_brick")]
         return { vars = { card.ability.extra.balance_percentage } }
 	end,
 	calculate = function(self, card, context)

@@ -596,7 +596,7 @@ return {
             j_vis_comp_notebook= {
                 name = "Comprehensive Notebook",
                 text = {
-                    "Played cards have a {C:green}#1# in #2#{}",
+                    "Scored cards have a {C:green}#1# in #2#{}",
                     "chance to become {C:attention}Notebook Cards"
                 }
             },
@@ -952,7 +952,7 @@ return {
                 name = 'Mint',
                 text = {
                     "Gives you a {C:attention}quarter{} of the {C:attention}Ranks{}",
-                    "in hand as{C:gold}money{}",
+                    "in hand as {C:gold}money{}",
                     "{C:inactive}(Currently: {C:gold}$#1#{C:inactive}, Max: {C:gold}$#2#{C:inactive})"
                 }
             },

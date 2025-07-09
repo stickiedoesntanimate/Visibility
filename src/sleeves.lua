@@ -179,7 +179,7 @@ CardSleeves.Sleeve {
 CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 4, y = 0 },
-    config = { vouchers = { 'v_vis_divine_tycoon' } },
+    config = { odds = 4 },
     key = "burnt",
     loc_vars = function(self)
         local key, vars
@@ -194,8 +194,7 @@ CardSleeves.Sleeve {
         if context.pre_discard and not context.hook then -- We're discarding (not through the hook boss blind)
             local text, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
             local level_up_effect = { level_up = true, level_up_hand = text }
-            local is_burnt_deck = self.get_current_deck_key() == "b_vis_burnt"
-            if not is_burnt_deck then
+            if self.get_current_deck_key() ~= "b_vis_burnt" then
                 return G.GAME.current_round.discards_used <= 0 and level_up_effect or nil
             end
             -- At this point we know we're in the burnt deck, so we can roll the dice

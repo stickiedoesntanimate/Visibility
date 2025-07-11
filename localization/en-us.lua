@@ -562,6 +562,14 @@ return {
                     "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)",
                 },
             },
+            j_vis_handheld = {
+                name = "Handheld Joker",
+                text = {
+                    "Each played {C:attention}Ace{}",
+                    "gives {X:chips,C:white}X#1#{} Chips",
+                    "when scored",
+                }
+            },
             j_vis_flat_earth = {
                 name = "Flat Earth",
                 text = {

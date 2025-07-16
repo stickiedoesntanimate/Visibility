@@ -6,7 +6,7 @@ end
 CardSleeves.Sleeve {
     atlas = "TextureAtlasSleeves",
     pos = { x = 0, y = 0 },
-    config = { hands = 1 },
+    config = { hands = 0 },
     key = "poptart",
     loc_vars = function(self)
         local key, vars
